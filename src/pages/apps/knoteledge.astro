@@ -15,6 +15,7 @@ const features = [
     note: "Raw noteは非公開、サマリーのみ共有",
   },
 ];
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="KnoteLedge" description="学習を、もっとスマートに。スケジュール・ノート・コミュニティが一体になった学習プラットフォーム。">
@@ -118,7 +119,7 @@ const features = [
   </section>
 
   <div class="legal-link">
-    <a href={`${import.meta.env.BASE_URL}/apps/privacy`}>
+    <a href={`${base}/apps/privacy`}>
       プライバシーポリシー
     </a>
   </div>
