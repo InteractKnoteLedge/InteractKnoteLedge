@@ -1,17 +1,177 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppCard from '../components/AppCard.astro';
+import { apps } from '../content/apps';
+import { SITE } from '../site.config';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={SITE.name} description={SITE.description}>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        Independent app studio
+      </p>
+      <h1 class="hero-heading">
+        Tools that think<br /><em>with</em> you.
+      </h1>
+      <p class="hero-sub">{SITE.tagline}</p>
+    </div>
+  </section>
+
+  <div class="section-rule" aria-hidden="true"></div>
+
+  <!-- Products -->
+  <section class="products" id="products" aria-label="プロダクト一覧">
+    <div class="products-header">
+      <p class="section-label">Products</p>
+      <p class="products-count">{apps.length} apps</p>
+    </div>
+
+    <ul class="app-grid" role="list">
+      {apps.map((app, i) => (
+        <li style={`animation-delay: ${i * 0.1}s`}>
+          <AppCard app={app} />
+        </li>
+      ))}
+      <!-- Placeholder slots -->
+      <li class="card-placeholder" aria-hidden="true">
+        <span class="placeholder-label">More coming</span>
+      </li>
+      <li class="card-placeholder" aria-hidden="true">
+        <span class="placeholder-label">More coming</span>
+      </li>
+    </ul>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5.5rem 2rem 4rem;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hero-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7.5vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: var(--fg);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s 0.05s ease both;
+  }
+
+  .hero-heading em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--fg-muted);
+    max-width: 360px;
+    line-height: 1.75;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .section-rule {
+    height: 1px;
+    background: var(--border);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* PRODUCTS */
+  .products {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 6rem;
+  }
+
+  .products-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+  }
+
+  .products-count {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: #2e2d2b;
+  }
+
+  /* GRID */
+  .app-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+  }
+
+  .app-grid li {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  /* Placeholder cards */
+  .card-placeholder {
+    background: var(--bg);
+    min-height: 280px;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.75rem;
+    animation: none !important;
+  }
+
+  .placeholder-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #242320;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .app-grid {
+      grid-template-columns: 1fr;
+    }
+    .card-placeholder {
+      display: none;
+    }
+  }
+</style>
