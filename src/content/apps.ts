@@ -27,7 +27,7 @@ export const apps: App[] = [
     name: "Plachieve",
     tagline: "目標と日常をつなぐ。",
     description: "計画を立てるだけで終わらせない、実行型のゴール管理アプリ。習慣・タスク・振り返りを一元管理します。",
-    status: "coming_soon",
+    status: "available",
     platforms: ["iOS"],
     accentColor: "#a89fd4",
   },
