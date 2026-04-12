@@ -324,42 +324,43 @@ const features = [
     font-family: var(--font-sans);
   }
   .screenshot-card {
-    /* フレーム外形を基準にし、画像を内側へぴったり収める */
+    /* 筐体プレートの上に角丸スクショを載せ、自然な奥行きを作る */
     position: relative;
-    padding: 9px;
-    border-radius: 36px;
-    overflow: hidden;
+    padding: 14px;
+    border-radius: 34px;
+    overflow: visible;
     aspect-ratio: 9/16;
     max-height: 320px;
+    background: transparent;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  }
+  .screenshot-card::before {
+    /* 背面の筐体プレート */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 34px;
     background:
-      linear-gradient(180deg, #2b2a28 0%, #151412 22%, #090908 100%);
+      linear-gradient(180deg, #2e2d2a 0%, #171614 24%, #0b0b0a 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow:
       0 18px 40px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+    z-index: -1;
   }
-  .screenshot-card::before {
-    /* 上部ディテールでスマホらしい印象を補う */
+  .screenshot-card::after {
+    /* プレート上端の小さなスリットで筐体らしさを補強 */
     content: "";
     position: absolute;
     top: 8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 34%;
-    height: 6px;
+    width: 32%;
+    height: 5px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.08);
-    z-index: 2;
-  }
-  .screenshot-card::after {
-    /* 外枠の輪郭を少しだけ強めて背景との境界を安定させる */
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    pointer-events: none;
+    z-index: 1;
   }
   .feature-visual .screenshot-card {
     width: min(100%, 220px);
@@ -369,9 +370,12 @@ const features = [
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 27px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     background: #ffffff;
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.18),
+      0 0 0 1px rgba(0, 0, 0, 0.12);
   }
 
   .screenshot-placeholder {
