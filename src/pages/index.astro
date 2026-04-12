@@ -12,7 +12,9 @@ import { SITE } from '../site.config';
     <div class="hero-inner">
       <p class="eyebrow">
         <span class="eyebrow-line" aria-hidden="true"></span>
-        Independent app studio
+        <span>Independent app studio</span>
+        <span class="eyebrow-separator" aria-hidden="true">/</span>
+        <a href={`${import.meta.env.BASE_URL}noveris-studio`} class="eyebrow-link">Noveris Studio</a>
       </p>
       <h1 class="hero-heading">
         Tools that think<br /><em>with</em> you.
@@ -59,6 +61,7 @@ import { SITE } from '../site.config';
   .eyebrow {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.75rem;
     font-size: 0.68rem;
     letter-spacing: 0.18em;
@@ -74,6 +77,19 @@ import { SITE } from '../site.config';
     height: 1px;
     background: var(--accent);
     flex-shrink: 0;
+  }
+  .eyebrow-separator {
+    color: rgba(200, 184, 154, 0.45);
+  }
+  .eyebrow-link {
+    color: var(--fg-subtle);
+    letter-spacing: 0.14em;
+    transition: color 0.2s;
+    border-bottom: 1px solid transparent;
+  }
+  .eyebrow-link:hover {
+    color: var(--accent);
+    border-color: rgba(200, 184, 154, 0.35);
   }
 
   .hero-heading {
