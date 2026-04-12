@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../site.config';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lastUpdated = "2026年4月12日";
-const contactEmail = "noveris.interactknoteledge@gmail.com";
+const contactEmail = SITE.contactEmail;
 ---
 
 <BaseLayout title="プライバシーポリシー — Plachieve" description="Plachieveアプリにおける個人情報の取り扱いについて">

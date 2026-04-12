@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 
 const fullTitle = title === SITE.name ? SITE.name : `${title} — ${SITE.name}`;
+const contactHref = `mailto:${SITE.contactEmail}`;
 ---
 
 <!doctype html>
@@ -32,7 +33,7 @@ const fullTitle = title === SITE.name ? SITE.name : `${title} — ${SITE.name}`;
       <nav aria-label="メインナビゲーション">
         <ul class="nav">
           <li><a href="/#products">Products</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href={contactHref}>Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -46,7 +47,7 @@ const fullTitle = title === SITE.name ? SITE.name : `${title} — ${SITE.name}`;
       <ul class="footer-links">
         <li><a href="/privacy">Privacy policy</a></li>
         <li><a href="/terms">Terms of use</a></li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href={contactHref}>Contact</a></li>
       </ul>
     </footer>
   </body>
