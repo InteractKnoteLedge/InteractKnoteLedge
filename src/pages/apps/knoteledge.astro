@@ -395,8 +395,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     border: 1px dashed #2a2927;
   }
   .screenshot-placeholder--sm {
-    border: none;
-    border-radius: 0;
+    /* Plachieve と同じ見え方に揃える */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 26px;
   }
   .placeholder-text {
     font-size: 0.7rem;
