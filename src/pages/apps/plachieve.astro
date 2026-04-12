@@ -10,6 +10,7 @@ const features = [
     description: "目標・タスク・習慣がひとつのカレンダーに集約されます。日・週・月単位で計画全体を俯瞰でき、何をいつやるべきかが一目でわかります。",
     note: "目標・タスク・習慣を一元管理",
     color: "#a89fd4",
+    image: "/images/plachieve/feature-1.png",
   },
   {
     number: "02",
@@ -17,6 +18,7 @@ const features = [
     description: "1日のスケジュールを時計のように円形で表示。時間ごとのタスク密度や空き時間が直感的に把握でき、詰め込みすぎや抜け漏れをすぐに発見できます。",
     note: "時間の流れを視覚的に把握",
     color: "#a89fd4",
+    image: "/images/plachieve/feature-2.png",
   },
   {
     number: "03",
@@ -24,6 +26,7 @@ const features = [
     description: "目標を入力するだけで、締切・優先度・習慣パターンをもとにAIが最適な実行計画を自動生成します。「計画を立てる」ではなく「計画が生まれる」体験を提供します。",
     note: "入力から数秒で実行計画が完成",
     color: "#a89fd4",
+    image: "/images/plachieve/feature-3.png",
   },
 ];
 ---
@@ -92,7 +95,7 @@ const features = [
     <div class="features-inner">
       <p class="section-label">Features</p>
 
-      {features.map((f, i) => (
+      {features.map((f) => (
         <div class="feature-row">
           <div class="feature-number">{f.number}</div>
           <div class="feature-content">
@@ -102,9 +105,7 @@ const features = [
           </div>
           <div class="feature-visual">
             <div class="screenshot-card">
-              <div class="screenshot-placeholder screenshot-placeholder--sm">
-                <span class="placeholder-text">feature-{i + 1}.png</span>
-              </div>
+              <img src={f.image} alt={f.title} loading="lazy" />
             </div>
           </div>
         </div>
@@ -147,7 +148,6 @@ const features = [
   }
   .back-link:hover { color: var(--fg-muted); }
 
-  /* HERO */
   .hero {
     max-width: 1000px;
     margin: 0 auto;
@@ -240,7 +240,6 @@ const features = [
   }
   .cta-secondary:hover { color: var(--fg-muted); border-color: var(--fg-subtle); }
 
-  /* PHONE MOCKUP */
   .hero-right {
     display: flex;
     justify-content: center;
@@ -273,7 +272,6 @@ const features = [
   }
   .phone-screen { width: 100%; height: 100%; }
 
-  /* FEATURES */
   .features { border-top: 1px solid var(--border); }
   .features-inner {
     max-width: 1000px;
@@ -333,6 +331,13 @@ const features = [
     max-height: 320px;
     background: #0a0a09;
   }
+  .screenshot-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .screenshot-placeholder {
     width: 100%;
     height: 100%;
@@ -344,7 +349,6 @@ const features = [
     background: #0f0f0e;
     border: 1px dashed #2a2927;
   }
-  .screenshot-placeholder--sm { border: none; }
   .placeholder-text {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
@@ -352,8 +356,13 @@ const features = [
     color: #3a3835;
     font-family: var(--font-sans);
   }
+  .placeholder-sub {
+    font-size: 0.6rem;
+    color: #2a2825;
+    font-family: var(--font-sans);
+    letter-spacing: 0.05em;
+  }
 
-  /* CTA BANNER */
   .cta-banner {
     border-top: 1px solid var(--border);
     background: #0f0f0e;
