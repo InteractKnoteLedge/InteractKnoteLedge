@@ -4,14 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lastUpdated = "2026年4月12日";
 const contactEmail = "privacy@noveris.dev";
-
-const summary = [
-  { icon: "📋", title: "収集する情報", text: "睡眠・食事・予定・学習目標などの生活情報、アカウント情報、端末情報" },
-  { icon: "🔒", title: "保存場所", text: "Firebase（Google）のサーバーに暗号化して保存" },
-  { icon: "🤖", title: "AI処理", text: "計画生成のため必要最小限の情報をOpenAIに送信する場合があります" },
-  { icon: "🚫", title: "第三者提供", text: "同意なしに第三者へ個人情報を販売・提供しません" },
-  { icon: "🗑️", title: "削除", text: "アプリ設定からいつでもアカウントとデータを削除できます" },
-];
 ---
 
 <BaseLayout title="プライバシーポリシー — Plachieve" description="Plachieveアプリにおける個人情報の取り扱いについて">
@@ -35,134 +27,115 @@ const summary = [
       <p class="policy-meta">最終更新日：{lastUpdated}</p>
     </header>
 
-    <!-- 概略カード -->
-    <div class="summary-section">
-      <p class="summary-label">概略</p>
-      <div class="summary-grid">
-        {summary.map((item) => (
-          <div class="summary-card">
-            <span class="summary-icon">{item.icon}</span>
-            <div>
-              <p class="summary-title">{item.title}</p>
-              <p class="summary-text">{item.text}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <div class="policy-body">
 
-    <!-- 詳細（折りたたみ） -->
-    <div class="detail-section">
-      <details>
-        <summary class="detail-toggle">詳細を読む</summary>
-        <div class="policy-body">
+      <section>
+        <h2>1. 事業者情報</h2>
+        <p>本プライバシーポリシーは、Noveris（以下「当社」）が提供するiOSアプリ「Plachieve」（以下「本アプリ」）における個人情報の取り扱いを定めるものです。</p>
+      </section>
 
-          <section>
-            <h2>1. 事業者情報</h2>
-            <p>本プライバシーポリシーは、Noveris（以下「当社」）が提供するiOSアプリ「Plachieve」（以下「本アプリ」）における個人情報の取り扱いを定めるものです。</p>
-          </section>
+      <section>
+        <h2>2. 収集する情報</h2>
+        <p>本アプリは、サービス提供のために以下の情報を収集します。</p>
+        <h3>アカウント情報</h3>
+        <ul>
+          <li>メールアドレス・パスワード（Firebase Authによる認証）</li>
+          <li>Googleアカウント情報（Googleログイン利用時）</li>
+          <li>Apple IDに紐づく情報（Appleログイン利用時）</li>
+        </ul>
+        <h3>ユーザーの生活情報</h3>
+        <ul>
+          <li>睡眠時間・就寝・起床時刻</li>
+          <li>食事時間・食習慣に関する情報</li>
+          <li>予定・スケジュール情報</li>
+          <li>勉強目標・学習計画に関する情報</li>
+          <li>その他ユーザーが入力した生活習慣に関する情報</li>
+        </ul>
+        <h3>端末・利用情報</h3>
+        <ul>
+          <li>デバイスID・機種情報・OSバージョン</li>
+          <li>アプリの利用状況・アクセスログ・クラッシュレポート</li>
+        </ul>
+      </section>
 
-          <section>
-            <h2>2. 収集する情報</h2>
-            <p>本アプリは、サービス提供のために以下の情報を収集します。</p>
-            <h3>アカウント情報</h3>
-            <ul>
-              <li>メールアドレス・パスワード（Firebase Authによる認証）</li>
-              <li>Googleアカウント情報（Googleログイン利用時）</li>
-              <li>Apple IDに紐づく情報（Appleログイン利用時）</li>
-            </ul>
-            <h3>ユーザーの生活情報</h3>
-            <ul>
-              <li>睡眠時間・就寝・起床時刻</li>
-              <li>食事時間・食習慣に関する情報</li>
-              <li>予定・スケジュール情報</li>
-              <li>勉強目標・学習計画に関する情報</li>
-              <li>その他ユーザーが入力した生活習慣に関する情報</li>
-            </ul>
-            <h3>端末・利用情報</h3>
-            <ul>
-              <li>デバイスID・機種情報・OSバージョン</li>
-              <li>アプリの利用状況・アクセスログ・クラッシュレポート</li>
-            </ul>
-          </section>
+      <section>
+        <h2>3. 情報の利用目的</h2>
+        <p>収集した情報は、以下の目的にのみ利用します。</p>
+        <ul>
+          <li>本アプリのサービス提供・機能改善</li>
+          <li>AIによる最適な実行計画の自動生成</li>
+          <li>睡眠・食事・予定・学習目標を考慮したスケジュールの反映</li>
+          <li>不正利用の防止・セキュリティの確保</li>
+          <li>ユーザーサポートへの対応</li>
+        </ul>
+      </section>
 
-          <section>
-            <h2>3. 情報の利用目的</h2>
-            <ul>
-              <li>本アプリのサービス提供・機能改善</li>
-              <li>AIによる最適な実行計画の自動生成</li>
-              <li>睡眠・食事・予定・学習目標を考慮したスケジュールの反映</li>
-              <li>不正利用の防止・セキュリティの確保</li>
-              <li>ユーザーサポートへの対応</li>
-            </ul>
-          </section>
+      <section>
+        <h2>4. 外部AIサービスへの情報送信</h2>
+        <p>本アプリは、AIによる計画生成機能を提供するため、必要に応じてユーザーの生活情報をOpenAI（OpenAI, L.L.C.）のAPIに送信する場合があります。</p>
+        <p>送信される情報は計画生成に必要な最小限の情報に限定されます。氏名・メールアドレス等の直接的な個人識別情報は送信しません。</p>
+        <p>OpenAIのプライバシーポリシーについては <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">こちら</a> をご参照ください。</p>
+      </section>
 
-          <section>
-            <h2>4. 外部AIサービスへの情報送信</h2>
-            <p>本アプリは、AIによる計画生成機能を提供するため、必要に応じてユーザーの生活情報をOpenAI（OpenAI, L.L.C.）のAPIに送信する場合があります。</p>
-            <p>送信される情報は計画生成に必要な最小限の情報に限定されます。氏名・メールアドレス等の直接的な個人識別情報は送信しません。</p>
-            <p>OpenAIのプライバシーポリシーについては <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">こちら</a> をご参照ください。</p>
-          </section>
+      <section>
+        <h2>5. 第三者への提供</h2>
+        <p>当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供しません。</p>
+        <ul>
+          <li>ユーザーの同意がある場合</li>
+          <li>法令に基づく場合</li>
+          <li>人命・財産の保護のために必要な場合</li>
+        </ul>
+        <h3>利用している外部サービス</h3>
+        <table>
+          <thead>
+            <tr><th>サービス</th><th>用途</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Firebase（Google LLC）</td><td>認証・データ保存・分析</td></tr>
+            <tr><td>Google Sign-In</td><td>ソーシャルログイン</td></tr>
+            <tr><td>Sign in with Apple</td><td>ソーシャルログイン</td></tr>
+            <tr><td>OpenAI</td><td>AI計画生成（必要時のみ）</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-          <section>
-            <h2>5. 第三者への提供</h2>
-            <p>当社は、以下の場合を除き、ユーザーの個人情報を第三者に提供しません。</p>
-            <ul>
-              <li>ユーザーの同意がある場合</li>
-              <li>法令に基づく場合</li>
-              <li>人命・財産の保護のために必要な場合</li>
-            </ul>
-            <h3>利用している外部サービス</h3>
-            <table>
-              <thead>
-                <tr><th>サービス</th><th>用途</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Firebase（Google LLC）</td><td>認証・データ保存・分析</td></tr>
-                <tr><td>Google Sign-In</td><td>ソーシャルログイン</td></tr>
-                <tr><td>Sign in with Apple</td><td>ソーシャルログイン</td></tr>
-                <tr><td>OpenAI</td><td>AI計画生成（必要時のみ）</td></tr>
-              </tbody>
-            </table>
-          </section>
+      <section>
+        <h2>6. データの保存と管理</h2>
+        <p>収集したデータはFirebase（Google LLC）に保存されます。生活情報はユーザー本人のみがアクセス可能で、AI計画生成に利用する場合は必要最小限の情報のみを処理します。</p>
+      </section>
 
-          <section>
-            <h2>6. データの保存と管理</h2>
-            <p>収集したデータはFirebase（Google LLC）に保存されます。生活情報はユーザー本人のみがアクセス可能で、AI計画生成に利用する場合は必要最小限の情報のみを処理します。</p>
-          </section>
+      <section>
+        <h2>7. ユーザーの権利</h2>
+        <p>ユーザーは以下の権利を有します。</p>
+        <ul>
+          <li>保有する個人情報の開示請求</li>
+          <li>個人情報の訂正・削除請求</li>
+          <li>個人情報の利用停止請求</li>
+          <li>アカウントの削除（アプリ内の設定から実行可能）</li>
+        </ul>
+        <p>これらの請求は下記お問い合わせ先までご連絡ください。</p>
+      </section>
 
-          <section>
-            <h2>7. ユーザーの権利</h2>
-            <ul>
-              <li>保有する個人情報の開示請求</li>
-              <li>個人情報の訂正・削除請求</li>
-              <li>個人情報の利用停止請求</li>
-              <li>アカウントの削除（アプリ内の設定から実行可能）</li>
-            </ul>
-          </section>
+      <section>
+        <h2>8. 未成年者の利用</h2>
+        <p>本アプリは13歳未満の方の利用を想定していません。13歳未満の方の個人情報を意図的に収集することはありません。</p>
+      </section>
 
-          <section>
-            <h2>8. 未成年者の利用</h2>
-            <p>本アプリは13歳未満の方の利用を想定していません。</p>
-          </section>
+      <section>
+        <h2>9. プライバシーポリシーの変更</h2>
+        <p>本ポリシーを変更する場合は、本ページにて最終更新日を更新します。重要な変更がある場合はアプリ内でも通知します。</p>
+      </section>
 
-          <section>
-            <h2>9. プライバシーポリシーの変更</h2>
-            <p>本ポリシーを変更する場合は、本ページにて最終更新日を更新します。重要な変更がある場合はアプリ内でも通知します。</p>
-          </section>
-
-          <section>
-            <h2>10. お問い合わせ</h2>
-            <div class="contact-block">
-              <p>Noveris</p>
-              <p>メール：<a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
-            </div>
-          </section>
-
+      <section>
+        <h2>10. お問い合わせ</h2>
+        <p>個人情報の取り扱いに関するお問い合わせは、以下までご連絡ください。</p>
+        <div class="contact-block">
+          <p>Noveris</p>
+          <p>メール：<a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
         </div>
-      </details>
-    </div>
+      </section>
 
+    </div>
   </div>
 
 </BaseLayout>
@@ -193,7 +166,7 @@ const summary = [
   }
 
   .policy-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 4rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
   }
@@ -218,7 +191,7 @@ const summary = [
 
   .policy-title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
     letter-spacing: -0.02em;
     color: var(--fg);
@@ -229,126 +202,42 @@ const summary = [
   .policy-meta {
     font-size: 0.78rem;
     color: var(--fg-subtle);
+    letter-spacing: 0.04em;
   }
 
-  /* 概略 */
-  .summary-section {
-    margin-bottom: 2rem;
-  }
-
-  .summary-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    margin-bottom: 1rem;
-  }
-
-  .summary-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .summary-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.1rem 1.25rem;
-    background: #111110;
-  }
-
-  .summary-icon {
-    font-size: 16px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .summary-title {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--fg);
-    margin-bottom: 0.2rem;
-    font-family: var(--font-sans);
-  }
-
-  .summary-text {
-    font-size: 0.78rem;
-    color: var(--fg-muted);
-    line-height: 1.6;
-    font-family: var(--font-sans);
-  }
-
-  /* 詳細折りたたみ */
-  .detail-section {
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-  }
-
-  details {
-    width: 100%;
-  }
-
-  .detail-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: #a89fd4;
-    cursor: pointer;
-    list-style: none;
-    padding: 0.5rem 0;
-    user-select: none;
-  }
-  .detail-toggle::-webkit-details-marker { display: none; }
-  .detail-toggle::before {
-    content: '▶';
-    font-size: 0.6rem;
-    transition: transform 0.2s;
-  }
-  details[open] .detail-toggle::before {
-    transform: rotate(90deg);
-  }
-
-  /* ポリシー本文 */
   .policy-body {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    padding-top: 2rem;
+    gap: 3rem;
   }
 
   .policy-body section {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .policy-body h2 {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: var(--fg);
-    padding-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border);
   }
 
   .policy-body h3 {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--fg-subtle);
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
   }
 
   .policy-body p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--fg-muted);
     line-height: 1.85;
   }
@@ -357,17 +246,18 @@ const summary = [
     color: #a89fd4;
     text-decoration: none;
   }
+  .policy-body p a:hover { text-decoration: underline; }
 
   .policy-body ul {
     list-style: none;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .policy-body ul li {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--fg-muted);
     line-height: 1.7;
     padding-left: 1rem;
@@ -384,25 +274,24 @@ const summary = [
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
   th {
     text-align: left;
-    font-size: 0.63rem;
-    letter-spacing: 0.1em;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--fg-subtle);
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 1rem;
     border-bottom: 1px solid var(--border);
     font-weight: 400;
   }
   td {
-    padding: 0.75rem;
+    padding: 0.85rem 1rem;
     border-bottom: 1px solid var(--border);
     color: var(--fg-muted);
-    line-height: 1.5;
+    line-height: 1.6;
     vertical-align: top;
-    font-size: 0.82rem;
   }
   tr:last-child td { border-bottom: none; }
 
@@ -424,4 +313,5 @@ const summary = [
     color: #a89fd4;
     text-decoration: none;
   }
+  .contact-block a:hover { text-decoration: underline; }
 </style>
