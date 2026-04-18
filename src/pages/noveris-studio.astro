@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lastUpdated = "2026年4月13日";
+const namesOriginsImage = `${base}/images/noveris/noveris-innovation-education.png`;
 ---
 
 <BaseLayout title="Noveris Studio" description="Noverisと各プロダクトの名称に込めた意味について">
@@ -16,6 +17,15 @@ const lastUpdated = "2026年4月13日";
   </div>
 
   <div class="policy-wrap">
+    <!-- Back link とページ見出しの間に、ブランド由来の補助ビジュアルを挿入 -->
+    <figure class="origin-visual">
+      <img
+        src={namesOriginsImage}
+        alt="NOVERIS Innovation & Education のロゴ"
+        loading="lazy"
+      />
+    </figure>
+
     <header class="policy-header">
       <div class="app-badge">
         <span class="app-dot"></span>
@@ -67,6 +77,23 @@ const lastUpdated = "2026年4月13日";
     max-width: 760px;
     margin: 0 auto;
     padding: 3rem 2rem 8rem;
+  }
+
+  .origin-visual {
+    margin: 0 0 2.5rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.1), transparent 60%),
+      rgba(255, 255, 255, 0.02);
+  }
+
+  .origin-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
   }
 
   .policy-header {
@@ -146,6 +173,11 @@ const lastUpdated = "2026年4月13日";
     }
     .back-bar {
       padding: 1.25rem 1.5rem 0;
+    }
+    .origin-visual {
+      margin-bottom: 2rem;
+      padding: 0.75rem;
+      border-radius: 16px;
     }
   }
 </style>
