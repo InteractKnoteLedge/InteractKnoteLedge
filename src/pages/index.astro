@@ -1,193 +1,1429 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AppCard from '../components/AppCard.astro';
-import { apps } from '../content/apps';
-import { SITE } from '../site.config';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// 既存の公開アセットだけを参照し、外部URLへ依存しない構成にしています。
+const plachieveImage = `${base}/images/plachieve/feature-2.png`;
+const footerLogoImage = `${base}/images/noveris/noveris-footer-logo.png`;
+
+const productHighlights = [
+  {
+    initial: 'K',
+    name: 'KnoteLedge',
+    tone: 'blue',
+    description: 'A smarter note and learning platform for students.',
+    features: ['Organized digital notes', 'AI-assisted study support', 'Knowledge sharing', 'Focused academic workflow'],
+  },
+  {
+    initial: 'P',
+    name: 'Plachieve',
+    tone: 'green',
+    description: 'A planning app that turns daily routines into progress.',
+    features: ['Smart scheduling', 'Routine design', 'Goal-focused planning', 'Daily progress visualization'],
+  },
+];
+
+const values = [
+  ['Education-Driven Innovation', 'We build with learning science at the core.'],
+  ['Human-Centered Product Design', 'Designed for real students and real life.'],
+  ['Long-Term Learning Impact', 'Tools that create habits and lasting growth.'],
+];
+
+const offers = [
+  ['Learning Tools', 'Powerful note-taking and study systems.'],
+  ['Planning Systems', 'Intelligent planning for routines and goals.'],
+  ['AI Assistance', 'Helpful AI support for learning and planning.'],
+  ['Student-Centered Design', 'Built with students in mind, for real-world use.'],
+];
+
+const stats = [
+  ['10,000+', 'Notes Created'],
+  ['5,000+', 'Plans Built'],
+  ['2', 'Core Products'],
+  ['Growing', 'Student Community'],
+];
+
+const testimonials = [
+  ['KnoteLedge keeps all my notes organized and the AI help is a game changer before exams.', 'Jessica R.', 'University Student'],
+  ['Plachieve helped me build a routine that actually sticks. I feel more productive and less stressed.', 'Arium M.', 'College Student'],
+  ['Using both apps together has completely improved the way I study and plan my day.', 'Maya S.', 'High School Student'],
+];
 ---
 
-<BaseLayout title={SITE.name} description={SITE.description}>
+<BaseLayout title="NOVERIS" description="NOVERIS creates learning and planning tools that help students study better, plan smarter, and achieve more.">
+  <div class="studio-page">
+    <header class="studio-header" aria-label="NOVERIS navigation">
+      <a class="brand" href={`${base}/`} aria-label="NOVERIS home">
+        <span class="logo-mark" aria-hidden="true">✦</span>
+        <span>NOVERIS</span>
+      </a>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">
-        <span class="eyebrow-line" aria-hidden="true"></span>
-        <span>Independent app studio</span>
-        <span class="eyebrow-separator" aria-hidden="true">/</span>
-        <a href={`${import.meta.env.BASE_URL}noveris-studio`} class="eyebrow-link">Noveris Studio</a>
-      </p>
-      <h1 class="hero-heading">
-        Tools that think<br /><em>with</em> you.
-      </h1>
-      <p class="hero-sub">{SITE.tagline}</p>
-    </div>
-  </section>
+      <nav class="studio-nav" aria-label="Studio sections">
+        <a class="is-active" href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#students">Blog</a>
+        <a href="mailto:hello@noveris.com">Contact</a>
+      </nav>
 
-  <div class="section-rule" aria-hidden="true"></div>
+      <a class="primary-pill" href="#products">Get Started <span aria-hidden="true">→</span></a>
+    </header>
 
-  <!-- Products -->
-  <section class="products" id="products" aria-label="プロダクト一覧">
-    <div class="products-header">
-      <p class="section-label">Products</p>
-      <p class="products-count">{apps.length} apps</p>
-    </div>
+    <main class="studio-main" id="home">
+      <section class="hero-section" aria-label="NOVERIS introduction">
+        <div class="hero-copy">
+          <p class="eyebrow">Education · Productivity · Innovation</p>
+          <h1>Empowering Learning and Achievement Through Innovation</h1>
+          <p>
+            NOVERIS is a startup blending education, technology, and thoughtful design to build tools
+            that help students study better, plan smarter, and achieve more every day.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#products">Explore Products <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#about">Learn More <span aria-hidden="true">○</span></a>
+          </div>
+        </div>
 
-    <ul class="app-grid" role="list">
-      {apps.map((app, i) => (
-        <li style={`animation-delay: ${i * 0.1}s`}>
-          <AppCard app={app} />
-        </li>
-      ))}
-      <!-- Placeholder slots -->
-      <li class="card-placeholder" aria-hidden="true">
-        <span class="placeholder-label">More coming</span>
-      </li>
-      <li class="card-placeholder" aria-hidden="true">
-        <span class="placeholder-label">More coming</span>
-      </li>
-    </ul>
-  </section>
+        <div class="hero-visual" aria-label="Product interface previews">
+          <div class="orbit" aria-hidden="true"></div>
+          <article class="mock-window knoteledge-window">
+            <div class="mock-top">
+              <span class="app-mark">K</span>
+              <strong>KnoteLedge</strong>
+              <span class="mock-search">Search notes...</span>
+            </div>
+            <div class="study-ui">
+              <aside>
+                <span>All Notes</span>
+                <span>Subjects</span>
+                <span>Flashcards</span>
+                <span>Resources</span>
+              </aside>
+              <div class="note-paper">
+                <h3>Photosynthesis</h3>
+                <div class="leaf-diagram" aria-hidden="true"></div>
+                <p>light + water + chlorophyll</p>
+              </div>
+              <div class="assistant-card">
+                <strong>AI Study Assistant</strong>
+                <p>Explain the role of chlorophyll in simple terms.</p>
+                <span>Ask a question</span>
+              </div>
+            </div>
+          </article>
 
+          <article class="mock-window plachieve-window">
+            <div class="mock-top">
+              <span class="app-mark green">P</span>
+              <strong>Plachieve</strong>
+              <span class="mock-plus">＋</span>
+            </div>
+            <div class="plan-ui">
+              <aside>
+                <span>Today</span>
+                <span>Calendar</span>
+                <span>Goals</span>
+                <span>Habits</span>
+              </aside>
+              <div class="plan-list">
+                <strong>Good morning, Alex!</strong>
+                <span>Study Biology</span>
+                <span>Math Practice</span>
+                <span>Project Work</span>
+                <span>Workout</span>
+              </div>
+              <div class="progress-card">
+                <div class="ring">75%</div>
+                <span>Well done!</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="products-section" id="products" aria-label="NOVERIS products">
+        {productHighlights.map((product, index) => (
+          <article class={`product-card product-card-${product.tone}`}>
+            <div class="product-heading">
+              <span class="product-icon">{product.initial}</span>
+              <div>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+              </div>
+            </div>
+
+            <div class="product-body">
+              <div class={index === 0 ? 'tablet-preview' : 'phone-preview'}>
+                {index === 0 ? (
+                  <div class="tablet-screen">
+                    <div class="cell-illustration" aria-hidden="true"></div>
+                    <div class="tablet-note">Cell Structure</div>
+                    <div class="tablet-flashcard">What is the function of mitochondria?</div>
+                  </div>
+                ) : (
+                  <img src={plachieveImage} alt="Plachieve schedule screen" loading="lazy" />
+                )}
+              </div>
+
+              <ul class="feature-list">
+                {product.features.map((feature) => (
+                  <li>
+                    <span aria-hidden="true">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <a href={index === 0 ? `${base}/apps/knoteledge` : `${base}/apps/plachieve`} class="learn-link">
+              Learn More <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </section>
+
+      <section class="about-section" id="about" aria-label="About NOVERIS">
+        <div class="about-copy">
+          <p class="section-kicker">Who We Are</p>
+          <h2>A Startup Creating the Future of Learning and Productivity</h2>
+          <p>
+            NOVERIS builds digital products that support students, learners, and ambitious individuals.
+            We combine research-backed methods, clean design, and smart technology to help you learn deeper,
+            plan better, and make consistent progress.
+          </p>
+
+          <div class="value-grid">
+            {values.map(([title, description]) => (
+              <article>
+                <span aria-hidden="true">✦</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="about-visual">
+          <div class="learner-scene" aria-hidden="true">
+            <div class="desk"></div>
+            <div class="learner-head"></div>
+            <div class="learner-body"></div>
+            <div class="tablet"></div>
+          </div>
+          <div class="quote-tile">
+            <strong>Built for learners. Designed for life.</strong>
+            <span>Smarter tools for better days and bigger goals.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="offer-section" id="vision" aria-label="What NOVERIS offers">
+        <p class="section-kicker">What We Offer</p>
+        <div class="offer-grid">
+          {offers.map(([title, description]) => (
+            <article>
+              <span aria-hidden="true">✦</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="stats-band" aria-label="NOVERIS numbers">
+        {stats.map(([number, label]) => (
+          <article>
+            <span aria-hidden="true">◎</span>
+            <strong>{number}</strong>
+            <p>{label}</p>
+          </article>
+        ))}
+      </section>
+
+      <section class="students-section" id="students" aria-label="Student testimonials">
+        <p class="section-kicker">Loved by Students</p>
+        <div class="testimonial-grid">
+          {testimonials.map(([quote, name, role]) => (
+            <article>
+              <p>“{quote}”</p>
+              <div class="student">
+                <span aria-hidden="true">{name.charAt(0)}</span>
+                <div>
+                  <strong>{name}</strong>
+                  <small>{role}</small>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="slider-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      </section>
+
+      <section class="cta-panel" aria-label="Start with NOVERIS">
+        <div>
+          <h2>Start Building Better Habits and Better Learning</h2>
+          <p>Discover KnoteLedge and Plachieve and take control of your future.</p>
+        </div>
+        <a class="button button-light" href="#products">Explore Products <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+
+    <footer class="studio-footer" aria-label="NOVERIS footer">
+      <div class="footer-brand">
+        <img src={footerLogoImage} alt="NOVERIS" loading="lazy" />
+        <p>NOVERIS is a startup building smarter learning and planning tools for students and lifelong learners.</p>
+      </div>
+      <nav aria-label="Product links">
+        <h2>Products</h2>
+        <a href={`${base}/apps/knoteledge`}>KnoteLedge</a>
+        <a href={`${base}/apps/plachieve`}>Plachieve</a>
+        <a href="#products">Compare Apps</a>
+      </nav>
+      <nav aria-label="Company links">
+        <h2>Company</h2>
+        <a href="#about">About Us</a>
+        <a href="#vision">Vision</a>
+        <a href="#students">Blog</a>
+      </nav>
+      <nav aria-label="Contact links">
+        <h2>Contact</h2>
+        <a href="mailto:hello@noveris.com">hello@noveris.com</a>
+        <a href="tel:+14151234567">+1 (415) 123-4567</a>
+        <span>San Francisco, CA, USA</span>
+      </nav>
+    </footer>
+  </div>
 </BaseLayout>
 
 <style>
-  /* HERO */
-  .hero {
-    max-width: 1000px;
+  :global(.site-header),
+  :global(.site-footer) {
+    display: none;
+  }
+
+  :global(html) {
+    background: #f7fbff;
+  }
+
+  .studio-page {
+    --studio-blue: #075be8;
+    --studio-navy: #061b52;
+    --studio-ink: #071641;
+    --studio-muted: #53627f;
+    --studio-line: #dce7ff;
+    --studio-soft: #f2f7ff;
+    min-height: 100vh;
+    background: #f8fbff;
+    color: var(--studio-ink);
+    font-family: var(--font-sans);
+  }
+
+  .studio-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 5.5rem 2rem 4rem;
+    padding: 1.35rem 2rem;
+    background: rgba(248, 251, 255, 0.92);
+    backdrop-filter: blur(16px);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 180px;
+    color: var(--studio-navy);
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+  }
+
+  .logo-mark {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 32px;
+    color: var(--studio-blue);
+    font-size: 0.9rem;
+  }
+
+  .logo-mark::before,
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    border: 3px solid var(--studio-blue);
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 50%;
+  }
+
+  .logo-mark::before {
+    width: 46px;
+    height: 24px;
+    transform: rotate(-12deg);
+  }
+
+  .logo-mark::after {
+    width: 34px;
+    height: 18px;
+    opacity: 0.55;
+    transform: translateY(4px) rotate(-18deg);
+  }
+
+  .studio-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: 700;
+    color: #102153;
+    font-size: 0.92rem;
+  }
+
+  .studio-nav a {
+    position: relative;
+    padding: 0.35rem 0;
+  }
+
+  .studio-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.25rem;
+    height: 2px;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .studio-nav a:hover,
+  .studio-nav .is-active {
+    color: var(--studio-blue);
+  }
+
+  .studio-nav .is-active::after {
+    background: var(--studio-blue);
+  }
+
+  .primary-pill,
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 44px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .primary-pill {
+    min-width: 136px;
+    padding: 0 1.1rem;
+    background: var(--studio-blue);
+    color: #fff;
+    box-shadow: 0 12px 26px rgba(7, 91, 232, 0.2);
+  }
+
+  .primary-pill:hover,
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .studio-main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 2rem 0.5rem;
+  }
+
+  .hero-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.15fr);
+    align-items: center;
+    gap: 3.4rem;
+    min-height: 510px;
+    padding: 2rem 0 3rem;
+  }
+
+  .eyebrow,
+  .section-kicker {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    background: #e8f1ff;
+    color: var(--studio-blue);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
   .eyebrow {
+    padding: 0.36rem 0.75rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 560px;
+    font-family: var(--font-sans);
+    font-size: clamp(2.65rem, 5vw, 4.55rem);
+    line-height: 1.02;
+    font-weight: 900;
+    color: #051541;
+    margin-bottom: 1rem;
+  }
+
+  .hero-copy p:not(.eyebrow) {
+    max-width: 520px;
+    color: #26365f;
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.35rem;
+    margin-top: 1.9rem;
+  }
+
+  .button {
+    padding: 0 1.35rem;
+    border: 1px solid transparent;
+  }
+
+  .button-primary {
+    background: var(--studio-blue);
+    color: #fff;
+    box-shadow: 0 14px 28px rgba(7, 91, 232, 0.2);
+  }
+
+  .button-secondary {
+    min-width: 140px;
+    background: #fff;
+    color: #143478;
+    border-color: #a9c1fb;
+  }
+
+  .hero-visual {
+    position: relative;
+    min-height: 440px;
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 18px 10px 12px -40px;
+    border-radius: 50%;
+    border: 28px solid rgba(93, 148, 246, 0.22);
+    transform: rotate(-18deg);
+  }
+
+  .orbit::before,
+  .orbit::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    background: rgba(7, 91, 232, 0.28);
+  }
+
+  .orbit::before {
+    width: 68px;
+    height: 12px;
+    right: -12px;
+    top: 42px;
+    transform: rotate(45deg);
+  }
+
+  .orbit::after {
+    width: 8px;
+    height: 8px;
+    left: 44px;
+    bottom: 78px;
+    box-shadow: 36px 24px 0 rgba(7, 91, 232, 0.2), 410px 130px 0 rgba(7, 91, 232, 0.25);
+  }
+
+  .mock-window {
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #d9e3f7;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 22px 50px rgba(24, 57, 129, 0.14);
+  }
+
+  .knoteledge-window {
+    top: 12px;
+    right: 0;
+    width: min(96%, 520px);
+    min-height: 260px;
+    transform: rotate(2deg);
+  }
+
+  .plachieve-window {
+    right: 64px;
+    bottom: 4px;
+    width: min(90%, 560px);
+    min-height: 236px;
+    transform: rotate(3deg);
+  }
+
+  .mock-top {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    animation: fadeUp 0.5s ease both;
+    gap: 0.7rem;
+    padding: 1rem 1.1rem 0.75rem;
+    color: var(--studio-blue);
   }
 
-  .eyebrow-line {
-    display: inline-block;
+  .app-mark,
+  .product-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
     width: 28px;
-    height: 1px;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-  .eyebrow-separator {
-    color: rgba(200, 184, 154, 0.45);
-  }
-  .eyebrow-link {
-    color: var(--fg-subtle);
-    letter-spacing: 0.14em;
-    transition: color 0.2s;
-    border-bottom: 1px solid transparent;
-  }
-  .eyebrow-link:hover {
-    color: var(--accent);
-    border-color: rgba(200, 184, 154, 0.35);
+    height: 28px;
+    border-radius: 7px;
+    background: #3465d9;
+    color: #fff;
+    font-weight: 900;
   }
 
-  .hero-heading {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 7.5vw, 5.5rem);
-    font-weight: 400;
-    line-height: 1.04;
-    letter-spacing: -0.015em;
-    color: var(--fg);
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s 0.05s ease both;
+  .app-mark.green,
+  .product-card-green .product-icon {
+    background: #35a37d;
   }
 
-  .hero-heading em {
-    font-style: italic;
-    color: var(--accent);
+  .mock-search {
+    margin-left: auto;
+    width: 170px;
+    height: 18px;
+    border-radius: 999px;
+    background: #f1f4fb;
+    color: #a7b0c6;
+    font-size: 0.58rem;
+    padding: 0.25rem 0.7rem;
   }
 
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--fg-muted);
-    max-width: 360px;
-    line-height: 1.75;
-    animation: fadeUp 0.6s 0.1s ease both;
+  .mock-plus {
+    margin-left: auto;
+    color: #3971f1;
   }
 
-  .section-rule {
-    height: 1px;
-    background: var(--border);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  /* PRODUCTS */
-  .products {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem 6rem;
-  }
-
-  .products-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 1.75rem;
-  }
-
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-  }
-
-  .products-count {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    color: #2e2d2b;
-  }
-
-  /* GRID */
-  .app-grid {
-    list-style: none;
+  .study-ui,
+  .plan-ui {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5px;
-    background: var(--border);
-    border: 1.5px solid var(--border);
+    grid-template-columns: 96px 1fr 112px;
+    gap: 0.9rem;
+    padding: 0 1rem 1rem;
   }
 
-  .app-grid li {
-    animation: fadeUp 0.5s ease both;
+  .plan-ui {
+    grid-template-columns: 86px 1fr 118px;
   }
 
-  /* Placeholder cards */
-  .card-placeholder {
-    background: var(--bg);
-    min-height: 280px;
+  .study-ui aside,
+  .plan-ui aside,
+  .plan-list,
+  .assistant-card,
+  .progress-card {
+    border-radius: 12px;
+    background: #f7f9ff;
+    padding: 0.8rem;
+  }
+
+  .study-ui aside,
+  .plan-ui aside {
     display: flex;
-    align-items: flex-end;
-    padding: 1.75rem;
-    animation: none !important;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: #647390;
+    font-size: 0.68rem;
   }
 
-  .placeholder-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #242320;
+  .note-paper {
+    min-height: 154px;
+    border: 1px solid #edf1fb;
+    border-radius: 12px;
+    background: #fff;
+    padding: 0.85rem;
+    color: #26365f;
   }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .app-grid {
+  .note-paper h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .note-paper p {
+    color: #7a8968;
+    font-size: 0.68rem;
+  }
+
+  .leaf-diagram {
+    width: 110px;
+    height: 76px;
+    margin: 0 auto 0.45rem;
+    border-radius: 80% 0 80% 0;
+    background: linear-gradient(135deg, #99dfbd, #2d936d);
+    transform: rotate(-18deg);
+  }
+
+  .assistant-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-size: 0.66rem;
+    color: #4a5b7b;
+  }
+
+  .assistant-card span {
+    margin-top: auto;
+    border-radius: 7px;
+    background: var(--studio-blue);
+    color: #fff;
+    padding: 0.45rem;
+    text-align: center;
+    font-weight: 800;
+  }
+
+  .plan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.62rem;
+    color: #24335c;
+    background: #fff;
+  }
+
+  .plan-list span {
+    border-top: 1px solid #eef2f8;
+    padding-top: 0.48rem;
+    color: #53627f;
+    font-size: 0.72rem;
+  }
+
+  .progress-card {
+    display: grid;
+    place-items: center;
+    background: #fff;
+    color: #0d2a61;
+    text-align: center;
+  }
+
+  .ring {
+    display: grid;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: conic-gradient(#26a58b 0 75%, #edf3fb 75% 100%);
+    color: #072255;
+    font-weight: 900;
+  }
+
+  .products-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .product-card {
+    min-height: 330px;
+    border-radius: 18px;
+    padding: 1.6rem 1.8rem 1.1rem;
+    background: #f0f4ff;
+    overflow: hidden;
+  }
+
+  .product-card-green {
+    background: #edf7f4;
+  }
+
+  .product-heading {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+  }
+
+  .product-heading h2 {
+    font-size: 1.45rem;
+    color: #1d57bc;
+    margin-bottom: 0.2rem;
+  }
+
+  .product-card-green h2 {
+    color: #1d8063;
+  }
+
+  .product-heading p {
+    color: #273861;
+    font-size: 0.82rem;
+  }
+
+  .product-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(145px, 0.85fr);
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .tablet-preview,
+  .phone-preview {
+    min-height: 188px;
+    display: grid;
+    place-items: end center;
+  }
+
+  .tablet-screen {
+    position: relative;
+    width: min(100%, 310px);
+    aspect-ratio: 1.5;
+    border: 10px solid #101421;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 18px 28px rgba(9, 23, 56, 0.18);
+    padding: 1.1rem;
+  }
+
+  .cell-illustration {
+    width: 96px;
+    height: 80px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 50%, #ef8c4f 0 14%, transparent 15%),
+      radial-gradient(circle at 45% 44%, #468add 0 38%, #8bd2c5 39% 58%, #f6cc5a 59% 70%, transparent 71%);
+  }
+
+  .tablet-note,
+  .tablet-flashcard {
+    position: absolute;
+    border-radius: 10px;
+    background: #f6f9ff;
+    color: #415171;
+    font-size: 0.66rem;
+    padding: 0.7rem;
+  }
+
+  .tablet-note {
+    left: 1rem;
+    top: 0.9rem;
+    color: #1a2a5d;
+    font-weight: 800;
+  }
+
+  .tablet-flashcard {
+    right: 1rem;
+    bottom: 1rem;
+    width: 102px;
+  }
+
+  .phone-preview img {
+    width: min(180px, 100%);
+    max-height: 220px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 16px 28px rgba(20, 55, 82, 0.16);
+  }
+
+  .feature-list {
+    display: grid;
+    gap: 0.85rem;
+    list-style: none;
+  }
+
+  .feature-list li {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    color: #24345f;
+    font-weight: 800;
+    font-size: 0.86rem;
+    line-height: 1.25;
+  }
+
+  .feature-list span {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--studio-blue);
+    box-shadow: 0 8px 18px rgba(32, 74, 136, 0.08);
+  }
+
+  .product-card-green .feature-list span {
+    color: #239672;
+  }
+
+  .learn-link {
+    display: inline-flex;
+    margin-top: 0.5rem;
+    color: var(--studio-blue);
+    font-weight: 900;
+    font-size: 0.82rem;
+  }
+
+  .about-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    gap: 2rem;
+    align-items: stretch;
+    padding: 1.2rem 1.4rem 0.6rem;
+  }
+
+  .section-kicker {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0.45rem;
+  }
+
+  .about-copy h2 {
+    max-width: 520px;
+    font-size: 1.65rem;
+    line-height: 1.12;
+    color: #071641;
+    margin-bottom: 0.65rem;
+  }
+
+  .about-copy > p:not(.section-kicker) {
+    color: #334466;
+    line-height: 1.55;
+    font-size: 0.9rem;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .value-grid article {
+    border-right: 1px solid #dfe8f7;
+    padding-right: 1rem;
+  }
+
+  .value-grid article:last-child {
+    border-right: 0;
+  }
+
+  .value-grid span,
+  .offer-grid span {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #e8f1ff;
+    color: var(--studio-blue);
+    margin-bottom: 0.7rem;
+  }
+
+  .value-grid h3,
+  .offer-grid h3 {
+    font-size: 0.86rem;
+    color: #061b52;
+    margin-bottom: 0.25rem;
+  }
+
+  .value-grid p,
+  .offer-grid p {
+    color: #56617c;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  .about-visual {
+    position: relative;
+    min-height: 250px;
+    overflow: hidden;
+    border-radius: 12px;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.95), transparent 36%),
+      linear-gradient(135deg, #e6eef8, #c7d6ec);
+  }
+
+  .learner-scene {
+    position: absolute;
+    inset: 0;
+  }
+
+  .desk {
+    position: absolute;
+    left: 18%;
+    right: 8%;
+    bottom: 24px;
+    height: 44px;
+    border-radius: 8px;
+    background: #b58d72;
+  }
+
+  .learner-head {
+    position: absolute;
+    top: 48px;
+    left: 43%;
+    width: 72px;
+    height: 82px;
+    border-radius: 50% 50% 46% 46%;
+    background: #f1b387;
+  }
+
+  .learner-head::before {
+    content: '';
+    position: absolute;
+    inset: -10px -6px 42px;
+    border-radius: 50% 50% 35% 35%;
+    background: #1e2a3e;
+  }
+
+  .learner-body {
+    position: absolute;
+    left: 36%;
+    bottom: 46px;
+    width: 174px;
+    height: 112px;
+    border-radius: 58px 58px 18px 18px;
+    background: #07509c;
+  }
+
+  .tablet {
+    position: absolute;
+    right: 29%;
+    bottom: 70px;
+    width: 122px;
+    height: 84px;
+    border-radius: 10px;
+    background: #263248;
+    transform: rotate(-8deg);
+  }
+
+  .quote-tile {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(230px, 48%);
+    min-height: 150px;
+    padding: 1.45rem;
+    border-radius: 12px 0 12px 0;
+    background: #07317f;
+    color: #fff;
+  }
+
+  .quote-tile strong {
+    display: block;
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+  }
+
+  .quote-tile span {
+    display: block;
+    color: #d8e6ff;
+    line-height: 1.4;
+    font-size: 0.82rem;
+  }
+
+  .offer-section {
+    padding: 0.7rem 1.4rem 1.5rem;
+    text-align: center;
+  }
+
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.1rem;
+    text-align: left;
+  }
+
+  .offer-grid article {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    border-right: 1px solid #dfe8f7;
+    min-height: 76px;
+  }
+
+  .offer-grid article:last-child {
+    border-right: 0;
+  }
+
+  .offer-grid span {
+    flex: 0 0 auto;
+    margin-bottom: 0;
+  }
+
+  .stats-band {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin: 0 -2rem;
+    padding: 0.95rem max(2rem, calc((100vw - 1180px) / 2 + 2rem));
+    background: #062a70;
+    color: #fff;
+  }
+
+  .stats-band article {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    align-items: center;
+    column-gap: 0.85rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.28);
+  }
+
+  .stats-band article:last-child {
+    border-right: 0;
+  }
+
+  .stats-band span {
+    grid-row: span 2;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #8fc5ff;
+  }
+
+  .stats-band strong {
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  .stats-band p {
+    color: #d8e7ff;
+    font-size: 0.82rem;
+  }
+
+  .students-section {
+    padding: 1rem 1.4rem 1.6rem;
+    text-align: center;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+    text-align: left;
+    margin-top: 0.6rem;
+  }
+
+  .testimonial-grid article {
+    min-height: 118px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(33, 68, 123, 0.1);
+    padding: 1.15rem 1.45rem;
+  }
+
+  .testimonial-grid p {
+    color: #394663;
+    line-height: 1.4;
+    font-size: 0.88rem;
+  }
+
+  .student {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+  }
+
+  .student > span {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e9f2ff;
+    color: var(--studio-blue);
+    font-weight: 900;
+  }
+
+  .student strong,
+  .student small {
+    display: block;
+  }
+
+  .student strong {
+    color: #061b52;
+    font-size: 0.82rem;
+  }
+
+  .student small {
+    color: #62708c;
+    font-size: 0.75rem;
+  }
+
+  .slider-dots {
+    display: inline-flex;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .slider-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #6ca0ff;
+  }
+
+  .slider-dots span:first-child {
+    background: var(--studio-blue);
+  }
+
+  .cta-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 1.3rem 4.5rem;
+    border-radius: 18px 18px 0 0;
+    background:
+      radial-gradient(circle at 90% 28%, rgba(42, 130, 255, 0.5), transparent 6%),
+      linear-gradient(135deg, #062a70, #071d58);
+    color: #fff;
+  }
+
+  .cta-panel h2 {
+    font-size: 1.65rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cta-panel p {
+    color: #d8e6ff;
+  }
+
+  .button-light {
+    min-width: 210px;
+    background: #fff;
+    color: var(--studio-blue);
+  }
+
+  .studio-footer {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 2.8rem;
+    max-width: none;
+    margin: 0;
+    padding: 1.7rem max(2rem, calc((100vw - 1180px) / 2 + 2rem));
+    background: #05255f;
+    color: #fff;
+  }
+
+  .footer-brand img {
+    display: block;
+    width: min(230px, 100%);
+    aspect-ratio: 1448 / 1086;
+    object-fit: contain;
+    object-position: center;
+    padding: 0.55rem;
+    margin-bottom: 0.7rem;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .studio-footer p,
+  .studio-footer a,
+  .studio-footer span {
+    display: block;
+    color: #d3e1ff;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .studio-footer h2 {
+    color: #fff;
+    font-size: 0.78rem;
+    margin-bottom: 0.65rem;
+  }
+
+  @media (max-width: 980px) {
+    .studio-header {
+      align-items: flex-start;
+    }
+
+    .studio-nav {
+      display: none;
+    }
+
+    .hero-section,
+    .about-section,
+    .products-section {
       grid-template-columns: 1fr;
     }
-    .card-placeholder {
+
+    .hero-section {
+      gap: 2rem;
+    }
+
+    .hero-visual {
+      min-height: 470px;
+    }
+
+    .product-card {
+      min-height: auto;
+    }
+
+    .offer-grid,
+    .stats-band,
+    .testimonial-grid,
+    .studio-footer {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .offer-grid article:nth-child(2),
+    .stats-band article:nth-child(2) {
+      border-right: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .studio-header,
+    .studio-main {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .brand {
+      min-width: 0;
+      font-size: 1rem;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 26px;
+    }
+
+    .primary-pill {
+      min-width: 112px;
+      min-height: 40px;
+      font-size: 0.78rem;
+    }
+
+    .hero-section {
+      min-height: 0;
+      padding-top: 1.5rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.35rem, 12vw, 3.2rem);
+    }
+
+    .hero-copy p:not(.eyebrow) {
+      font-size: 1rem;
+    }
+
+    .hero-actions,
+    .cta-panel {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .button {
+      width: 100%;
+    }
+
+    .hero-visual {
+      min-height: 590px;
+    }
+
+    .knoteledge-window,
+    .plachieve-window {
+      right: 0;
+      left: 0;
+      width: 100%;
+      transform: none;
+    }
+
+    .knoteledge-window {
+      top: 0;
+    }
+
+    .plachieve-window {
+      bottom: 0;
+    }
+
+    .study-ui,
+    .plan-ui {
+      grid-template-columns: 76px 1fr;
+    }
+
+    .assistant-card,
+    .progress-card {
       display: none;
+    }
+
+    .product-card {
+      padding: 1.25rem;
+      border-radius: 14px;
+    }
+
+    .product-body {
+      grid-template-columns: 1fr;
+    }
+
+    .value-grid,
+    .offer-grid,
+    .stats-band,
+    .testimonial-grid,
+    .studio-footer {
+      grid-template-columns: 1fr;
+    }
+
+    .value-grid article,
+    .offer-grid article,
+    .stats-band article {
+      border-right: 0;
+    }
+
+    .about-section,
+    .offer-section,
+    .students-section {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .about-visual {
+      min-height: 300px;
+    }
+
+    .quote-tile {
+      width: 64%;
+    }
+
+    .stats-band {
+      margin-left: -1rem;
+      margin-right: -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      gap: 1rem;
+    }
+
+    .cta-panel {
+      padding: 1.25rem;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .cta-panel h2 {
+      font-size: 1.25rem;
     }
   }
 </style>
