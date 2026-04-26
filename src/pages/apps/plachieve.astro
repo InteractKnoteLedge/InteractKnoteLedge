@@ -1,411 +1,194 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const features = [
-  {
-    number: "01",
-    title: "カレンダー統合",
-    description: "目標・タスク・習慣がひとつのカレンダーに集約されます。日・週・月単位で計画全体を俯瞰でき、何をいつやるべきかが一目でわかります。",
-    note: "目標・タスク・習慣を一元管理",
-    color: "#a89fd4",
-    image: `${base}/images/plachieve/feature-1.png`,
-  },
-  {
-    number: "02",
-    title: "時計型 一覧UI",
-    description: "1日のスケジュールを時計のように円形で表示。時間ごとのタスク密度や空き時間が直感的に把握でき、詰め込みすぎや抜け漏れをすぐに発見できます。",
-    note: "時間の流れを視覚的に把握",
-    color: "#a89fd4",
-    image: `${base}/images/plachieve/feature-2.png`,
-  },
-  {
-    number: "03",
-    title: "即座に計画を生成",
-    description: "目標を入力するだけで、締切・優先度・習慣パターンをもとにAIが最適な実行計画を自動生成します。「計画を立てる」ではなく「計画が生まれる」体験を提供します。",
-    note: "入力から数秒で実行計画が完成",
-    color: "#a89fd4",
-    image: `${base}/images/plachieve/feature-3.png`,
-  },
-  {
-    number: "04",
-    title: "六分割チェックポイント推定",
-    description: "必要時間を6つの詳細なチェックポイントに分解し、進行の段階ごとにAIが達成可能性を精密に推定します。感覚に頼らず、どこで遅れや余裕が生まれるかまで具体的に把握できます。",
-    note: "残り時間を段階別に精密推定",
-    color: "#a89fd4",
-    image: `${base}/images/plachieve/feature-4.png`,
-  },
-  {
-    number: "05",
-    title: "目標達成時間を自動算出",
-    description: "目標の作成・編集時に、現在の習熟度と生活スタイルをもとにAIが達成に必要な時間を推定します。無理のない計画設計ができるため、続けられる目標へ自然に調整できます。",
-    note: "自分に合った必要時間をAIが提案",
-    color: "#a89fd4",
-    image: `${base}/images/plachieve/feature-5.png`,
-  },
-];
 ---
 
-<BaseLayout title="Plachieve" description="目標と日常をつなぐ。計画を立てるだけで終わらせない、実行型のゴール管理アプリ。">
-
-  <div class="back-bar">
-    <a href={`${base}/`} class="back-link">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      All products
-    </a>
-  </div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="app-eyebrow">
-        <span class="accent-dot" style="background:#a89fd4"></span>
-        <span class="platform-tag">iOS</span>
-        <span class="status-tag">Coming soon</span>
-      </div>
-      <h1 class="app-name">Plachieve</h1>
-      <p class="app-tagline">目標と日常をつなぐ。</p>
-      <p class="app-desc">
-        計画を立てるだけで終わらせない、実行型のゴール管理アプリ。
-        カレンダー・時計型UI・即時プランニングで、目標が自然と日常に溶け込みます。
+<BaseLayout
+  title="Plachieve｜Noveris"
+  description="Plachieveは、AIが時間を分析し、予定管理から目標達成まで支援する次世代スケジュール管理アプリです。"
+>
+  <section class="product-hero">
+    <div>
+      <p class="breadcrumb">
+        <a href="/">ホーム</a>
+        <span>›</span>
+        <a href="/#apps">アプリ</a>
+        <span>›</span>
+        Plachieve
       </p>
-      <div class="cta-group">
-        <span class="cta-coming">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M7 4.5V7l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          近日公開予定
-        </span>
-        <a href="#features" class="cta-secondary">機能を見る</a>
+
+      <p class="eyebrow">Noveris App</p>
+
+      <h1>Plachieve</h1>
+
+      <h2>
+        予定管理を、<br />
+        達成まで導く次世代へ。
+      </h2>
+
+      <p>
+        Plachieveは、日々の固定予定をテンプレート化し、
+        目標達成に必要な時間をAIが分析する
+        次世代スケジュール管理アプリです。
+      </p>
+    </div>
+
+    <div class="product-visual schedule-visual" aria-hidden="true">
+      <div class="calendar-mock">
+        <div class="calendar-header">2024年5月</div>
+
+        <div class="calendar-row">
+          <span>学習</span>
+          <span>90分</span>
+        </div>
+
+        <div class="calendar-row green">
+          <span>復習</span>
+          <span>30分</span>
+        </div>
+
+        <div class="clock-mock">
+          <span>10:30</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features" aria-label="機能紹介">
-    <div class="features-inner">
-      <p class="section-label">Features</p>
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Plachieveの主な機能</p>
+      <h2>予定管理から目標達成までを一つに</h2>
+    </div>
 
-      {features.map((f) => (
-        <div class="feature-row">
-          <div class="feature-number">{f.number}</div>
-          <div class="feature-content">
-            <h2 class="feature-title">{f.title}</h2>
-            <p class="feature-desc">{f.description}</p>
-            <p class="feature-note" style={`border-left-color: ${f.color}`}>{f.note}</p>
-          </div>
-          <div class="feature-visual">
-            <div class="screenshot-card">
-              <img src={f.image} alt={f.title} loading="lazy" />
-            </div>
-          </div>
-        </div>
-      ))}
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>固定予定をテンプレート化</h3>
+        <p>
+          授業、仕事、睡眠、食事など、
+          日々繰り返す予定をテンプレートとして保存できます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>簡単にカレンダーへ追加</h3>
+        <p>
+          ドラッグ&ドロップやタップ操作で、
+          テンプレートをカレンダーに追加できます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>AIが必要時間を分析</h3>
+        <p>
+          達成したい目標と現在のレベルを入力すると、
+          AIが必要な時間を分析します。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>予定へ自動挿入</h3>
+        <p>
+          既存の予定を考慮しながら、
+          必要な学習時間や作業時間を自動で挿入します。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>時計型UIで確認</h3>
+        <p>
+          本日・翌日の予定を独自の時計型UIで表示し、
+          今やるべきことを直感的に把握できます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>ワンタップ記録とゲージ管理</h3>
+        <p>
+          達成した予定をワンタップで記録し、
+          進捗をゲージで管理できます。
+        </p>
+      </article>
+
+      <article class="feature-card wide-card">
+        <h3>6分割チェックポイントによる再見積もり</h3>
+        <p>
+          最も革新的な機能として、必要時間を6分割したチェックポイントごとに
+          AIが進捗を判定し、必要時間を再見積もりします。
+          計画倒れを防ぎ、現実に合わせて予定を調整できます。
+        </p>
+      </article>
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner" aria-label="リリース情報">
-    <div class="cta-banner-inner">
-      <h2 class="cta-banner-heading">もうすぐ登場。</h2>
-      <p class="cta-banner-sub">リリース時にお知らせを受け取りたい方は、KnoteLedgeをフォローしてください。</p>
-      <a href={`${base}/apps/knoteledge`} class="cta-secondary-lg">
-        KnoteLedgeを見る →
-      </a>
+  <section class="flow-section">
+    <div class="section-heading">
+      <h2>Plachieveの活用フロー</h2>
+    </div>
+
+    <div class="flow-grid five">
+      <article>
+        <span>1</span>
+        <h3>テンプレート作成</h3>
+        <p>日々の固定予定を登録します。</p>
+      </article>
+
+      <article>
+        <span>2</span>
+        <h3>目標入力</h3>
+        <p>達成したい目標と現在のレベルを入力します。</p>
+      </article>
+
+      <article>
+        <span>3</span>
+        <h3>AIが時間分析</h3>
+        <p>必要時間と配分を分析します。</p>
+      </article>
+
+      <article>
+        <span>4</span>
+        <h3>予定へ自動挿入</h3>
+        <p>既存予定のすき間に自動で配置します。</p>
+      </article>
+
+      <article>
+        <span>5</span>
+        <h3>実行と再見積もり</h3>
+        <p>進捗を記録し、AIが計画を調整します。</p>
+      </article>
     </div>
   </section>
 
-  <div class="legal-link">
-    <a href={`${base}/apps/plachieve-privacy`}>プライバシーポリシー</a>
-  </div>
+  <section class="highlight-section">
+    <div>
+      <h2>Plachieveの革新ポイント</h2>
 
+      <p>
+        Plachieveは、単に予定を入れるだけのアプリではありません。
+        目標達成までに必要な時間を分析し、実行状況に応じて
+        計画を再見積もりすることで、現実的なスケジュール管理を支援します。
+      </p>
+    </div>
+
+    <div class="checkpoint-ui" aria-hidden="true">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span class="active">4</span>
+      <span>5</span>
+      <span>6</span>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Plachieveについて相談する</h2>
+
+    <p>
+      学習、仕事、生活習慣、目標達成管理など、
+      Plachieveの活用方法についてお気軽にご相談ください。
+    </p>
+
+    <div class="hero-actions center">
+      <a href="/#contact" class="primary-button">導入相談をする</a>
+      <a href="/" class="secondary-button">ホームへ戻る</a>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  .back-bar {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem 0;
-  }
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    transition: color 0.2s;
-  }
-  .back-link:hover { color: var(--fg-muted); }
-
-  .hero {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem 5rem;
-    display: block;
-  }
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .app-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    justify-content: center;
-  }
-  .accent-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .platform-tag, .status-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .platform-tag {
-    background: rgba(255,255,255,0.05);
-    color: var(--fg-subtle);
-  }
-  .status-tag {
-    background: rgba(168,159,212,0.12);
-    color: #a89fd4;
-  }
-
-  .app-name {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--fg);
-    line-height: 1.05;
-    margin-bottom: 0.75rem;
-  }
-  .app-tagline {
-    font-size: 0.9rem;
-    color: #a89fd4;
-    letter-spacing: 0.04em;
-    margin-bottom: 1.25rem;
-  }
-  .app-desc {
-    font-size: 0.9rem;
-    color: var(--fg-muted);
-    line-height: 1.8;
-    max-width: 400px;
-    margin: 0 auto 2rem;
-  }
-
-  .cta-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .cta-coming {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(168,159,212,0.1);
-    color: #a89fd4;
-    padding: 0.7rem 1.4rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    font-family: var(--font-sans);
-    border: 1px solid rgba(168,159,212,0.2);
-  }
-  .cta-secondary {
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--fg-subtle);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-    font-family: var(--font-sans);
-  }
-  .cta-secondary:hover { color: var(--fg-muted); border-color: var(--fg-subtle); }
-
-  .features { border-top: 1px solid var(--border); }
-  .features-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    margin-bottom: 3rem;
-  }
-  .feature-row {
-    display: grid;
-    grid-template-columns: 48px 1fr 1fr;
-    gap: 3rem;
-    padding: 3rem 0;
-    border-top: 1px solid var(--border);
-    align-items: start;
-  }
-  .feature-row:first-of-type { border-top: none; padding-top: 0; }
-  .feature-number {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--fg-subtle);
-    padding-top: 0.25rem;
-  }
-  .feature-title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--fg);
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  .feature-desc {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-  .feature-note {
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: var(--fg-subtle);
-    border-left: 2px solid #a89fd4;
-    padding-left: 0.75rem;
-    font-family: var(--font-sans);
-  }
-  .screenshot-card {
-    /* 筐体プレートの上に角丸スクショを載せ、自然な奥行きを作る */
-    position: relative;
-    padding: 10px 10px 8px;
-    border-radius: 34px;
-    overflow: visible;
-    aspect-ratio: 9/16;
-    max-height: 392px;
-    background: transparent;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-  }
-  .screenshot-card::before {
-    /* 背面の筐体プレート */
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 34px;
-    background:
-      linear-gradient(180deg, #2e2d2a 0%, #171614 24%, #0b0b0a 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      0 18px 40px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-    z-index: -1;
-  }
-  .screenshot-card::after {
-    /* プレート上端の小さなスリットで筐体らしさを補強 */
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 32%;
-    height: 5px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    z-index: 1;
-  }
-  .feature-visual .screenshot-card {
-    width: min(100%, 220px);
-  }
-  .screenshot-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #ffffff;
-    box-shadow:
-      0 10px 24px rgba(0, 0, 0, 0.18),
-      0 0 0 1px rgba(0, 0, 0, 0.12);
-  }
-
-  .cta-banner {
-    border-top: 1px solid var(--border);
-    background: #0f0f0e;
-  }
-  .cta-banner-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-  .cta-banner-heading {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 400;
-    color: var(--fg);
-    letter-spacing: -0.01em;
-  }
-  .cta-banner-sub {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    max-width: 400px;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-  }
-  .cta-secondary-lg {
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
-    color: #a89fd4;
-    border-bottom: 1px solid rgba(168,159,212,0.3);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-    font-family: var(--font-sans);
-  }
-  .cta-secondary-lg:hover {
-    color: var(--fg);
-    border-color: var(--fg-subtle);
-  }
-
-  .legal-link {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid var(--border);
-  }
-  .legal-link a {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--fg-subtle);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .legal-link a:hover { color: var(--fg-muted); }
-
-  @media (max-width: 700px) {
-    .feature-row { grid-template-columns: 32px 1fr; }
-    .feature-visual { display: none; }
-  }
-</style>

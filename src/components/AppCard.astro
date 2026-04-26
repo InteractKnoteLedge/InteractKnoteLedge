@@ -1,88 +1,30 @@
 ---
-import type { App } from '../content/apps';
-
-interface Props {
-  app: App;
-}
-
-const { app } = Astro.props;
-
-const statusLabel: Record<string, string> = {
-  available: "Available",
-  coming_soon: "Coming soon",
-  in_progress: "In progress",
-};
-
-const platformLabel = app.platforms?.join(" · ") ?? "";
-const isAvailable = app.status === "available";
-const isComingSoon = app.status !== "available";
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const {
+  name,
+  label,
+  description,
+  href,
+  icon = '✦',
+} = Astro.props;
 ---
 
-<div
-  class:list={["card", { "card--available": isAvailable, "card--soon": isComingSoon }]}
-  role={isAvailable ? "link" : undefined}
-  tabindex={isAvailable ? 0 : undefined}
-  onclick={isAvailable ? `location.href='${base}/apps/${app.id}'` : undefined}
-  onkeydown={isAvailable ? `if(event.key==='Enter')location.href='${base}/apps/${app.id}'` : undefined}
-  aria-label={isAvailable ? `${app.name} — ${app.tagline}` : undefined}
->
-  <div class="card-top">
-    <span class="accent-bar" style={`background: ${app.accentColor}`}></span>
-    <div class="card-meta">
-      <span class="status-badge" data-status={app.status}>
-        {statusLabel[app.status]}
-      </span>
-      {platformLabel && <span class="platform">{platformLabel}</span>}
-    </div>
+<article class="app-card">
+  <div class="app-icon" aria-hidden="true">
+    {icon}
   </div>
 
-  <div class="card-body">
-    <h2 class="card-name">{app.name}</h2>
-    <p class="card-tagline">{app.tagline}</p>
-    <p class="card-desc">{app.description}</p>
-  </div>
+  <h3>{name}</h3>
 
-  <div class="card-footer">
-    {isAvailable && (
-      <span class="card-link">
-        詳細を見る
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    )}
-  </div>
-</div>
+  <p class="app-label">
+    {label}
+  </p>
 
-<style>
-  .card {
-    background: var(--card-bg, #111110);
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    overflow: hidden;
-    transition: background 0.2s ease;
-    min-height: 280px;
-    position: relative;
-  }
-  .card--available { cursor: pointer; }
-  .card--available:hover { background: #17170f; }
-  .card--available:hover .accent-bar { width: 100%; }
-  .card--available:hover .card-link { color: var(--fg, #f0ede6); gap: 8px; }
-  .card--available:focus-visible { outline: 2px solid var(--accent, #c8b89a); outline-offset: -2px; }
-  .card--soon { opacity: 0.45; }
-  .card-top { position: relative; }
-  .accent-bar { display: block; height: 2px; width: 40px; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-  .card-meta { display: flex; align-items: center; gap: 0.75rem; padding: 1.25rem 1.75rem 0; }
-  .status-badge { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; font-family: var(--font-sans); }
-  .status-badge[data-status="available"] { background: rgba(126, 184, 212, 0.12); color: #7eb8d4; }
-  .status-badge[data-status="coming_soon"], .status-badge[data-status="in_progress"] { background: rgba(100, 98, 94, 0.15); color: #64625e; }
-  .platform { font-size: 0.65rem; letter-spacing: 0.08em; color: #4a4844; font-family: var(--font-sans); }
-  .card-body { padding: 1.5rem 1.75rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-  .card-name { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; letter-spacing: -0.02em; color: var(--fg, #f0ede6); line-height: 1.1; }
-  .card-tagline { font-size: 0.8rem; color: var(--accent, #c8b89a); letter-spacing: 0.03em; font-family: var(--font-sans); }
-  .card-desc { font-size: 0.8rem; color: #6a6864; line-height: 1.7; margin-top: 0.25rem; font-family: var(--font-sans); }
-  .card-footer { padding: 0 1.75rem 1.75rem; min-height: 2rem; }
-  .card-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; letter-spacing: 0.06em; color: #4a4844; font-family: var(--font-sans); transition: color 0.2s, gap 0.2s; }
-</style>
+  <p class="app-description">
+    {description}
+  </p>
+
+  <a href={href} class="detail-link">
+    詳細を見る
+    <span aria-hidden="true">→</span>
+  </a>
+</article>

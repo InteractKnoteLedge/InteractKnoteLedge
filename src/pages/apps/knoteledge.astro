@@ -1,414 +1,158 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const features = [
-  {
-    number: "01",
-    title: "手書きノート & ハイライト",
-    description: "色分けされたハイライトペンが、ただのマーカーではなくAI機能のトリガーになります。色ごとに「要約」「翻訳」「Q&A生成」などの処理が走り、書くだけで学習が深まります。",
-    note: "カラーハイライト → AI処理が自動実行",
-  },
-  {
-    number: "02",
-    title: "コミュニティ & 知識共有",
-    description: "ノートから抽出されたキーポイントが、クラス・学部のコミュニティタイムラインに自動投稿されます。生のノートではなくサマリーのみを共有するため、プライバシーと著作権に配慮した設計です。",
-    note: "Raw noteは非公開、サマリーのみ共有",
-  },
-];
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<BaseLayout title="KnoteLedge" description="学習を、もっとスマートに。スケジュール・ノート・コミュニティが一体になった学習プラットフォーム。">
-
-  <!-- Back -->
-  <div class="back-bar">
-    <a href={import.meta.env.BASE_URL} class="back-link">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M12 7H2M6 3L2 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      All products
-    </a>
-  </div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="app-eyebrow">
-        <span class="accent-dot" style="background:#7eb8d4"></span>
-        <span class="platform-tag">iOS</span>
-        <span class="status-tag">Available</span>
-      </div>
-      <h1 class="app-name">KnoteLedge</h1>
-      <p class="app-tagline">学習を、もっとスマートに。</p>
-      <p class="app-desc">
-        スケジュール・ノート・コミュニティが一体になった学習プラットフォーム。
-        手書きのハイライトがAIのトリガーになり、学んだことが自動でコミュニティへ広がります。
+<BaseLayout
+  title="KnoteLedge｜Noveris"
+  description="KnoteLedgeは、AIハイライトと即時回答を備えた次世代ノートアプリです。"
+>
+  <section class="product-hero">
+    <div>
+      <p class="breadcrumb">
+        <a href="/">ホーム</a>
+        <span>›</span>
+        <a href="/#apps">アプリ</a>
+        <span>›</span>
+        KnoteLedge
       </p>
-      <div class="cta-group">
-        <a href="https://apps.apple.com/" class="cta-primary" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M11.182 0c.196 1.264-.36 2.556-1.165 3.438-.805.883-2.05 1.56-3.274 1.46-.22-1.22.413-2.523 1.182-3.378C8.7.663 9.99.01 11.182 0zM8.6 5.4c.72 0 2.055-.99 3.796-.99 2.993 0 4.172 2.13 4.172 2.13s-2.303 1.18-2.303 4.04c0 3.217 2.862 4.327 2.862 4.327s-2.003 5.637-4.707 5.637c-1.24 0-2.207-.836-3.518-.836-1.335 0-2.662.872-3.522.872C2.657 20.58 0 15.103 0 10.627 0 6.22 2.74 3.9 5.327 3.9c1.563 0 2.778.9 3.273.9z" transform="scale(0.8)"/>
-          </svg>
-          App Storeでダウンロード
-        </a>
-        <a href="#features" class="cta-secondary">機能を見る</a>
+
+      <p class="eyebrow">Noveris App</p>
+
+      <h1>KnoteLedge</h1>
+
+      <h2>
+        考える流れを止めない、<br />
+        次世代ノートアプリ。
+      </h2>
+
+      <p>
+        スムーズな書き心地のノート機能に、
+        AIのハイライトと即時回答を融合。
+        プロンプト入力なしで、ノートに書いた内容から
+        必要な答えをすぐに引き出せます。
+      </p>
+    </div>
+
+    <div class="product-visual note-visual" aria-hidden="true">
+      <div class="note-mock">
+        <h3>光合成の仕組み</h3>
+
+        <p>
+          光エネルギーを利用して、<br />
+          <mark>二酸化炭素と水から有機物をつくり</mark>、<br />
+          酸素を放出する。
+        </p>
+
+        <div class="ai-panel">
+          <strong>AIの回答</strong>
+          <p>
+            光合成は、植物が光を使って有機物を作る反応です。
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features" aria-label="機能紹介">
-    <div class="features-inner">
-      <p class="section-label">Features</p>
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">KnoteLedgeの特長</p>
+      <h2>学びを加速させる、6つの強み</h2>
+    </div>
 
-      {features.map((f, i) => (
-        <div class="feature-row">
-          <div class="feature-number">{f.number}</div>
-          <div class="feature-content">
-            <h2 class="feature-title">{f.title}</h2>
-            <p class="feature-desc">{f.description}</p>
-            <p class="feature-note">{f.note}</p>
-          </div>
-          <div class="feature-visual">
-            <div class="screenshot-card">
-              <div class="screenshot-placeholder screenshot-placeholder--sm">
-                <span class="placeholder-text">Screenshot</span>
-                <span class="placeholder-sub">feature-{i + 1}.png</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>従来の高性能ノート機能</h3>
+        <p>
+          手書き入力、図形補正、整理、検索など、
+          学習に必要な基本機能を備えたノートアプリを目指します。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>AI蛍光ペン</h3>
+        <p>
+          AIがノート内容を解析し、重要部分を自動でハイライト。
+          復習すべき箇所をすぐに把握できます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>煩わしい操作を削減</h3>
+        <p>
+          複雑なメニュー操作を減らし、
+          書く・見る・理解する流れを止めない設計にします。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>プロンプト入力なしで回答</h3>
+        <p>
+          毎回AIに質問文を書く必要はありません。
+          ノートの文脈から、必要な回答をすぐに引き出せる体験を目指します。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>低価格で使いやすい</h3>
+        <p>
+          AI機能を必要な場面に絞って使うことで、
+          学生でも使いやすい価格帯を目指します。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>理解・整理・質問までつなげる</h3>
+        <p>
+          ノートを書くところから、要点整理、質問、復習までを
+          ひとつの流れで扱えるようにします。
+        </p>
+      </article>
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner" aria-label="ダウンロード">
-    <div class="cta-banner-inner">
-      <h2 class="cta-banner-heading">今すぐ学習を変えよう。</h2>
-      <p class="cta-banner-sub">無料でダウンロードできます。</p>
-      <a href="https://apps.apple.com/" class="cta-primary" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <path d="M11.182 0c.196 1.264-.36 2.556-1.165 3.438-.805.883-2.05 1.56-3.274 1.46-.22-1.22.413-2.523 1.182-3.378C8.7.663 9.99.01 11.182 0zM8.6 5.4c.72 0 2.055-.99 3.796-.99 2.993 0 4.172 2.13 4.172 2.13s-2.303 1.18-2.303 4.04c0 3.217 2.862 4.327 2.862 4.327s-2.003 5.637-4.707 5.637c-1.24 0-2.207-.836-3.518-.836-1.335 0-2.662.872-3.522.872C2.657 20.58 0 15.103 0 10.627 0 6.22 2.74 3.9 5.327 3.9c1.563 0 2.778.9 3.273.9z" transform="scale(0.8)"/>
-        </svg>
-        App Storeでダウンロード
-      </a>
+  <section class="flow-section">
+    <div class="section-heading">
+      <h2>使い方はシンプル、4つのステップ</h2>
+    </div>
+
+    <div class="flow-grid">
+      <article>
+        <span>1</span>
+        <h3>書く</h3>
+        <p>自由にノートを取ります。</p>
+      </article>
+
+      <article>
+        <span>2</span>
+        <h3>ハイライトする</h3>
+        <p>AIが重要ポイントを整理します。</p>
+      </article>
+
+      <article>
+        <span>3</span>
+        <h3>すぐに理解する</h3>
+        <p>ノート内容に基づいてAIが説明します。</p>
+      </article>
+
+      <article>
+        <span>4</span>
+        <h3>学習を深める</h3>
+        <p>関連内容や疑問点をさらに確認できます。</p>
+      </article>
     </div>
   </section>
 
-  <div class="legal-link">
-    <a href={`${base}/apps/privacy`}>
-      プライバシーポリシー
-    </a>
-  </div>
+  <section class="contact-section">
+    <h2>KnoteLedgeについて相談する</h2>
 
+    <p>
+      教育現場、塾、学校、個人利用など、
+      活用方法についてお気軽にご相談ください。
+    </p>
+
+    <div class="hero-actions center">
+      <a href="/#contact" class="primary-button">導入相談をする</a>
+      <a href="/" class="secondary-button">ホームへ戻る</a>
+    </div>
+  </section>
 </BaseLayout>
-
-<style>
-  .back-bar {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem 0;
-  }
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    transition: color 0.2s;
-  }
-  .back-link:hover { color: var(--fg-muted); }
-
-  /* HERO */
-  .hero {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem 5rem;
-    display: block;
-  }
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .app-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    justify-content: center;
-  }
-  .accent-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .platform-tag, .status-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-  .platform-tag {
-    background: rgba(255,255,255,0.05);
-    color: var(--fg-subtle);
-  }
-  .status-tag {
-    background: rgba(126,184,212,0.12);
-    color: #7eb8d4;
-  }
-
-  .app-name {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--fg);
-    line-height: 1.05;
-    margin-bottom: 0.75rem;
-  }
-  .app-tagline {
-    font-size: 0.9rem;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    margin-bottom: 1.25rem;
-  }
-  .app-desc {
-    font-size: 0.9rem;
-    color: var(--fg-muted);
-    line-height: 1.8;
-    max-width: 400px;
-    margin: 0 auto 2rem;
-  }
-
-  .cta-group {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--fg);
-    color: var(--bg);
-    padding: 0.7rem 1.4rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    transition: opacity 0.2s;
-    font-family: var(--font-sans);
-  }
-  .cta-primary:hover { opacity: 0.85; }
-  .cta-secondary {
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    color: var(--fg-subtle);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
-    font-family: var(--font-sans);
-  }
-  .cta-secondary:hover { color: var(--fg-muted); border-color: var(--fg-subtle); }
-
-  /* FEATURES */
-  .features {
-    border-top: 1px solid var(--border);
-  }
-  .features-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
-    margin-bottom: 3rem;
-  }
-
-  .feature-row {
-    display: grid;
-    grid-template-columns: 48px 1fr 1fr;
-    gap: 3rem;
-    padding: 3rem 0;
-    border-top: 1px solid var(--border);
-    align-items: start;
-  }
-  .feature-row:first-of-type { border-top: none; padding-top: 0; }
-
-  .feature-number {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    color: var(--fg-subtle);
-    padding-top: 0.25rem;
-  }
-  .feature-title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--fg);
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  .feature-desc {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-  .feature-note {
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: var(--fg-subtle);
-    border-left: 2px solid #7eb8d4;
-    padding-left: 0.75rem;
-    font-family: var(--font-sans);
-  }
-
-  .screenshot-card {
-    /* 筐体プレートの上に角丸スクショを載せ、自然な奥行きを作る */
-    position: relative;
-    padding: 10px 10px 8px;
-    border-radius: 34px;
-    overflow: visible;
-    aspect-ratio: 9/16;
-    max-height: 392px;
-    background: transparent;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-  }
-  .screenshot-card::before {
-    /* 背面の筐体プレート */
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 34px;
-    background:
-      linear-gradient(180deg, #2e2d2a 0%, #171614 24%, #0b0b0a 100%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      0 18px 40px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-    z-index: -1;
-  }
-  .screenshot-card::after {
-    /* プレート上端の小さなスリットで筐体らしさを補強 */
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 32%;
-    height: 5px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    z-index: 1;
-  }
-  .feature-visual .screenshot-card {
-    width: min(100%, 220px);
-  }
-  .screenshot-card > img,
-  .screenshot-card > .screenshot-placeholder {
-    border-radius: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow:
-      0 10px 24px rgba(0, 0, 0, 0.18),
-      0 0 0 1px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Screenshot placeholder */
-  .screenshot-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: #0f0f0e;
-    border: 1px dashed #2a2927;
-  }
-  .screenshot-placeholder--sm {
-    /* Plachieve と同じ見え方に揃える */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 26px;
-  }
-  .placeholder-text {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #3a3835;
-    font-family: var(--font-sans);
-  }
-  .placeholder-sub {
-    font-size: 0.6rem;
-    color: #2a2825;
-    font-family: var(--font-sans);
-    letter-spacing: 0.05em;
-  }
-
-  /* CTA BANNER */
-  .cta-banner {
-    border-top: 1px solid var(--border);
-    background: #0f0f0e;
-  }
-  .cta-banner-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-  }
-  .cta-banner-heading {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 400;
-    color: var(--fg);
-    letter-spacing: -0.01em;
-  }
-  .cta-banner-sub {
-    font-size: 0.85rem;
-    color: var(--fg-muted);
-    margin-bottom: 0.5rem;
-  }
-
-  /* Responsive */
-  @media (max-width: 700px) {
-    .feature-row {
-      grid-template-columns: 32px 1fr;
-    }
-    .feature-visual { display: none; }
-  }
-
-  .legal-link {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid var(--border);
-  }
-  .legal-link a {
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    color: var(--fg-subtle);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .legal-link a:hover { color: var(--fg-muted); }
-</style>
