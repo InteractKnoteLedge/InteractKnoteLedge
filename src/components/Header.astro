@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header" data-header>
   <a href="/" class="logo-link" aria-label="Noveris ホームへ">
     <img
       src="/images/noveris-logo.png"
@@ -7,7 +7,30 @@
     />
   </a>
 
-  <nav class="site-nav" aria-label="メインナビゲーション">
+  <!--
+    スマホ用ハンバーガーボタンです。
+    aria-expanded はメニューが開いているかどうかを表します。
+    JavaScriptで true / false を切り替えます。
+  -->
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="メニューを開く"
+    aria-expanded="false"
+    aria-controls="site-nav"
+    data-menu-toggle
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav
+    id="site-nav"
+    class="site-nav"
+    aria-label="メインナビゲーション"
+    data-site-nav
+  >
     <a href="/">ホーム</a>
     <a href="/#apps">アプリ</a>
     <a href="/#about">企業情報</a>
@@ -15,3 +38,53 @@
     <a href="/#contact" class="nav-button">導入相談</a>
   </nav>
 </header>
+
+<script>
+  /*
+    Astroでは、このscriptはブラウザ側で実行されます。
+    Reactなどを使わなくても、最低限のメニュー開閉はこれで実装できます。
+  */
+
+  const header = document.querySelector('[data-header]');
+  const menuToggle = document.querySelector('[data-menu-toggle]');
+  const siteNav = document.querySelector('[data-site-nav]');
+
+  if (header && menuToggle && siteNav) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = header.classList.toggle('is-menu-open');
+
+      // スクリーンリーダー向けに、メニュー状態を伝える
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+
+      // ラベルも状態に合わせて変更
+      menuToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'メニューを閉じる' : 'メニューを開く'
+      );
+    });
+
+    /*
+      メニュー内リンクを押したら自動で閉じる。
+      スマホで「アプリ」を押した後にメニューが残り続けるのを防ぎます。
+    */
+    siteNav.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        header.classList.remove('is-menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'メニューを開く');
+      });
+    });
+
+    /*
+      PC幅に戻したとき、スマホメニューの開いた状態をリセットします。
+      これを入れないと、画面幅変更時に変な状態が残ることがあります。
+    */
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        header.classList.remove('is-menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'メニューを開く');
+      }
+    });
+  }
+</script>
