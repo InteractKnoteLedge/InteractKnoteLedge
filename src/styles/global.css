@@ -812,3 +812,274 @@ mark {
     display: block;
   }
 }
+
+/* ================================
+   スマホ表示の最終調整
+   追加場所: src/styles/global.css の一番下
+================================ */
+
+@media (max-width: 640px) {
+  body {
+    background:
+      radial-gradient(circle at top right, rgba(6, 104, 232, 0.1), transparent 20rem),
+      linear-gradient(180deg, #ffffff 0%, #f7fbff 55%, #ffffff 100%);
+  }
+
+  /* ヘッダーをスマホで詰まりにくくする */
+  .site-header {
+    position: sticky;
+    padding: 14px 18px;
+    gap: 12px;
+  }
+
+  .site-logo {
+    width: 136px;
+  }
+
+  .site-nav {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 6px;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 13px;
+
+    /* 横スクロールバーを目立たせない */
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-button {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  /* Heroをスマホ向けに圧縮 */
+  .hero {
+    gap: 28px;
+    padding: 42px 18px 52px;
+  }
+
+  .hero-visual {
+    order: 0;
+  }
+
+  .hero h1,
+  .product-hero h1 {
+    font-size: 42px;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+  }
+
+  .hero-text,
+  .hero p,
+  .product-hero p,
+  .section-heading p,
+  .about-section p,
+  .contact-section p,
+  .feature-card p,
+  .flow-grid p,
+  .highlight-section p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+
+  /* 右側の仮ダッシュボードをスマホで小さく */
+  .dashboard-card {
+    min-height: auto;
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid div {
+    padding: 14px;
+  }
+
+  .mock-phone {
+    position: relative;
+    right: auto;
+    bottom: auto;
+
+    width: 150px;
+    height: 270px;
+    margin: 22px auto 0;
+    border-width: 8px;
+    border-radius: 30px;
+  }
+
+  /* セクション全体の余白をスマホ用に */
+  .section {
+    padding: 56px 18px;
+  }
+
+  .section-heading {
+    margin-bottom: 28px;
+    text-align: left;
+  }
+
+  .section-heading h2,
+  .about-section h2,
+  .contact-section h2,
+  .highlight-section h2 {
+    font-size: 30px;
+    line-height: 1.25;
+  }
+
+  /* アプリカード */
+  .app-grid {
+    gap: 18px;
+  }
+
+  .app-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .app-card h3 {
+    margin-top: 18px;
+    font-size: 28px;
+  }
+
+  .app-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    font-size: 26px;
+  }
+
+  /* About / Contact の横幅崩れ対策 */
+  .about-section,
+  .contact-section,
+  .highlight-section {
+    margin: 0 18px 56px;
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  /* 詳細ページ Hero */
+  .product-hero {
+    gap: 30px;
+    padding: 34px 18px 56px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 22px;
+    font-size: 12px;
+  }
+
+  .product-hero h2 {
+    font-size: 34px;
+    line-height: 1.18;
+  }
+
+  .product-visual {
+    min-height: auto;
+    border-radius: 22px;
+  }
+
+  /* KnoteLedge 仮ノートUI */
+  .note-visual,
+  .schedule-visual {
+    padding: 18px;
+  }
+
+  .note-mock,
+  .calendar-mock {
+    padding: 20px;
+    border-width: 7px;
+    border-radius: 24px;
+  }
+
+  .note-mock h3,
+  .calendar-header {
+    font-size: 21px;
+  }
+
+  .note-mock p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .ai-panel {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* Plachieve 仮UI */
+  .calendar-row {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .clock-mock {
+    width: 140px;
+    height: 140px;
+  }
+
+  .clock-mock span {
+    width: 68px;
+    height: 68px;
+    font-size: 18px;
+  }
+
+  /* 機能カード */
+  .feature-grid {
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .feature-card h3 {
+    font-size: 19px;
+  }
+
+  /* フロー */
+  .flow-section {
+    padding: 24px 18px 56px;
+  }
+
+  .flow-grid article {
+    padding: 20px;
+  }
+
+  /* フッター */
+  .site-footer {
+    padding: 42px 18px 24px;
+  }
+
+  .footer-logo {
+    width: 138px;
+  }
+
+  .footer-inner {
+    gap: 28px;
+  }
+
+  .footer-links {
+    gap: 20px;
+  }
+}
