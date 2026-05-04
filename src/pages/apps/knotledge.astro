@@ -37,42 +37,42 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="knotledge-carousel-track" data-kn-track>
 
         <!-- スライド1：ランドスケープ画面 -->
-        <div class="knotledge-slide">
+        <div class="knotledge-slide knotledge-slide--landscape">
           <svg
-            class="knotledge-tablet-svg"
-            viewBox="0 0 544 368"
+            class="knotledge-tablet-svg knotledge-tablet-svg--landscape"
+            viewBox="0 0 544 336"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
             <defs>
               <clipPath id="kn-clip-s1">
-                <rect x="28" y="8" width="488" height="326" rx="16" ry="16"/>
+                <rect x="28" y="8" width="480" height="320" rx="18" ry="18"/>
               </clipPath>
             </defs>
-            <!-- デバイス本体 -->
-            <rect x="0" y="0" width="544" height="368" rx="34" ry="34" fill="#061b3a"/>
+            <!-- デバイス本体（縦フレームを90°倒した同一比率） -->
+            <rect x="0" y="0" width="544" height="336" rx="34" ry="34" fill="#061b3a"/>
             <!-- スクリーン白地 -->
-            <rect x="28" y="8" width="488" height="326" rx="16" ry="16" fill="#f7fbff"/>
+            <rect x="28" y="8" width="480" height="320" rx="18" ry="18" fill="#f7fbff"/>
             <!-- スクリーンショット3（ランドスケープ） -->
             <image
               href="/images/knotledge-ss3.jpg"
-              x="28" y="8" width="488" height="326"
+              x="28" y="8" width="480" height="320"
               preserveAspectRatio="xMidYMid meet"
               clip-path="url(#kn-clip-s1)"
             />
-            <!-- カメラドット（右端中央） -->
-            <circle cx="534" cy="184" r="5" fill="#0d2244"/>
-            <!-- ホームインジケーター（底辺中央） -->
-            <rect x="232" y="350" width="80" height="4" rx="2" fill="#0d2244"/>
+            <!-- カメラピル（右辺中央・縦向き） -->
+            <rect x="536" y="144" width="8" height="48" rx="4" fill="#0d2244"/>
+            <!-- ホームインジケーター（左辺中央・縦向き） -->
+            <rect x="2" y="128" width="4" height="80" rx="2" fill="#0d2244"/>
             <!-- 音量ボタン（上辺） -->
-            <rect x="130" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
-            <rect x="180" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
-            <!-- 電源ボタン（上辺右側） -->
-            <rect x="370" y="-5" width="56" height="5" rx="2.5" fill="#04122e"/>
+            <rect x="110" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
+            <rect x="160" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
+            <!-- 電源ボタン（上辺右寄り） -->
+            <rect x="360" y="-5" width="56" height="5" rx="2.5" fill="#04122e"/>
           </svg>
         </div>
 
-        <!-- スライド2：ノート詳細画面 -->
+        <!-- スライド2：ノート編集画面 -->
         <div class="knotledge-slide">
           <svg
             class="knotledge-tablet-svg"
@@ -89,9 +89,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <rect x="0" y="0" width="360" height="544" rx="34" ry="34" fill="#061b3a"/>
             <!-- スクリーン白地 -->
             <rect x="8" y="28" width="344" height="480" rx="18" ry="18" fill="#f7fbff"/>
-            <!-- スクリーンショット1 -->
+            <!-- スクリーンショット2 -->
             <image
-              href="/images/knotledge-ss1.png"
+              href="/images/knotledge-ss2.png"
               x="8" y="28" width="344" height="480"
               preserveAspectRatio="xMidYMid meet"
               clip-path="url(#kn-clip-s2)"
@@ -108,7 +108,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           </svg>
         </div>
 
-        <!-- スライド3：ノート編集画面 -->
+        <!-- スライド3：ノート詳細画面 -->
         <div class="knotledge-slide">
           <svg
             class="knotledge-tablet-svg"
@@ -125,9 +125,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <rect x="0" y="0" width="360" height="544" rx="34" ry="34" fill="#061b3a"/>
             <!-- スクリーン白地 -->
             <rect x="8" y="28" width="344" height="480" rx="18" ry="18" fill="#f7fbff"/>
-            <!-- スクリーンショット2 -->
+            <!-- スクリーンショット1 -->
             <image
-              href="/images/knotledge-ss2.png"
+              href="/images/knotledge-ss1.png"
               x="8" y="28" width="344" height="480"
               preserveAspectRatio="xMidYMid meet"
               clip-path="url(#kn-clip-s3)"

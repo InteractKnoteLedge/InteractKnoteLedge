@@ -2320,6 +2320,15 @@ mark {
   transform-origin: center center;
 }
 
+.knotledge-slide--landscape {
+  align-items: center;
+  padding: 0 20px;
+}
+
+.knotledge-tablet-svg--landscape {
+  max-width: 460px;
+}
+
 .knotledge-nav {
   display: flex;
   justify-content: center;
@@ -2370,6 +2379,9 @@ mark {
 @media (max-width: 640px) {
   .knotledge-tablet-svg {
     max-width: 260px;
+  }
+  .knotledge-tablet-svg--landscape {
+    max-width: 92%;
   }
   .knotledge-nav-btn {
     width: 28px;
