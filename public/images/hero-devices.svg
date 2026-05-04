@@ -1,0 +1,170 @@
+<svg
+  width="820"
+  height="600"
+  viewBox="-30 -20 820 600"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Noveris dashboard and schedule app mockup</title>
+  <desc id="desc">A tablet dashboard and smartphone schedule interface for Noveris apps.</desc>
+
+  <defs>
+    <linearGradient id="blueGrad" x1="75" y1="70" x2="690" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C6CFF"/>
+      <stop offset="1" stop-color="#0B4EC7"/>
+    </linearGradient>
+
+    <linearGradient id="phoneWheelGrad" x1="86" y1="184" x2="250" y2="490" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDFEFF"/>
+      <stop offset="1" stop-color="#F3F8FF"/>
+    </linearGradient>
+
+    <filter id="shadowLarge" x="160" y="20" width="620" height="460" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#09204A" flood-opacity="0.18"/>
+    </filter>
+
+    <!-- スマホと浮遊アイコンが切れないように、filter範囲を広めにしています -->
+    <filter id="shadowPhone" x="20" y="110" width="300" height="470" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#09204A" flood-opacity="0.18"/>
+    </filter>
+
+    <filter id="shadowIconLeft" x="-20" y="360" width="180" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#09204A" flood-opacity="0.14"/>
+    </filter>
+
+    <filter id="shadowIconRight" x="540" y="390" width="180" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#09204A" flood-opacity="0.14"/>
+    </filter>
+
+    <linearGradient id="wheelGrad" x1="113" y1="268" x2="223" y2="378" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8CC9FF"/>
+      <stop offset="0.3" stop-color="#5DA7F7"/>
+      <stop offset="0.55" stop-color="#75DEC5"/>
+      <stop offset="0.75" stop-color="#F6D574"/>
+      <stop offset="1" stop-color="#FF9F91"/>
+    </linearGradient>
+
+    <clipPath id="dashboardClip">
+      <rect x="222" y="70" width="488" height="328" rx="30"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background orbit lines -->
+  <ellipse cx="452" cy="218" rx="330" ry="128" transform="rotate(-14 452 218)" stroke="#0C6CFF" stroke-opacity="0.15" stroke-width="3"/>
+  <ellipse cx="470" cy="265" rx="370" ry="148" transform="rotate(-18 470 265)" stroke="#0C6CFF" stroke-opacity="0.11" stroke-width="3"/>
+
+  <circle cx="286" cy="142" r="8" fill="#BFD8FF"/>
+  <circle cx="470" cy="72" r="9" fill="#BFD8FF"/>
+  <circle cx="670" cy="338" r="7" fill="#BFD8FF"/>
+
+  <!-- Dashboard device -->
+  <g filter="url(#shadowLarge)">
+    <rect x="222" y="70" width="488" height="328" rx="30" fill="white"/>
+    <rect x="222.5" y="70.5" width="487" height="327" rx="29.5" stroke="#DDE7F5"/>
+
+    <g clip-path="url(#dashboardClip)">
+      <!-- Sidebar -->
+      <rect x="222" y="70" width="76" height="328" fill="#F1F7FF"/>
+      <rect x="298" y="70" width="1" height="328" fill="#DDE7F5"/>
+
+      <rect x="240" y="96" width="38" height="38" rx="13" fill="url(#blueGrad)"/>
+      <text x="259" y="121" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="white">N</text>
+
+      <rect x="238" y="154" width="42" height="32" rx="10" fill="white"/>
+      <circle cx="250" cy="170" r="5" fill="#0C6CFF"/>
+      <rect x="260" y="166" width="12" height="8" rx="4" fill="#BFD8FF"/>
+
+      <rect x="244" y="207" width="28" height="5" rx="2.5" fill="#A9B9D1"/>
+      <rect x="244" y="235" width="28" height="5" rx="2.5" fill="#A9B9D1"/>
+      <rect x="244" y="263" width="28" height="5" rx="2.5" fill="#A9B9D1"/>
+      <rect x="244" y="291" width="28" height="5" rx="2.5" fill="#A9B9D1"/>
+
+      <!-- Main -->
+      <rect x="299" y="70" width="411" height="328" fill="white"/>
+
+      <text x="328" y="112" font-family="Arial, sans-serif" font-weight="800" font-size="22" fill="#081B3F">ダッシュボード</text>
+      <text x="328" y="142" font-family="Arial, sans-serif" font-weight="700" font-size="13" fill="#637493">おはようございます、Noverisさん！</text>
+
+      <circle cx="648" cy="108" r="13" fill="#F7FAFF" stroke="#DDE7F5"/>
+      <circle cx="680" cy="108" r="13" fill="#F7FAFF" stroke="#DDE7F5"/>
+
+      <!-- Metrics -->
+      <rect x="328" y="162" width="104" height="72" rx="16" fill="#F8FBFF" stroke="#DDE7F5"/>
+      <text x="346" y="186" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#637493">今日のタスク</text>
+      <text x="346" y="217" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#081B3F">12</text>
+      <path d="M408 203L414 209L424 194" stroke="#37B48E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <rect x="446" y="162" width="104" height="72" rx="16" fill="#F8FBFF" stroke="#DDE7F5"/>
+      <text x="464" y="186" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#637493">完了したタスク</text>
+      <text x="464" y="217" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#081B3F">8</text>
+      <path d="M526 203L532 209L542 194" stroke="#37B48E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <rect x="564" y="162" width="104" height="72" rx="16" fill="#F8FBFF" stroke="#DDE7F5"/>
+      <text x="582" y="186" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#637493">集中時間</text>
+      <text x="582" y="217" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#081B3F">3.6時間</text>
+      <path d="M642 203L648 209L658 194" stroke="#37B48E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- Chart -->
+      <rect x="328" y="254" width="210" height="106" rx="16" fill="#F8FBFF" stroke="#DDE7F5"/>
+      <text x="346" y="277" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#081B3F">集中時間の推移（今週）</text>
+      <path d="M350 328C366 300 382 345 399 319C416 293 432 335 449 306C466 278 482 321 499 288C512 263 524 276 528 260" stroke="#0C6CFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M350 338H522" stroke="#DDE7F5" stroke-width="2"/>
+      <path d="M350 310H522" stroke="#DDE7F5" stroke-width="2" opacity="0.7"/>
+
+      <!-- Schedule -->
+      <rect x="552" y="254" width="116" height="106" rx="16" fill="#F8FBFF" stroke="#DDE7F5"/>
+      <text x="568" y="276" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#081B3F">今後の予定</text>
+
+      <rect x="568" y="292" width="84" height="16" rx="5" fill="#EAF4FF"/>
+      <rect x="568" y="316" width="84" height="16" rx="5" fill="#EEF8F3"/>
+      <rect x="568" y="340" width="84" height="16" rx="5" fill="#FFF1F4"/>
+      <circle cx="578" cy="300" r="3" fill="#0C6CFF"/>
+      <circle cx="578" cy="324" r="3" fill="#37B48E"/>
+      <circle cx="578" cy="348" r="3" fill="#FF7A8A"/>
+    </g>
+  </g>
+
+  <!-- Phone device -->
+  <g filter="url(#shadowPhone)">
+    <rect x="74" y="150" width="188" height="354" rx="38" fill="#111827"/>
+    <rect x="86" y="164" width="164" height="326" rx="29" fill="url(#phoneWheelGrad)"/>
+    <rect x="140" y="174" width="56" height="8" rx="4" fill="#111827"/>
+
+    <text x="110" y="211" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">今日の予定</text>
+    <text x="110" y="233" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#637493">5月20日（火）</text>
+
+    <g transform="translate(113 252)">
+      <circle cx="55" cy="55" r="55" fill="url(#wheelGrad)"/>
+      <path d="M55 0A55 55 0 0 1 102.6 27.5L55 55Z" fill="#5DA7F7"/>
+      <path d="M102.6 27.5A55 55 0 0 1 102.6 82.5L55 55Z" fill="#75DEC5"/>
+      <path d="M102.6 82.5A55 55 0 0 1 55 110L55 55Z" fill="#F6D574"/>
+      <path d="M55 110A55 55 0 0 1 7.4 82.5L55 55Z" fill="#FF9F91"/>
+      <path d="M7.4 82.5A55 55 0 0 1 7.4 27.5L55 55Z" fill="#8CC9FF"/>
+      <circle cx="55" cy="55" r="30" fill="white"/>
+      <text x="55" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#081B3F">AM</text>
+      <text x="55" y="66" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#081B3F">PM</text>
+    </g>
+
+    <rect x="108" y="384" width="118" height="22" rx="8" fill="#EAF4FF"/>
+    <rect x="108" y="416" width="118" height="22" rx="8" fill="#F5F8FF"/>
+    <circle cx="120" cy="395" r="3" fill="#0C6CFF"/>
+    <circle cx="120" cy="427" r="3" fill="#0C6CFF"/>
+    <text x="130" y="399" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#081B3F">10:00 チームMTG</text>
+    <text x="130" y="431" font-family="Arial, sans-serif" font-weight="800" font-size="10" fill="#081B3F">13:00 仕様レビュー</text>
+  </g>
+
+  <!-- Floating icons -->
+  <g filter="url(#shadowIconLeft)">
+    <rect x="34" y="412" width="74" height="74" rx="20" fill="url(#blueGrad)"/>
+    <path d="M70 432L77 452L97 459L77 466L70 486L63 466L43 459L63 452L70 432Z" fill="white"/>
+  </g>
+
+  <g filter="url(#shadowIconRight)">
+    <rect x="590" y="438" width="70" height="70" rx="18" fill="white"/>
+    <rect x="612" y="462" width="26" height="26" rx="5" stroke="#0C6CFF" stroke-width="4"/>
+    <path d="M612 471H638" stroke="#0C6CFF" stroke-width="4"/>
+    <path d="M620 454V466M630 454V466" stroke="#0C6CFF" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

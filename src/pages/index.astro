@@ -1,123 +1,188 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AppCard from '../components/AppCard.astro';
 ---
 
 <BaseLayout
+  page="home"
   title="Noveris｜アプリ開発で、学びと日常を次のステージへ"
-  description="Noverisは、教育・生産性・日常生活を中心に次世代アプリを開発する集団です。"
+  description="Noverisは、教育・生産性・日常生活を中心に、次世代のアプリを開発するクリエイティブ集団です。"
 >
-  <section class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">App Development Collective</p>
+  <!-- =========================
+       Hero
+       添付画像1枚目のホームに寄せた構成
+  ========================== -->
+  <section class="home-classic-hero">
+    <div class="container home-classic-hero-grid">
+      <div class="home-classic-copy">
+        <img
+          src="/images/noveris-logo.png"
+          alt="Noveris"
+          class="home-classic-big-logo"
+        />
 
-      <h1>
-        アプリ開発で、<br />
-        学びと日常を<br class="sp-only" />
-        次のステージへ。
-      </h1>
+        <h1>
+          アプリ開発で、<br />
+          学びと日常を次のステージへ。
+        </h1>
 
-      <p class="hero-text">
-        Noverisは、教育・生産性・日常生活を中心に、
-        次世代のアプリを開発するクリエイティブ集団です。
-        ユーザーの毎日をより良くするアプリを、これからも拡充していきます。
-      </p>
+        <p>
+          Noverisは、教育・生産性・日常生活を中心に、<br />
+          次世代のアプリを開発するクリエイティブ集団です。<br />
+          ユーザーの毎日をより良くするアプリを、これからも拡充していきます。
+        </p>
 
-      <div class="hero-actions">
-        <a href="#apps" class="primary-button">アプリを見る</a>
-        <a href="#about" class="secondary-button">企業情報を見る</a>
+        <div class="home-classic-actions">
+          <a href="#apps" class="primary-button">
+            アプリを見る
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <a href="#about" class="secondary-button">
+            企業情報を見る
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-visual" aria-hidden="true">
-      <div class="dashboard-card">
-        <p class="dashboard-title">Noveris Dashboard</p>
-
-        <div class="dashboard-grid">
-          <div>
-            <span>開発中</span>
-            <strong>2</strong>
-          </div>
-
-          <div>
-            <span>予定アプリ</span>
-            <strong>More</strong>
-          </div>
-
-          <div>
-            <span>領域</span>
-            <strong>教育・日常</strong>
-          </div>
-        </div>
-
-        <div class="mock-phone">
-          <div class="clock-ui">
-            <span>今日</span>
-          </div>
-        </div>
+      <div class="home-classic-visual svg-hero-wrap" aria-label="Noverisアプリの画面イメージ">
+        <img
+          src="/images/hero-devices.svg"
+          alt="Noverisのダッシュボードとスケジュールアプリ画面"
+          class="hero-devices-svg"
+        />
       </div>
     </div>
   </section>
 
-  <section id="apps" class="section">
-    <div class="section-heading">
-      <p class="eyebrow">開発中のアプリ</p>
+  <!-- =========================
+       Apps
+  ========================== -->
+  <section id="apps" class="home-classic-apps">
+    <div class="container">
+      <div class="classic-section-title">
+        <p>✦ 開発中のアプリ ✦</p>
+        <h2>2つのアプリを開発中</h2>
+        <span>
+          現在、2つのアプリを開発中です。
+          今後も、さまざまなアプリをリリース予定です。
+        </span>
+      </div>
 
-      <h2>2つのアプリを開発中</h2>
+      <div class="classic-app-grid">
+        <!-- KnoteLedge -->
+        <article class="classic-app-card">
+          <div class="classic-app-heading">
+            <div class="classic-app-icon">✎</div>
 
-      <p>
-        現在、2つのアプリを計画しています。
-        今後も、学び・生産性・日常生活を支えるアプリを拡充予定です。
-      </p>
-    </div>
+            <div>
+              <h3>KnoteLedge</h3>
+              <p>
+                AIが要点をハイライトし、<br />
+                瞬時に答えをくれる高性能ノートアプリ。
+              </p>
+            </div>
+          </div>
 
-    <div class="app-grid">
-      <AppCard
-        name="KnoteLedge"
-        icon="✎"
-        href="/apps/knoteledge"
-        label="AIが要点をハイライトし、瞬時に答えをくれる高性能ノートアプリ。"
-        description="従来の高性能ノートに加えて、煩わしい操作やプロンプト入力なしでAIを活用できます。低価格で、シームレスな学習体験を目指します。"
-      />
+          <p class="classic-app-text">
+            面倒な操作やプロンプト入力は不要。
+            低コストで、シームレスな使い心地を実現します。
+          </p>
 
-      <AppCard
-        name="Plachieve"
-        icon="◷"
-        href="/apps/plachieve"
-        label="AIが時間を分析する、次世代スケジュール管理アプリ。"
-        description="固定予定のテンプレート化、カレンダーへの簡単追加、AIによる必要時間分析、時計型UIによる直感的な予定確認を実現します。"
-      />
+          <div class="classic-svg-preview">
+            <img
+              src="/images/knotledge-preview.svg"
+              alt="KnoteLedgeのノートとAI回答画面"
+            />
+          </div>
+
+          <a href="/apps/knotledge" class="classic-detail-button">
+            詳細を見る
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- Plachieve -->
+        <article class="classic-app-card">
+          <div class="classic-app-heading">
+            <div class="classic-app-icon">◷</div>
+
+            <div>
+              <h3>Plachieve</h3>
+              <p>
+                テンプレートで日々のルーティンを作成し、<br />
+                AIが時間を分析する次世代スケジュール管理アプリ。
+              </p>
+            </div>
+          </div>
+
+          <p class="classic-app-text">
+            カレンダーへの簡単挿入と、時計型UIで
+            直感的にスケジュールを可視化できます。
+          </p>
+
+          <div class="classic-svg-preview">
+            <img
+              src="/images/plachieve-preview.svg"
+              alt="Plachieveのカレンダーと時計型UI画面"
+            />
+          </div>
+
+          <a href="/apps/plachieve" class="classic-detail-button">
+            詳細を見る
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      </div>
+
+      <div class="classic-all-apps">
+        <a href="#apps">
+          すべてのアプリを見る
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section id="about" class="about-section">
-    <div>
-      <p class="eyebrow">私たちについて</p>
+  <!-- =========================
+       About
+  ========================== -->
+  <section id="about" class="home-classic-about">
+    <div class="container classic-about-panel">
+      <div class="classic-about-icon">
+        <span>👥</span>
+      </div>
 
-      <h2>
-        ユーザー中心のアプリ開発で、<br />
-        未来を創る。
-      </h2>
+      <div class="classic-about-copy">
+        <p>私たちについて</p>
 
-      <p>
-        Noverisは、ユーザーの課題に寄り添い、
-        シンプルで使いやすく、価値ある体験を提供することを大切にしています。
-        デザイン、エンジニアリング、AI技術を組み合わせ、
-        学びや日常をより良くするアプリを生み出していきます。
-      </p>
+        <h2>
+          ユーザー中心のアプリ開発で、未来を創る。
+        </h2>
+
+        <span>
+          Noverisは、ユーザーの課題に寄り添い、
+          シンプルで使いやすく、価値ある体験を提供することを大切にしています。
+          デザイン、エンジニアリング、AI技術を組み合わせ、
+          日常や学び、仕事をより良くするアプリを生み出します。
+          これからも、より多くの人の未来を支えるアプリを届けていきます。
+        </span>
+
+        <div class="classic-about-features">
+          <div>
+            <strong>ユーザー中心設計</strong>
+            <small>課題を深く理解し、使いやすさを追求します。</small>
+          </div>
+
+          <div>
+            <strong>確かな技術力</strong>
+            <small>最新技術とAIを活用した高品質な開発。</small>
+          </div>
+
+          <div>
+            <strong>未来へ拡充</strong>
+            <small>新しいアイデアで、アプリを続々展開予定。</small>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-
-  <section id="contact" class="contact-section">
-    <h2>導入相談・お問い合わせ</h2>
-
-    <p>
-      アプリの導入相談、共同開発、教育機関での活用など、
-      お気軽にお問い合わせください。
-    </p>
-
-    <a href="mailto:contact@example.com" class="primary-button">
-      メールで問い合わせる
-    </a>
   </section>
 </BaseLayout>

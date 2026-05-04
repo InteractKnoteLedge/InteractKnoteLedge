@@ -1,0 +1,93 @@
+<svg width="560" height="360" viewBox="0 0 560 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Plachieve preview</title>
+  <desc id="desc">A schedule calendar and circular clock interface.</desc>
+
+  <defs>
+    <filter id="shadow" x="-20" y="-20" width="620" height="420" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#09204A" flood-opacity="0.12"/>
+    </filter>
+
+    <linearGradient id="wheel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8CC9FF"/>
+      <stop offset="0.25" stop-color="#5DA7F7"/>
+      <stop offset="0.48" stop-color="#75DEC5"/>
+      <stop offset="0.72" stop-color="#F6D574"/>
+      <stop offset="1" stop-color="#FF9F91"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="560" height="360" rx="26" fill="#F7FBFF"/>
+  <rect x="0.5" y="0.5" width="559" height="359" rx="25.5" stroke="#DDE7F5"/>
+
+  <g filter="url(#shadow)">
+    <rect x="36" y="38" width="232" height="284" rx="22" fill="white"/>
+    <rect x="36.5" y="38.5" width="231" height="283" rx="21.5" stroke="#DDE7F5"/>
+
+    <text x="60" y="72" font-family="Arial, sans-serif" font-weight="900" font-size="18" fill="#081B3F">2024年5月</text>
+    <circle cx="238" cy="66" r="14" fill="#EAF4FF"/>
+    <text x="238" y="71" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="16" fill="#0C6CFF">＋</text>
+
+    <!-- Days -->
+    <g font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#637493">
+      <text x="60" y="110">19</text>
+      <text x="90" y="110">20</text>
+      <text x="120" y="110">21</text>
+      <text x="150" y="110">22</text>
+      <text x="180" y="110">23</text>
+      <text x="210" y="110">24</text>
+      <text x="238" y="110">25</text>
+    </g>
+
+    <rect x="56" y="128" width="184" height="30" rx="9" fill="#EAF4FF"/>
+    <rect x="56" y="166" width="184" height="30" rx="9" fill="#EAFBF4"/>
+    <rect x="56" y="204" width="184" height="30" rx="9" fill="#FFF7E6"/>
+    <rect x="56" y="242" width="184" height="30" rx="9" fill="#FFF0F5"/>
+    <rect x="56" y="280" width="184" height="24" rx="9" fill="#EAF4FF"/>
+
+    <rect x="56" y="128" width="5" height="30" rx="2.5" fill="#0C6CFF"/>
+    <rect x="56" y="166" width="5" height="30" rx="2.5" fill="#37B48E"/>
+    <rect x="56" y="204" width="5" height="30" rx="2.5" fill="#F3B23B"/>
+    <rect x="56" y="242" width="5" height="30" rx="2.5" fill="#FF7A8A"/>
+    <rect x="56" y="280" width="5" height="24" rx="2.5" fill="#0C6CFF"/>
+
+    <text x="70" y="148" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#2B62B0">チームミーティング</text>
+    <text x="70" y="186" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#1F8B63">集中作業</text>
+    <text x="70" y="224" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#A1681D">ランチ</text>
+    <text x="70" y="262" font-family="Arial, sans-serif" font-weight="900" font-size="12" fill="#A94D78">仕様レビュー</text>
+    <text x="70" y="297" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#2B62B0">デザイン作業</text>
+
+    <!-- Clock card -->
+    <rect x="292" y="38" width="232" height="284" rx="22" fill="white"/>
+    <rect x="292.5" y="38.5" width="231" height="283" rx="21.5" stroke="#DDE7F5"/>
+
+    <g transform="translate(326 66)">
+      <circle cx="82" cy="82" r="82" fill="url(#wheel)"/>
+      <path d="M82 0A82 82 0 0 1 153 41L82 82Z" fill="#5DA7F7"/>
+      <path d="M153 41A82 82 0 0 1 153 123L82 82Z" fill="#75DEC5"/>
+      <path d="M153 123A82 82 0 0 1 82 164L82 82Z" fill="#F6D574"/>
+      <path d="M82 164A82 82 0 0 1 11 123L82 82Z" fill="#FF9F91"/>
+      <path d="M11 123A82 82 0 0 1 11 41L82 82Z" fill="#8CC9FF"/>
+      <circle cx="82" cy="82" r="44" fill="white"/>
+      <text x="82" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">今日</text>
+      <text x="82" y="98" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#637493">5/20（火）</text>
+
+      <text x="82" y="-12" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">12</text>
+      <text x="178" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">3</text>
+      <text x="82" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">6</text>
+      <text x="-14" y="87" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#081B3F">9</text>
+    </g>
+
+    <!-- Legend -->
+    <circle cx="320" cy="264" r="4" fill="#0C6CFF"/>
+    <text x="332" y="268" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#637493">集中　3.6時間</text>
+
+    <circle cx="320" cy="292" r="4" fill="#FF7A8A"/>
+    <text x="332" y="296" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#637493">会議　2.0時間</text>
+
+    <circle cx="424" cy="264" r="4" fill="#75DEC5"/>
+    <text x="436" y="268" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#637493">休憩　1.5時間</text>
+
+    <circle cx="424" cy="292" r="4" fill="#F6D574"/>
+    <text x="436" y="296" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#637493">その他　2.9時間</text>
+  </g>
+</svg>
