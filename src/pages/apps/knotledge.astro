@@ -33,24 +33,213 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="product-visual note-visual" aria-hidden="true">
-      <div class="note-mock">
-        <h3>光合成の仕組み</h3>
+    <div class="knotledge-carousel-wrap" aria-label="KnoteLedgeアプリのスクリーンショット" data-kn-carousel>
+      <div class="knotledge-carousel-track" data-kn-track>
 
-        <p>
-          光エネルギーを利用して、<br />
-          <mark>二酸化炭素と水から有機物をつくり</mark>、<br />
-          酸素を放出する。
-        </p>
-
-        <div class="ai-panel">
-          <strong>AIの回答</strong>
-          <p>
-            光合成は、植物が光を使って有機物を作る反応です。
-          </p>
+        <!-- スライド1：ランドスケープ画面 -->
+        <div class="knotledge-slide">
+          <svg
+            class="knotledge-tablet-svg"
+            viewBox="0 0 544 368"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-s1">
+                <rect x="28" y="8" width="488" height="326" rx="16" ry="16"/>
+              </clipPath>
+            </defs>
+            <!-- デバイス本体 -->
+            <rect x="0" y="0" width="544" height="368" rx="34" ry="34" fill="#061b3a"/>
+            <!-- スクリーン白地 -->
+            <rect x="28" y="8" width="488" height="326" rx="16" ry="16" fill="#f7fbff"/>
+            <!-- スクリーンショット3（ランドスケープ） -->
+            <image
+              href="/images/knotledge-ss3.jpg"
+              x="28" y="8" width="488" height="326"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-s1)"
+            />
+            <!-- カメラドット（右端中央） -->
+            <circle cx="534" cy="184" r="5" fill="#0d2244"/>
+            <!-- ホームインジケーター（底辺中央） -->
+            <rect x="232" y="350" width="80" height="4" rx="2" fill="#0d2244"/>
+            <!-- 音量ボタン（上辺） -->
+            <rect x="130" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
+            <rect x="180" y="-5" width="40" height="5" rx="2.5" fill="#04122e"/>
+            <!-- 電源ボタン（上辺右側） -->
+            <rect x="370" y="-5" width="56" height="5" rx="2.5" fill="#04122e"/>
+          </svg>
         </div>
+
+        <!-- スライド2：ノート詳細画面 -->
+        <div class="knotledge-slide">
+          <svg
+            class="knotledge-tablet-svg"
+            viewBox="0 0 360 544"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-s2">
+                <rect x="8" y="28" width="344" height="480" rx="18" ry="18"/>
+              </clipPath>
+            </defs>
+            <!-- デバイス本体 -->
+            <rect x="0" y="0" width="360" height="544" rx="34" ry="34" fill="#061b3a"/>
+            <!-- スクリーン白地 -->
+            <rect x="8" y="28" width="344" height="480" rx="18" ry="18" fill="#f7fbff"/>
+            <!-- スクリーンショット1 -->
+            <image
+              href="/images/knotledge-ss1.png"
+              x="8" y="28" width="344" height="480"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-s2)"
+            />
+            <!-- カメラピル -->
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <!-- ホームインジケーター -->
+            <rect x="140" y="520" width="80" height="4" rx="2" fill="#0d2244"/>
+            <!-- 音量ボタン（左） -->
+            <rect x="-5" y="110" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="160" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <!-- 電源ボタン（右） -->
+            <rect x="360" y="135" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+        <!-- スライド3：ノート編集画面 -->
+        <div class="knotledge-slide">
+          <svg
+            class="knotledge-tablet-svg"
+            viewBox="0 0 360 544"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-s3">
+                <rect x="8" y="28" width="344" height="480" rx="18" ry="18"/>
+              </clipPath>
+            </defs>
+            <!-- デバイス本体 -->
+            <rect x="0" y="0" width="360" height="544" rx="34" ry="34" fill="#061b3a"/>
+            <!-- スクリーン白地 -->
+            <rect x="8" y="28" width="344" height="480" rx="18" ry="18" fill="#f7fbff"/>
+            <!-- スクリーンショット2 -->
+            <image
+              href="/images/knotledge-ss2.png"
+              x="8" y="28" width="344" height="480"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-s3)"
+            />
+            <!-- カメラピル -->
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <!-- ホームインジケーター -->
+            <rect x="140" y="520" width="80" height="4" rx="2" fill="#0d2244"/>
+            <!-- 音量ボタン（左） -->
+            <rect x="-5" y="110" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="160" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <!-- 電源ボタン（右） -->
+            <rect x="360" y="135" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- ナビゲーション（矢印＋ドット） -->
+      <div class="knotledge-nav" role="tablist" aria-label="スライドを選択">
+        <button class="knotledge-nav-btn" data-kn-prev aria-label="前のスライド">&#8249;</button>
+        <button class="knotledge-dot is-active" data-kn-idx="0" role="tab" aria-label="スライド1" aria-selected="true"></button>
+        <button class="knotledge-dot" data-kn-idx="1" role="tab" aria-label="スライド2" aria-selected="false"></button>
+        <button class="knotledge-dot" data-kn-idx="2" role="tab" aria-label="スライド3" aria-selected="false"></button>
+        <button class="knotledge-nav-btn" data-kn-next aria-label="次のスライド">&#8250;</button>
       </div>
     </div>
+
+    <script>
+      (function () {
+        const carousel = document.querySelector('[data-kn-carousel]');
+        if (!carousel) return;
+        const track = carousel.querySelector('[data-kn-track]');
+        const dots = carousel.querySelectorAll('[data-kn-idx]');
+        const total = dots.length;
+        let current = 0;
+        let timer;
+
+        function goTo(idx) {
+          current = (idx + total) % total;
+          track.style.transform = `translateX(-${current * (100 / total)}%)`;
+          dots.forEach((d, i) => {
+            d.classList.toggle('is-active', i === current);
+            d.setAttribute('aria-selected', String(i === current));
+          });
+        }
+
+        function startAuto() {
+          clearInterval(timer);
+          timer = setInterval(() => goTo(current + 1), 3500);
+        }
+
+        function stopAuto() {
+          clearInterval(timer);
+        }
+
+        // ドットクリック
+        dots.forEach((d) => {
+          d.addEventListener('click', () => {
+            stopAuto();
+            goTo(Number(d.dataset.knIdx));
+            startAuto();
+          });
+        });
+
+        // 矢印ボタン
+        carousel.querySelector('[data-kn-prev]').addEventListener('click', () => {
+          stopAuto();
+          goTo(current - 1);
+          startAuto();
+        });
+        carousel.querySelector('[data-kn-next]').addEventListener('click', () => {
+          stopAuto();
+          goTo(current + 1);
+          startAuto();
+        });
+
+        // ホバーで自動停止
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+
+        // タッチスワイプ
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAuto();
+        }, { passive: true });
+        carousel.addEventListener('touchend', (e) => {
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+          startAuto();
+        }, { passive: true });
+
+        // マウスドラッグ（PC）
+        let dragStartX = 0;
+        let isDragging = false;
+        track.addEventListener('mousedown', (e) => {
+          dragStartX = e.clientX;
+          isDragging = true;
+          stopAuto();
+        });
+        window.addEventListener('mouseup', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const diff = dragStartX - e.clientX;
+          if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+          startAuto();
+        });
+
+        startAuto();
+      })();
+    </script>
   </section>
 
   <section class="section">
