@@ -2391,6 +2391,28 @@ mark {
 }
 
 /* ================================
+   Plachieve カルーセル（6スライド）
+================================ */
+
+.plachieve-carousel .studiair-carousel-track {
+  width: 800%;
+}
+
+.plachieve-carousel .studiair-slide {
+  width: 12.5%;
+}
+
+.plachieve-phone-svg {
+  transform: rotate(3deg);
+}
+
+@media (max-width: 640px) {
+  .plachieve-phone-svg {
+    max-width: 220px;
+  }
+}
+
+/* ================================
    Studiair 法的リンク行
 ================================ */
 

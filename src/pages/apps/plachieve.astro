@@ -32,25 +32,337 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="product-visual schedule-visual" aria-hidden="true">
-      <div class="calendar-mock">
-        <div class="calendar-header">2024年5月</div>
+    <div class="studiair-carousel-wrap plachieve-carousel" aria-label="Plachieveアプリのスクリーンショット" data-kn-carousel>
+      <div class="studiair-carousel-track" data-kn-track>
 
-        <div class="calendar-row">
-          <span>学習</span>
-          <span>90分</span>
+        <!-- スライド1：カレンダー月表示 -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p1">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss1.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p1)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
         </div>
 
-        <div class="calendar-row green">
-          <span>復習</span>
-          <span>30分</span>
+        <!-- スライド2：テンプレート日付選択 -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p7">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss7.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p7)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
         </div>
 
-        <div class="clock-mock">
-          <span>10:30</span>
+        <!-- スライド3：テンプレートポップアップ付きカレンダー -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p8">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss8.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p8)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
         </div>
+
+        <!-- スライド4：ダッシュボード（時計表示） -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p2">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss2.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p2)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+        <!-- スライド3：カレンダー日別詳細 -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p3">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss3.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p3)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+        <!-- スライド4：目標一覧 -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p4">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss4.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p4)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+        <!-- スライド5：目標進捗 -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p5">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss5.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p5)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+        <!-- スライド6：AIチェックポイント -->
+        <div class="studiair-slide">
+          <svg
+            class="studiair-tablet-svg plachieve-phone-svg"
+            viewBox="0 0 360 780"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="kn-clip-p6">
+                <rect x="8" y="28" width="344" height="716" rx="24" ry="24"/>
+              </clipPath>
+            </defs>
+            <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a"/>
+            <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff"/>
+            <image
+              href="/images/plachieve-ss6.jpg"
+              x="8" y="28" width="344" height="716"
+              preserveAspectRatio="xMidYMid meet"
+              clip-path="url(#kn-clip-p6)"
+            />
+            <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244"/>
+            <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244"/>
+            <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e"/>
+            <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- ナビゲーション（矢印＋ドット） -->
+      <div class="studiair-nav" role="tablist" aria-label="スライドを選択">
+        <button class="studiair-nav-btn" data-kn-prev aria-label="前のスライド">&#8249;</button>
+        <button class="studiair-dot is-active" data-kn-idx="0" role="tab" aria-label="スライド1" aria-selected="true"></button>
+        <button class="studiair-dot" data-kn-idx="1" role="tab" aria-label="スライド2" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="2" role="tab" aria-label="スライド3" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="3" role="tab" aria-label="スライド4" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="4" role="tab" aria-label="スライド5" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="5" role="tab" aria-label="スライド6" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="6" role="tab" aria-label="スライド7" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="7" role="tab" aria-label="スライド8" aria-selected="false"></button>
+        <button class="studiair-nav-btn" data-kn-next aria-label="次のスライド">&#8250;</button>
       </div>
     </div>
+
+    <script>
+      (function () {
+        const carousel = document.querySelector('[data-kn-carousel]');
+        if (!carousel) return;
+        const track = carousel.querySelector('[data-kn-track]');
+        const dots = carousel.querySelectorAll('[data-kn-idx]');
+        const total = dots.length;
+        let current = 0;
+        let timer;
+
+        function goTo(idx) {
+          current = (idx + total) % total;
+          track.style.transform = `translateX(-${current * (100 / total)}%)`;
+          dots.forEach((d, i) => {
+            d.classList.toggle('is-active', i === current);
+            d.setAttribute('aria-selected', String(i === current));
+          });
+        }
+
+        function startAuto() {
+          clearInterval(timer);
+          timer = setInterval(() => goTo(current + 1), 3500);
+        }
+
+        function stopAuto() {
+          clearInterval(timer);
+        }
+
+        dots.forEach((d) => {
+          d.addEventListener('click', () => {
+            stopAuto();
+            goTo(Number(d.dataset.knIdx));
+            startAuto();
+          });
+        });
+
+        carousel.querySelector('[data-kn-prev]').addEventListener('click', () => {
+          stopAuto();
+          goTo(current - 1);
+          startAuto();
+        });
+        carousel.querySelector('[data-kn-next]').addEventListener('click', () => {
+          stopAuto();
+          goTo(current + 1);
+          startAuto();
+        });
+
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+          stopAuto();
+        }, { passive: true });
+        carousel.addEventListener('touchend', (e) => {
+          const diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+          startAuto();
+        }, { passive: true });
+
+        let dragStartX = 0;
+        let isDragging = false;
+        track.addEventListener('mousedown', (e) => {
+          dragStartX = e.clientX;
+          isDragging = true;
+          stopAuto();
+        });
+        window.addEventListener('mouseup', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const diff = dragStartX - e.clientX;
+          if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+          startAuto();
+        });
+
+        startAuto();
+      })();
+    </script>
   </section>
 
   <section class="section">
