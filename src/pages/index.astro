@@ -40,12 +40,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <div class="home-classic-visual svg-hero-wrap" aria-label="Noverisアプリの画面イメージ">
-        <img
-          src="/images/hero-devices.svg"
-          alt="Noverisのダッシュボードとスケジュールアプリ画面"
-          class="hero-devices-svg"
-        />
+      <div class="home-classic-visual hero-photo-stack" aria-label="Noverisアプリの画面イメージ">
+        <div class="hero-device-frame hero-device-frame--tablet">
+          <img
+            src="/images/studiair-ss3.jpg"
+            alt="Studiairの横長ノート画面"
+            decoding="async"
+          />
+        </div>
+        <div class="hero-device-frame hero-device-frame--phone">
+          <img
+            src="/images/hero-plachieve.jpg"
+            alt="Plachieveの予定管理画面"
+            decoding="async"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -119,10 +128,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             直感的にスケジュールを可視化できます。
           </p>
 
-          <div class="classic-svg-preview">
+          <div class="classic-svg-preview plachieve-photo-preview">
             <img
-              src="/images/plachieve-preview.svg"
-              alt="Plachieveのカレンダーと時計型UI画面"
+              src="/images/plachieve-preview-1.jpg"
+              alt="Plachieveの予定管理画面"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="/images/plachieve-preview-2.jpg"
+              alt="Plachieveの目標管理画面"
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
