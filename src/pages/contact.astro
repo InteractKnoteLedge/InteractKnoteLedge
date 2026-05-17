@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="よくある質問とお問い合わせ｜Noveris"
+  description="Noverisのよくある質問とお問い合わせページです。アプリやサポートに関する確認事項をご案内します。"
+>
+  <section class="faq-page">
+    <div class="container faq-page-inner">
+      <p class="breadcrumb">
+        <a href="/">ホーム</a>
+        <span>›</span>
+        よくある質問とお問い合わせ
+      </p>
+
+      <div class="faq-hero">
+        <p class="eyebrow">FAQ & Contact</p>
+        <h1>よくある質問とお問い合わせ</h1>
+        <p>
+          Noverisのアプリやサポートについて、よくある質問をまとめています。
+          解決しない場合は、ページ下部のボタンからメールでお問い合わせください。
+        </p>
+      </div>
+
+      <div class="faq-list" aria-label="よくある質問">
+        <section class="faq-item">
+          <h2>Plachieveのデータはどこに保存されますか？</h2>
+          <p>
+            Plachieveで入力した予定、目標、テンプレート、UI設定などは、原則としてユーザーの端末内に保存されます。
+            広告表示や課金処理に必要な情報は、Google AdMobやApple App Store / StoreKitが処理する場合があります。
+          </p>
+        </section>
+
+        <section class="faq-item">
+          <h2>Proプランの購入状態を復元できますか？</h2>
+          <p>
+            アプリ内に復元機能がある場合、Apple App Store / StoreKitの購入情報に基づいてProプランの状態を復元できます。
+            反映には通信環境やApple IDの状態により時間がかかる場合があります。
+          </p>
+        </section>
+
+        <section class="faq-item">
+          <h2>バックアップファイルには何が含まれますか？</h2>
+          <p>
+            予定、目標、テンプレート、設定などのアプリ内データが含まれる場合があります。
+            Proプランの購入状態はバックアップファイルには含まれず、Appleの購入情報に基づいて復元されます。
+          </p>
+        </section>
+
+        <section class="faq-item">
+          <h2>通知やウィジェットがすぐに反映されないことはありますか？</h2>
+          <p>
+            はい。通知やウィジェットの更新は、iOSの仕様、端末の状態、集中モード、バッテリー状態、バックグラウンド更新の制限などに影響を受ける場合があります。
+          </p>
+        </section>
+
+        <section class="faq-item">
+          <h2>Studiairは現在利用できますか？</h2>
+          <p>
+            Studiairは現在開発中です。公開時期や提供内容が決まり次第、サイト内のStudiairページでお知らせします。
+          </p>
+        </section>
+
+        <section class="faq-item">
+          <h2>返信にはどのくらい時間がかかりますか？</h2>
+          <p>
+            内容を確認のうえ、可能な限り順次返信します。お問い合わせ内容によっては、確認や調査のためにお時間をいただく場合があります。
+          </p>
+        </section>
+      </div>
+
+      <section class="faq-contact-panel">
+        <p class="eyebrow">Contact</p>
+        <h2>解決しない場合はこちら</h2>
+        <p>
+          アプリ名、利用端末、OSバージョン、発生している内容を添えていただくと、状況を確認しやすくなります。
+        </p>
+        <a href="mailto:contact@noveris.jp" class="primary-button">
+          メールで問い合わせる
+          <span aria-hidden="true">→</span>
+        </a>
+      </section>
+    </div>
+  </section>
+</BaseLayout>
