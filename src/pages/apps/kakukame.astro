@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Kakuカメ｜Noveris"
+  description="Kakuカメは、気持ちを文字にしてから撮る、逆転の発想で生まれたシンプルなカメラアプリです。"
+>
+  <section class="product-hero">
+    <div>
+      <p class="breadcrumb">
+        <a href="/">ホーム</a>
+        <span>›</span>
+        <a href="/#apps">アプリ</a>
+        <span>›</span>
+        Kakuカメ
+      </p>
+
+      <p class="eyebrow">Noveris App</p>
+
+      <h1>Kakuカメ</h1>
+
+      <h2>
+        気持ちを書き起こしてから、撮る。<br />
+        逆転の発想で生まれたカメラアプリ。
+      </h2>
+
+      <p>
+        Kakuカメは、シャッターを切る前に気持ちを文字にする、
+        新しい写真体験を提供するカメラアプリです。
+        高画質カメラとレトロカメラの2種類を搭載し、
+        シンプルな操作で日常の一瞬を残せます。
+      </p>
+    </div>
+
+    <div class="kk-hero-icon-wrap" aria-label="Kakuカメアプリアイコン">
+      <img
+        src="/images/kakukame-icon.png"
+        alt="Kakuカメ"
+        class="kk-hero-icon"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Kakuカメの主な機能</p>
+      <h2>書いてから、撮る。新しい写真体験</h2>
+    </div>
+
+    <div class="feature-grid">
+      <article class="feature-card">
+        <h3>撮る前に書く</h3>
+        <p>
+          シャッターを切る前に、今の気持ちや場面の説明を
+          テキストで入力できます。写真に言葉を添えることで、
+          記憶をより鮮明に残せます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>高画質カメラ</h3>
+        <p>
+          鮮明な写真を残したいときのための、
+          高画質モード。日常の大切な瞬間を
+          クリアに記録できます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>レトロカメラ</h3>
+        <p>
+          懐かしい雰囲気の写真を撮りたいときのための、
+          レトロモード。フィルム調の質感で
+          日常をノスタルジックに切り取れます。
+        </p>
+      </article>
+
+      <article class="feature-card">
+        <h3>シンプルな操作</h3>
+        <p>
+          複雑な設定は不要。書いて、選んで、撮るだけの
+          直感的なUIで、誰でもすぐに使い始められます。
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <div class="section-heading">
+      <h2>Kakuカメの使い方</h2>
+    </div>
+
+    <div class="flow-grid five">
+      <article>
+        <span>1</span>
+        <h3>アプリを起動</h3>
+        <p>Kakuカメを開きます。</p>
+      </article>
+
+      <article>
+        <span>2</span>
+        <h3>気持ちを書く</h3>
+        <p>今の感情や場面を一言テキストで入力します。</p>
+      </article>
+
+      <article>
+        <span>3</span>
+        <h3>カメラを選ぶ</h3>
+        <p>高画質またはレトロ、2つのモードから選択します。</p>
+      </article>
+
+      <article>
+        <span>4</span>
+        <h3>撮影する</h3>
+        <p>シャッターを切って瞬間を記録します。</p>
+      </article>
+
+      <article>
+        <span>5</span>
+        <h3>思い出を残す</h3>
+        <p>言葉と写真がセットになった記録が完成します。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="highlight-section">
+    <div>
+      <h2>写真に、言葉を。</h2>
+
+      <p>
+        写真は瞬間を記録しますが、その時の気持ちは薄れていきます。
+        Kakuカメは「先に書く」という逆転の発想で、
+        写真と感情を同時に残す新しい体験を提供します。
+      </p>
+    </div>
+
+    <div class="kk-mode-badges" aria-hidden="true">
+      <span class="kk-badge kk-badge--hq">高画質</span>
+      <span class="kk-badge kk-badge--retro">レトロ</span>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <h2>Kakuカメについて相談する</h2>
+
+    <p>
+      Kakuカメに関するご意見・ご要望はお気軽にお問い合わせください。
+    </p>
+
+    <div class="hero-actions center">
+      <a href="/contact" class="primary-button">お問い合わせ</a>
+      <a href="/" class="secondary-button">ホームへ戻る</a>
+    </div>
+  </section>
+
+  <section class="studiair-legal-links">
+    <a href="/apps/kakukame/terms">利用規約</a>
+    <span>·</span>
+    <a href="/apps/kakukame/privacy">プライバシーポリシー</a>
+    <span>·</span>
+    <a href="/apps/kakukame/tokusho">特定商取引法に基づく表示</a>
+  </section>
+
+  <style>
+    .kk-hero-icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .kk-hero-icon {
+      width: 200px;
+      height: 200px;
+      border-radius: 44px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+      object-fit: cover;
+    }
+    .kk-mode-badges {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .kk-badge {
+      padding: 0.6rem 1.6rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .kk-badge--hq {
+      background: #1a1a2e;
+      color: #fff;
+    }
+    .kk-badge--retro {
+      background: #b5651d;
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .kk-hero-icon {
+        width: 140px;
+        height: 140px;
+        border-radius: 32px;
+      }
+    }
+  </style>
+</BaseLayout>
