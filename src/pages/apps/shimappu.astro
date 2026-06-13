@@ -33,14 +33,139 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </div>
 
-    <div class="kk-hero-icon-wrap" aria-label="しまっぷアプリアイコン">
-      <img
-        src="/images/shimappu-icon.jpg"
-        alt="しまっぷ"
-        class="kk-hero-icon"
-        decoding="async"
-      />
+    <div class="studiair-carousel-wrap shimappu-carousel" aria-label="しまっぷアプリのスクリーンショット" data-kn-carousel>
+      <div class="studiair-carousel-track" data-kn-track>
+        <!-- Plachieveと同じiPhone筐体で、しまっぷの主要画面を表示します。 -->
+        {[
+          { src: '/images/shimappu-ss1.png', label: 'モノ一覧画面', clipId: 'shimappu-clip-1' },
+          { src: '/images/shimappu-ss2.png', label: '収納一覧画面', clipId: 'shimappu-clip-2' },
+          { src: '/images/shimappu-ss3.png', label: '予定と持ち物テンプレート画面', clipId: 'shimappu-clip-3' },
+          { src: '/images/shimappu-ss4.png', label: '収納一覧と通知画面', clipId: 'shimappu-clip-4' },
+        ].map((screenshot) => (
+          <div class="studiair-slide">
+            <svg
+              class="studiair-tablet-svg plachieve-phone-svg"
+              viewBox="0 0 360 780"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label={screenshot.label}
+            >
+              <defs>
+                <clipPath id={screenshot.clipId}>
+                  <rect x="8" y="28" width="344" height="716" rx="24" ry="24" />
+                </clipPath>
+              </defs>
+              <rect x="0" y="0" width="360" height="780" rx="40" ry="40" fill="#061b3a" />
+              <rect x="8" y="28" width="344" height="716" rx="24" ry="24" fill="#f7fbff" />
+              <image
+                href={screenshot.src}
+                x="8"
+                y="28"
+                width="344"
+                height="716"
+                preserveAspectRatio="xMidYMid slice"
+                clip-path={`url(#${screenshot.clipId})`}
+              />
+              <rect x="156" y="10" width="48" height="8" rx="4" fill="#0d2244" />
+              <rect x="140" y="752" width="80" height="4" rx="2" fill="#0d2244" />
+              <rect x="-5" y="140" width="5" height="40" rx="2.5" fill="#04122e" />
+              <rect x="-5" y="192" width="5" height="40" rx="2.5" fill="#04122e" />
+              <rect x="360" y="170" width="5" height="56" rx="2.5" fill="#04122e" />
+            </svg>
+          </div>
+        ))}
+      </div>
+
+      <div class="studiair-nav" role="tablist" aria-label="スクリーンショットを選択">
+        <button class="studiair-nav-btn" data-kn-prev aria-label="前のスクリーンショット">&#8249;</button>
+        <button class="studiair-dot is-active" data-kn-idx="0" role="tab" aria-label="スクリーンショット1" aria-selected="true"></button>
+        <button class="studiair-dot" data-kn-idx="1" role="tab" aria-label="スクリーンショット2" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="2" role="tab" aria-label="スクリーンショット3" aria-selected="false"></button>
+        <button class="studiair-dot" data-kn-idx="3" role="tab" aria-label="スクリーンショット4" aria-selected="false"></button>
+        <button class="studiair-nav-btn" data-kn-next aria-label="次のスクリーンショット">&#8250;</button>
+      </div>
     </div>
+
+    <script>
+      // カルーセルの操作方法をPlachieveページと統一します。
+      (function () {
+        const carousel = document.querySelector('[data-kn-carousel]');
+        if (!carousel) return;
+
+        const track = carousel.querySelector('[data-kn-track]');
+        const dots = carousel.querySelectorAll('[data-kn-idx]');
+        const previousButton = carousel.querySelector('[data-kn-prev]');
+        const nextButton = carousel.querySelector('[data-kn-next]');
+        const total = dots.length;
+        let current = 0;
+        let timer;
+
+        function goTo(index) {
+          current = (index + total) % total;
+          track.style.transform = `translateX(-${current * (100 / total)}%)`;
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle('is-active', dotIndex === current);
+            dot.setAttribute('aria-selected', String(dotIndex === current));
+          });
+        }
+
+        function stopAuto() {
+          clearInterval(timer);
+        }
+
+        function startAuto() {
+          stopAuto();
+          timer = setInterval(() => goTo(current + 1), 3500);
+        }
+
+        dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            goTo(Number(dot.dataset.knIdx));
+            startAuto();
+          });
+        });
+
+        previousButton.addEventListener('click', () => {
+          goTo(current - 1);
+          startAuto();
+        });
+        nextButton.addEventListener('click', () => {
+          goTo(current + 1);
+          startAuto();
+        });
+
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', (event) => {
+          touchStartX = event.touches[0].clientX;
+          stopAuto();
+        }, { passive: true });
+        carousel.addEventListener('touchend', (event) => {
+          const difference = touchStartX - event.changedTouches[0].clientX;
+          if (Math.abs(difference) > 40) goTo(current + (difference > 0 ? 1 : -1));
+          startAuto();
+        }, { passive: true });
+
+        let dragStartX = 0;
+        let isDragging = false;
+        track.addEventListener('mousedown', (event) => {
+          dragStartX = event.clientX;
+          isDragging = true;
+          stopAuto();
+        });
+        window.addEventListener('mouseup', (event) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const difference = dragStartX - event.clientX;
+          if (Math.abs(difference) > 40) goTo(current + (difference > 0 ? 1 : -1));
+          startAuto();
+        });
+
+        startAuto();
+      })();
+    </script>
   </section>
 
   <section class="section">
@@ -193,24 +318,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <style>
-    .kk-hero-icon-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* 4枚構成の幅だけを指定し、筐体と操作UIはPlachieveの共通スタイルを利用します。 */
+    .shimappu-carousel .studiair-carousel-track {
+      width: 400%;
     }
-    .kk-hero-icon {
-      width: 200px;
-      height: 200px;
-      border-radius: 44px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-      object-fit: cover;
-    }
-    @media (max-width: 600px) {
-      .kk-hero-icon {
-        width: 140px;
-        height: 140px;
-        border-radius: 32px;
-      }
+
+    .shimappu-carousel .studiair-slide {
+      width: 25%;
     }
   </style>
 </BaseLayout>
