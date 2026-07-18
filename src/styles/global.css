@@ -2575,7 +2575,8 @@ mark {
    ホームと同じ白・黒・ブルーの設計言語を、4つのアプリ詳細ページへ適用します。
 ========================================= */
 
-.page-product {
+.page-product,
+.page-contact {
   --studio-paper: #ffffff;
   --studio-ink: #14171a;
   --studio-blue: #0000ee;
@@ -3453,5 +3454,268 @@ mark {
   .legal-nav .secondary-button {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* =========================================
+   Contact Studio Theme
+   ホームと同じ索引型レイアウトへFAQとメール導線を統一します。
+========================================= */
+
+.page-contact .contact-studio-hero {
+  position: relative;
+  min-height: 70vh;
+  padding: clamp(64px, 9vw, 120px) var(--studio-pad);
+  overflow: hidden;
+  border-bottom: 1px solid var(--studio-hairline);
+  background: var(--studio-paper);
+}
+
+.page-contact .contact-studio-hero::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--studio-blue);
+  content: "";
+  pointer-events: none;
+  animation: contact-scan 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s both;
+}
+
+.contact-breadcrumb {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 clamp(32px, 6vw, 72px);
+  color: var(--studio-dim);
+}
+
+.contact-breadcrumb a {
+  color: var(--studio-ink);
+}
+
+.contact-breadcrumb a:hover {
+  color: var(--studio-blue);
+}
+
+.contact-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: clamp(26px, 4vw, 48px);
+  color: var(--studio-dim);
+}
+
+.contact-studio-hero h1 {
+  max-width: 13em;
+  margin: 0;
+  color: var(--studio-ink);
+  font-size: clamp(46px, 7.5vw, 96px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+}
+
+.contact-hero-copy {
+  max-width: 48em;
+  margin: clamp(24px, 4vw, 44px) 0 0;
+  color: #3a3f44;
+  line-height: 1.9;
+}
+
+.contact-faq-section {
+  border-bottom: 1px solid var(--studio-hairline);
+}
+
+.contact-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px var(--studio-pad);
+  border-bottom: 1px solid var(--studio-hairline);
+}
+
+.contact-section-head h2 {
+  margin: 0;
+  font-weight: 500;
+}
+
+.contact-section-head > span {
+  color: var(--studio-dim);
+}
+
+.contact-faq-list {
+  display: grid;
+}
+
+.contact-faq-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px minmax(240px, 0.9fr) minmax(0, 1.4fr);
+  align-items: start;
+  gap: 24px;
+  padding: 30px var(--studio-pad);
+  border-bottom: 1px solid var(--studio-hairline);
+  transition: background 0.15s;
+}
+
+.contact-faq-item:last-child {
+  border-bottom: 0;
+}
+
+.contact-faq-item:hover {
+  background: var(--studio-faint);
+}
+
+.contact-question-code {
+  padding-top: 5px;
+  color: var(--studio-blue);
+}
+
+.contact-faq-item h3 {
+  margin: 0;
+  color: var(--studio-ink);
+  font-size: clamp(18px, 2vw, 24px);
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+}
+
+.contact-faq-item > p {
+  margin: 0;
+  color: #3a3f44;
+  line-height: 1.85;
+}
+
+.contact-studio-band {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(64px, 9vw, 112px) var(--studio-pad);
+  border-bottom: 1px solid var(--studio-hairline);
+}
+
+.contact-studio-band > div {
+  max-width: 780px;
+}
+
+.contact-studio-band .studio-mono {
+  margin: 0 0 16px;
+  color: var(--studio-blue);
+}
+
+.contact-studio-band h2 {
+  margin: 0;
+  color: var(--studio-ink);
+  font-size: clamp(30px, 5vw, 58px);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.contact-band-copy {
+  max-width: 48em;
+  margin: 24px 0 0;
+  color: #3a3f44;
+  line-height: 1.85;
+}
+
+.contact-mail-link {
+  flex: 0 0 auto;
+  padding: 14px 28px;
+  color: var(--studio-ink);
+  border: 1px solid var(--studio-ink);
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.contact-mail-link:hover {
+  color: var(--studio-paper);
+  background: var(--studio-blue);
+  border-color: var(--studio-blue);
+}
+
+.page-contact .contact-typewriter .contact-type-char {
+  opacity: 0;
+}
+
+.page-contact .contact-typewriter .contact-type-char.is-on {
+  opacity: 1;
+}
+
+.page-contact .contact-type-caret {
+  color: var(--studio-blue);
+  animation: contact-caret-blink 0.7s steps(1) infinite;
+}
+
+.page-contact .contact-after-copy {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.45s cubic-bezier(0.2, 0.65, 0.2, 1), transform 0.45s cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+.page-contact .contact-after-copy.is-shown {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes contact-scan {
+  0% { opacity: 0; transform: translateX(0); }
+  10%, 90% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateX(100vw); }
+}
+
+@keyframes contact-caret-blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .contact-faq-item {
+    grid-template-columns: 52px minmax(0, 1fr);
+    row-gap: 10px;
+  }
+
+  .contact-faq-item > p {
+    grid-column: 2;
+  }
+
+  .contact-studio-band {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-meta {
+    flex-direction: column;
+  }
+
+  .contact-section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-faq-item {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-faq-item > p {
+    grid-column: 1;
+  }
+
+  .contact-mail-link {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-contact .contact-studio-hero::after,
+  .page-contact .contact-type-caret {
+    display: none;
+  }
+
+  .contact-faq-item,
+  .contact-mail-link {
+    transition: none;
   }
 }

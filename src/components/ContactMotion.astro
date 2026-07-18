@@ -1,0 +1,94 @@
+<!-- お問い合わせページも、見出しの打鍵完了後に説明を表示する順序へ統一します。 -->
+<script>
+  const contactPage = document.querySelector('.page-contact');
+  const reduceContactMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (contactPage && !reduceContactMotion && 'IntersectionObserver' in window) {
+    const prepare = (heading: HTMLElement) => {
+      heading.setAttribute('aria-label', heading.textContent?.trim() ?? '');
+      heading.classList.add('contact-typewriter');
+      const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      let node = walker.nextNode();
+
+      while (node) {
+        textNodes.push(node as Text);
+        node = walker.nextNode();
+      }
+
+      textNodes.forEach((textNode) => {
+        if (textNode.parentElement?.classList.contains('contact-type-char')) return;
+        const fragment = document.createDocumentFragment();
+        Array.from(textNode.data).forEach((character) => {
+          const span = document.createElement('span');
+          span.className = 'contact-type-char';
+          span.textContent = character;
+          span.setAttribute('aria-hidden', 'true');
+          fragment.appendChild(span);
+        });
+        textNode.replaceWith(fragment);
+      });
+    };
+
+    const type = (heading: HTMLElement, speed: number) => new Promise<void>((resolve) => {
+      const characters = Array.from(heading.querySelectorAll<HTMLElement>('.contact-type-char'));
+      const caret = document.createElement('span');
+      caret.className = 'contact-type-caret';
+      caret.textContent = '▍';
+      caret.setAttribute('aria-hidden', 'true');
+      let index = 0;
+
+      const next = () => {
+        const character = characters[index];
+        if (!character) {
+          caret.remove();
+          heading.classList.remove('contact-typewriter');
+          resolve();
+          return;
+        }
+        character.classList.add('is-on');
+        character.after(caret);
+        index += 1;
+        window.setTimeout(next, speed);
+      };
+
+      next();
+    });
+
+    const heroTitle = document.querySelector<HTMLElement>('.contact-studio-hero h1');
+    const heroCopy = document.querySelector<HTMLElement>('.contact-hero-copy');
+    if (heroTitle) prepare(heroTitle);
+    heroCopy?.classList.add('contact-after-copy');
+
+    window.requestAnimationFrame(() => {
+      if (!heroTitle) return;
+      void type(heroTitle, 38).then(() => heroCopy?.classList.add('is-shown'));
+    });
+
+    const targets = [
+      ...document.querySelectorAll<HTMLElement>('.contact-faq-item'),
+      ...document.querySelectorAll<HTMLElement>('.contact-studio-band'),
+    ];
+
+    targets.forEach((target) => {
+      const heading = target.querySelector<HTMLElement>('h3, h2');
+      const copy = target.querySelector<HTMLElement>(':scope > p, div > .contact-band-copy');
+      if (heading) prepare(heading);
+      copy?.classList.add('contact-after-copy');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const target = entry.target as HTMLElement;
+        const heading = target.querySelector<HTMLElement>('h3, h2');
+        const copy = target.querySelector<HTMLElement>(':scope > p, div > .contact-band-copy');
+        if (!heading) return;
+        void type(heading, 20).then(() => copy?.classList.add('is-shown'));
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -5% 0px' });
+
+    targets.forEach((target) => observer.observe(target));
+  }
+</script>

@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import StudioHeader from '../components/StudioHeader.astro';
 import StudioFooter from '../components/StudioFooter.astro';
 import ProductMotion from '../components/ProductMotion.astro';
+import ContactMotion from '../components/ContactMotion.astro';
 import '../styles/global.css';
 
 const {
@@ -15,6 +16,7 @@ const {
 // ホームは専用のヘッダーとフッターを持つため、共通レイアウトとの二重表示を避けます。
 const isHome = page === 'home';
 const isProduct = page === 'product';
+const isContact = page === 'contact';
 ---
 
 <!doctype html>
@@ -32,10 +34,10 @@ const isProduct = page === 'product';
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   </head>
 
-  <body class:list={{ 'page-home': isHome, 'page-product': isProduct }}>
+  <body class:list={{ 'page-home': isHome, 'page-product': isProduct, 'page-contact': isContact }}>
     {isHome ? (
       <slot />
-    ) : isProduct ? (
+    ) : isProduct || isContact ? (
       <>
         <StudioHeader />
 
@@ -44,7 +46,8 @@ const isProduct = page === 'product';
         </main>
 
         <StudioFooter />
-        <ProductMotion />
+        {isProduct && <ProductMotion />}
+        {isContact && <ContactMotion />}
       </>
     ) : (
       <>

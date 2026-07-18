@@ -3,7 +3,7 @@ export const SITE = {
   tagline: "Software that thinks with you.",
   description: "Independent app studio building tools for learners and doers.",
   url: "https://noveris.dev",
-  contactEmail: "noveris.interactknoteledge@gmail.com",
+  contactEmail: "contact@noveris.jp",
   social: {
     github: "https://github.com/InteractKnoteLedge",
   },
