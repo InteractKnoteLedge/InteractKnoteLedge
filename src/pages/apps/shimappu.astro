@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HighlightExplorer from '../../components/HighlightExplorer.astro';
+
+const highlights = [
+  { label: '収納', title: '家の収納場所を、迷わずたどれる情報に。', description: '部屋・家具・棚などの収納場所を階層的に登録し、家のどこに何があるかを整理して確認できます。' },
+  { label: 'モノ', title: 'モノの場所を、検索ですぐ見つける。', description: '持ち物を収納場所と結び付けて記録することで、「あれをどこに置いた？」を名前や分類からすぐに探せます。' },
+  { label: '予定', title: '予定と必要な持ち物を、ひとつに。', description: '学校・仕事・旅行などの予定に持ち物テンプレートを適用し、その日に必要な準備を予定単位で確認できます。' },
+  { label: '準備', title: '持ち物準備を、チェックできる行動へ。', description: '予定ごとの持ち物をチェックリストとして確認し、準備済み・未準備を見分けながら忘れ物を防ぎます。' },
+  { label: '通知', title: '必要なタイミングで、準備を知らせる。', description: '指定時刻や出発・到着などのタイミングに合わせて通知し、持ち物を確認すべき瞬間を逃さないよう支援します。' },
+];
 ---
 
 <BaseLayout
-  title="しまっぷ｜Noveris"
-  description="しまっぷは、家のモノの収納場所と外出時の持ち物準備をまとめて管理するアプリです。"
+  page="product"
+  title="モノミル｜Noveris"
+  description="モノミルは、家のモノの収納場所と外出時の持ち物準備をまとめて管理するアプリです。"
 >
   <section class="product-hero">
     <div>
@@ -13,12 +23,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span>›</span>
         <a href="/#apps">アプリ</a>
         <span>›</span>
-        しまっぷ
+        モノミル
       </p>
 
-      <p class="eyebrow">Noveris App</p>
-
-      <h1>しまっぷ</h1>
+      <div class="product-identity">
+        <p class="eyebrow studio-mono">NV-04 / ORGANIZATION</p>
+      </div>
+      <div class="product-title-line">
+        <img src="/images/shimappu-icon.jpg" alt="" />
+        <h1>モノミル</h1>
+      </div>
 
       <h2>
         モノの場所も、持ち物準備も、<br />
@@ -26,16 +40,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </h2>
 
       <p>
-        しまっぷは、家にあるモノの収納場所と、
+        モノミルは、家にあるモノの収納場所と、
         外出時の持ち物準備をまとめて管理するアプリです。
         「あれ、どこに置いたっけ？」「今日、何を持っていけばいい？」
         を解決します。
       </p>
     </div>
 
-    <div class="studiair-carousel-wrap shimappu-carousel" aria-label="しまっぷアプリのスクリーンショット" data-kn-carousel>
+    <div class="studiair-carousel-wrap shimappu-carousel" aria-label="モノミルアプリのスクリーンショット" data-kn-carousel>
       <div class="studiair-carousel-track" data-kn-track>
-        <!-- Plachieveと同じiPhone筐体で、しまっぷの主要画面を表示します。 -->
+        <!-- Plachieveと同じiPhone筐体で、モノミルの主要画面を表示します。 -->
         {[
           { src: '/images/shimappu-ss1.png', label: 'モノ一覧画面', clipId: 'shimappu-clip-1' },
           { src: '/images/shimappu-ss2.png', label: '収納一覧画面', clipId: 'shimappu-clip-2' },
@@ -170,7 +184,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="section">
     <div class="section-heading">
-      <p class="eyebrow">しまっぷの主な機能</p>
+      <p class="eyebrow">モノミルの主な機能</p>
       <h2>収納から持ち物準備まで、一元管理</h2>
     </div>
 
@@ -231,7 +245,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <p>
           モノの移動や今日の持ち物確認を、アプリを開かずに行えます。
           ホーム画面ウィジェットやiOSショートカットと連携し、
-          毎日の動線にしまっぷをシームレスに組み込めます。
+          毎日の動線にモノミルをシームレスに組み込めます。
         </p>
       </article>
     </div>
@@ -239,7 +253,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="flow-section">
     <div class="section-heading">
-      <h2>しまっぷの活用フロー</h2>
+      <h2>モノミルの活用フロー</h2>
     </div>
 
     <div class="flow-grid five">
@@ -275,32 +289,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <section class="highlight-section">
-    <div>
-      <h2>しまっぷの革新ポイント</h2>
-
-      <p>
-        しまっぷは、「どこにある？」と「何を持っていく？」を
-        ひとつのアプリで解決します。
-        収納管理と持ち物準備を連携させることで、
-        毎日の出発をもっとスムーズにします。
-      </p>
-    </div>
-
-    <div class="checkpoint-ui" aria-hidden="true">
-      <span>収納</span>
-      <span>モノ</span>
-      <span>予定</span>
-      <span class="active">準備</span>
-      <span>通知</span>
-    </div>
-  </section>
+  <HighlightExplorer id="monomiru-highlights" heading="モノミルの革新ポイント" items={highlights} />
 
   <section class="contact-section">
-    <h2>しまっぷについて相談する</h2>
+    <h2>モノミルについて相談する</h2>
 
     <p>
-      しまっぷに関するご意見・ご要望はお気軽にお問い合わせください。
+      モノミルに関するご意見・ご要望はお気軽にお問い合わせください。
     </p>
 
     <div class="hero-actions center">

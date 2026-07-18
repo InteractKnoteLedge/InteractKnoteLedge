@@ -1,12 +1,20 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import StudioHeader from '../components/StudioHeader.astro';
+import StudioFooter from '../components/StudioFooter.astro';
+import ProductMotion from '../components/ProductMotion.astro';
 import '../styles/global.css';
 
 const {
   title = 'Noveris',
   description = 'Noverisは、学びと日常を次のステージへ導くアプリ開発集団です。',
+  page,
 } = Astro.props;
+
+// ホームは専用のヘッダーとフッターを持つため、共通レイアウトとの二重表示を避けます。
+const isHome = page === 'home';
+const isProduct = page === 'product';
 ---
 
 <!doctype html>
@@ -24,13 +32,30 @@ const {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   </head>
 
-  <body>
-    <Header />
-
-    <main>
+  <body class:list={{ 'page-home': isHome, 'page-product': isProduct }}>
+    {isHome ? (
       <slot />
-    </main>
+    ) : isProduct ? (
+      <>
+        <StudioHeader />
 
-    <Footer />
+        <main>
+          <slot />
+        </main>
+
+        <StudioFooter />
+        <ProductMotion />
+      </>
+    ) : (
+      <>
+        <Header />
+
+        <main>
+          <slot />
+        </main>
+
+        <Footer />
+      </>
+    )}
   </body>
 </html>

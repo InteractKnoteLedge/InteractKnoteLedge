@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Plachieve</title>
+  <desc id="desc">方眼背景に、右上へ伸びる青いチェックマークを配置したアプリアイコン</desc>
+
+  <defs>
+    <!-- 添付アイコンと同じ角丸領域の内側だけに方眼を表示します。 -->
+    <clipPath id="icon-shape">
+      <rect width="160" height="160" rx="30" />
+    </clipPath>
+    <linearGradient id="check-gradient" x1="32" y1="96" x2="122" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3f96ff" />
+      <stop offset="1" stop-color="#0758d8" />
+    </linearGradient>
+  </defs>
+
+  <g clip-path="url(#icon-shape)">
+    <rect width="160" height="160" fill="#ffffff" />
+
+    <!-- 25px間隔の薄い方眼と、アクセントになる3つの青灰色セルです。 -->
+    <g fill="none" stroke="#dce5f1" stroke-width="1.4">
+      <path d="M25 0V160 M50 0V160 M75 0V160 M100 0V160 M125 0V160 M150 0V160" />
+      <path d="M0 25H160 M0 50H160 M0 75H160 M0 100H160 M0 125H160 M0 150H160" />
+    </g>
+    <g fill="#c5d3e6">
+      <rect x="50" y="25" width="25" height="25" />
+      <rect x="25" y="75" width="25" height="25" />
+      <rect x="100" y="100" width="25" height="25" />
+    </g>
+
+    <!-- チェックの終点を右上矢印へつなぎ、達成と前進を一つの記号で表します。 -->
+    <path
+      d="M35 70L65 100L116 49"
+      fill="none"
+      stroke="url(#check-gradient)"
+      stroke-width="15"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M98 45H119V66"
+      fill="none"
+      stroke="#0758d8"
+      stroke-width="14"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

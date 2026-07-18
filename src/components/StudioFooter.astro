@@ -1,0 +1,18 @@
+---
+import { SITE } from '../site.config';
+
+const contactHref = `mailto:${SITE.contactEmail}`;
+---
+
+<footer class="studio-site-footer studio-mono">
+  <div>
+    <span>© 2026 Noveris</span>
+    <a href="/#products">Products</a>
+    <a href="/#studio">Studio</a>
+  </div>
+  <div>
+    <a href={SITE.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href={contactHref}>Email</a>
+    <span>noveris.dev</span>
+  </div>
+</footer>

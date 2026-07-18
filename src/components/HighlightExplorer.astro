@@ -1,0 +1,93 @@
+---
+interface HighlightItem {
+  label: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  id: string;
+  heading: string;
+  items: HighlightItem[];
+}
+
+const { id, heading, items } = Astro.props;
+const firstItem = items[0];
+const panelId = `${id}-panel`;
+---
+
+<!-- 各特徴を同じ領域で比較できる、キーボード操作対応の説明切り替えUIです。 -->
+<section class="highlight-section highlight-explorer" data-highlight-explorer>
+  <div id={panelId} class="highlight-copy" role="tabpanel" aria-live="polite" aria-atomic="true">
+    <p class="highlight-kicker studio-mono">{heading}</p>
+    <h2 data-highlight-title>{firstItem.title}</h2>
+    <p data-highlight-description>{firstItem.description}</p>
+  </div>
+
+  <div class="highlight-options" role="tablist" aria-label={`${heading}の説明を選択`}>
+    {items.map((item, index) => (
+      <button
+        type="button"
+        role="tab"
+        class:list={['highlight-option', { 'is-active': index === 0 }]}
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls={panelId}
+        tabindex={index === 0 ? 0 : -1}
+        data-highlight-option
+        data-title={item.title}
+        data-description={item.description}
+      >
+        {item.label}
+      </button>
+    ))}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-highlight-explorer]').forEach((explorer) => {
+    const options = Array.from(explorer.querySelectorAll<HTMLButtonElement>('[data-highlight-option]'));
+    const title = explorer.querySelector<HTMLElement>('[data-highlight-title]');
+    const description = explorer.querySelector<HTMLElement>('[data-highlight-description]');
+
+    if (!title || !description || options.length === 0) return;
+
+    const activate = (option: HTMLButtonElement, moveFocus = false) => {
+      options.forEach((candidate) => {
+        const isSelected = candidate === option;
+        candidate.classList.toggle('is-active', isSelected);
+        candidate.setAttribute('aria-selected', String(isSelected));
+        candidate.tabIndex = isSelected ? 0 : -1;
+      });
+
+      // data属性の内容はリポジトリ内の固定文言で、HTMLとして解釈せず安全に反映します。
+      title.textContent = option.dataset.title ?? '';
+      description.textContent = option.dataset.description ?? '';
+      explorer.dispatchEvent(new CustomEvent('highlight-change', {
+        bubbles: true,
+        detail: { explorer },
+      }));
+      if (moveFocus) option.focus();
+    };
+
+    options.forEach((option, index) => {
+      option.addEventListener('click', () => activate(option));
+      option.addEventListener('keydown', (event) => {
+        let nextIndex: number | null = null;
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          nextIndex = (index + 1) % options.length;
+        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          nextIndex = (index - 1 + options.length) % options.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = options.length - 1;
+        }
+
+        if (nextIndex === null) return;
+        event.preventDefault();
+        activate(options[nextIndex], true);
+      });
+    });
+  });
+</script>

@@ -1,216 +1,460 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../site.config';
+
+// 公開済みの詳細ページだけをリンク先にし、表示名と既存URLの互換性を維持します。
+const products = [
+  {
+    icon: '/images/studiair-icon.svg',
+    name: 'Studiair',
+    category: 'AIノート',
+    description: 'プロンプト入力を必要とせず、考える流れを止めないAI搭載型ノートアプリ。',
+    status: 'In Dev',
+    statusClass: 'dev',
+    href: '/apps/studiair',
+  },
+  {
+    icon: '/images/plachieve-check-icon.svg',
+    name: 'Plachieve',
+    category: '計画・目標管理',
+    description: '日々の予定をテンプレート化し、目標達成に必要な時間を可視化するスケジュール管理アプリ。',
+    status: 'Product',
+    statusClass: 'live',
+    href: '/apps/plachieve',
+  },
+  {
+    icon: '/images/kakukame-icon.png',
+    name: 'Kakuカメ',
+    category: '記録・カメラ',
+    description: '気持ちを言葉にしてから撮る。日常の一瞬を、考えたことと一緒に残すカメラアプリ。',
+    status: 'Product',
+    statusClass: 'live',
+    href: '/apps/kakukame',
+  },
+  {
+    icon: '/images/shimappu-icon.jpg',
+    name: 'モノミル',
+    category: '収納・持ち物管理',
+    description: '家にあるモノの収納場所と、外出時の持ち物準備をひとつにつなぐ整理アプリ。',
+    status: 'Product',
+    statusClass: 'live',
+    // 既存の公開URLはApp Storeや法務ページとの互換性のため維持します。
+    href: '/apps/shimappu',
+  },
+] as const;
+
+const contactHref = `mailto:${SITE.contactEmail}`;
 ---
 
 <BaseLayout
   page="home"
-  title="Noveris｜アプリ開発で、学びと日常を次のステージへ"
-  description="Noverisは、教育・生産性・日常生活を中心に、次世代のアプリを開発するクリエイティブ集団です。"
+  title="Noveris — Independent Software Studio"
+  description="Noverisは、学習・計画・記録・整理のためのソフトウェアを設計から出荷まで一貫して手がける独立系ソフトウェアスタジオです。"
 >
-  <!-- =========================
-       Hero
-       添付画像1枚目のホームに寄せた構成
-  ========================== -->
-  <section class="home-classic-hero">
-    <div class="container home-classic-hero-grid">
-      <div class="home-classic-copy">
-        <img
-          src="/images/noveris-logo.png"
-          alt="Noveris"
-          class="home-classic-big-logo"
-        />
+  <div class="noveris-home">
+    <!-- ホーム専用ナビゲーション。詳細ページの共通ヘッダーには影響させません。 -->
+    <header class="home-header">
+      <nav class="home-nav mono" aria-label="メインナビゲーション">
+        <a class="wordmark" href="/" aria-label="Noveris ホーム">NOVERIS<sup>®</sup></a>
+        <div class="nav-links">
+          <a href="#products">Products</a>
+          <a href="#studio">Studio</a>
+          <a class="nav-cta" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
 
-        <h1>
-          アプリ開発で、<br />
-          学びと日常を次のステージへ。
+    <main>
+      <section class="home-hero" aria-labelledby="home-title">
+        <span class="scan" aria-hidden="true"></span>
+        <div class="hero-meta mono">
+          <span data-scramble>Independent Software Studio — Japan</span>
+          <span data-scramble>EST. 2025 / iOS &amp; Flutter</span>
+        </div>
+        <h1 id="home-title">
+          <span>日常を、<em>運用可能</em>にする。</span>
+          <span lang="en">Everyday, made operational.</span>
         </h1>
-
-        <p>
-          Noverisは、教育・生産性・日常生活を中心に、<br />
-          次世代のアプリを開発するクリエイティブ集団です。<br />
-          ユーザーの毎日をより良くするアプリを、これからも拡充していきます。
-        </p>
-
-        <div class="home-classic-actions">
-          <a href="#apps" class="primary-button">
-            アプリを見る
-            <span aria-hidden="true">→</span>
-          </a>
-
+        <div class="hero-sub">
+          <p>Noverisは、学習・計画・記録・整理のためのソフトウェアを設計から出荷まで一貫して手がける独立系スタジオです。小さなチームだからこそ、細部まで責任を持つ。</p>
+          <p class="mono">Designed / Built / Shipped<br />— in-house, end to end</p>
         </div>
-      </div>
+      </section>
 
-      <div class="home-classic-visual hero-photo-stack" aria-label="Noverisアプリの画面イメージ">
-        <div class="hero-device-frame hero-device-frame--tablet">
-          <img
-            src="/images/studiair-ss3.jpg"
-            alt="Studiairの横長ノート画面"
-            decoding="async"
-          />
+      <section id="products" aria-labelledby="products-title">
+        <div class="section-head">
+          <h2 id="products-title" class="mono" data-scramble>01 — Product Index</h2>
+          <span class="mono count" data-scramble>{String(products.length).padStart(2, '0')} Entries</span>
         </div>
-        <div class="hero-device-frame hero-device-frame--phone">
-          <img
-            src="/images/hero-plachieve.jpg"
-            alt="Plachieveの予定管理画面"
-            decoding="async"
-          />
+
+        <div class="product-list">
+          {products.map((product) => (
+            <a class="product-row reveal" href={product.href}>
+              <!-- 直後にアプリ名があるため、重複読み上げを避けてアイコンは装飾画像として扱います。 -->
+              <span class="product-icon" aria-hidden="true">
+                <img
+                  src={product.icon}
+                  alt=""
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="name">{product.name}<small>{product.category}</small></span>
+              <span class="description">{product.description}</span>
+              <span class:list={['status', 'mono', product.statusClass]}>
+                <i aria-hidden="true"></i>{product.status}
+              </span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
         </div>
+      </section>
+
+      <section id="studio" aria-labelledby="studio-title">
+        <div class="section-head">
+          <h2 id="studio-title" class="mono" data-scramble>02 — Studio</h2>
+          <span class="mono count" data-scramble>Principles</span>
+        </div>
+        <div class="principles">
+          <article class="reveal">
+            <span class="mono">A / Ownership</span>
+            <h3>設計から出荷まで、一貫して。</h3>
+            <p>企画・設計・実装・審査・運用を一続きで考えることで、意思決定を速くし、細部まで責任を持ちます。</p>
+          </article>
+          <article class="reveal">
+            <span class="mono">B / Depth</span>
+            <h3>OSの深いところまで使い切る。</h3>
+            <p>プラットフォームの機能と制約を深く理解し、技術そのものではなく、自然な体験としてプロダクトへ還元します。</p>
+          </article>
+          <article class="reveal">
+            <span class="mono">C / Longevity</span>
+            <h3>長く使われる道具をつくる。</h3>
+            <p>流行より習慣。毎日の学習・計画・記録に静かに寄り添う、生活のインフラとしてのアプリを目指します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-band" aria-labelledby="contact-title">
+        <h2 id="contact-title" class="reveal">次の道具を、<br />一緒につくりませんか。</h2>
+        <a class="contact-link mono reveal" href={contactHref}>Get in touch →</a>
+      </section>
+    </main>
+
+    <footer class="home-footer mono">
+      <div>
+        <span>© 2026 Noveris</span>
+        <a href="#products">Products</a>
+        <a href="#studio">Studio</a>
       </div>
-    </div>
-  </section>
-
-  <!-- =========================
-       Apps
-  ========================== -->
-  <section id="apps" class="home-classic-apps">
-    <div class="container">
-      <div class="classic-section-title">
-        <p>✦ 開発中のアプリ ✦</p>
-        <h2>4つのアプリを開発中</h2>
-        <span>
-          現在、4つのアプリを開発中です。
-          今後も、さまざまなアプリをリリース予定です。
-        </span>
+      <div>
+        <a href={SITE.social.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={contactHref}>Email</a>
+        <span>noveris.dev</span>
       </div>
-
-      <div class="classic-app-grid">
-        <!-- Studiair -->
-        <article class="classic-app-card">
-          <div class="classic-app-heading">
-            <div class="classic-app-icon">
-              <img src="/images/studiair-icon.svg" alt="Studiair" />
-            </div>
-
-            <div>
-              <h3>Studiair</h3>
-              <p>
-                従来のノートアプリの機能は入りつつ、<br />
-                プロンプト不要のAI搭載型高性能ノートアプリ。
-              </p>
-            </div>
-          </div>
-
-          <p class="classic-app-text">
-            面倒な操作やプロンプト入力は不要。
-            低コストで、シームレスな使い心地を実現します。
-          </p>
-
-          <div class="classic-svg-preview">
-            <img
-              src="/images/studiair-preview.png"
-              alt="StudiairのノートとAI回答画面"
-            />
-          </div>
-
-          <a href="/apps/studiair" class="classic-detail-button sa-wip-link">
-            開発中
-          </a>
-        </article>
-
-        <!-- Plachieve -->
-        <article class="classic-app-card">
-          <div class="classic-app-heading">
-            <div class="classic-app-icon">
-              <img src="/images/plachieve-icon.png" alt="Plachieve" />
-            </div>
-
-            <div>
-              <h3>Plachieve</h3>
-              <p>
-                テンプレートで日々のルーティンを作成し、<br />
-                AIが時間を分析する次世代スケジュール管理アプリ。
-              </p>
-            </div>
-          </div>
-
-          <p class="classic-app-text">
-            カレンダーへの簡単挿入と、時計型UIで
-            直感的にスケジュールを可視化できます。
-          </p>
-
-          <div class="classic-svg-preview plachieve-photo-preview">
-            <img
-              src="/images/plachieve-preview-1.jpg"
-              alt="Plachieveの予定管理画面"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="/images/plachieve-preview-2.jpg"
-              alt="Plachieveの目標管理画面"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-
-          <a href="/apps/plachieve" class="classic-detail-button">
-            詳細を見る
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
-
-        <!-- Kakuカメ -->
-        <article class="classic-app-card">
-          <div class="classic-app-heading">
-            <div class="classic-app-icon">
-              <img src="/images/kakukame-icon.png" alt="Kakuカメ" />
-            </div>
-
-            <div>
-              <h3>Kakuカメ</h3>
-              <p>
-                気持ちを書き起こしてから、撮る。<br />
-                逆転の発想で生まれたカメラアプリ。
-              </p>
-            </div>
-          </div>
-
-          <p class="classic-app-text">
-            気持ちを文字にしてから風景を写す。<br />
-            高画質なカメラとレトロなカメラの二種類を搭載したシンプルなカメラアプリ。
-          </p>
-
-          <a href="/apps/kakukame" class="classic-detail-button">
-            詳細を見る
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
-
-        <!-- しまっぷ -->
-        <article class="classic-app-card">
-          <div class="classic-app-heading">
-            <div class="classic-app-icon">
-              <img src="/images/shimappu-icon.jpg" alt="しまっぷ" />
-            </div>
-
-            <div>
-              <h3>しまっぷ</h3>
-              <p>
-                モノの場所も、持ち物準備も、<br />
-                これひとつで管理するアプリ。
-              </p>
-            </div>
-          </div>
-
-          <p class="classic-app-text">
-            収納管理と持ち物準備を連携させて、
-            「あれ、どこ？」と「今日、何を持っていく？」を解決します。
-          </p>
-
-          <a href="/apps/shimappu" class="classic-detail-button">
-            詳細を見る
-            <span aria-hidden="true">→</span>
-          </a>
-        </article>
-      </div>
-
-      <div class="classic-all-apps">
-        <a href="#apps">
-          すべてのアプリを見る
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
+    </footer>
+  </div>
 </BaseLayout>
+
+<script>
+  // JavaScriptが無効でも全内容を表示し、利用可能な場合だけタイプライター演出を追加します。
+  const root = document.querySelector('.noveris-home');
+  const targets = document.querySelectorAll('.noveris-home .reveal');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (root && !reduceMotion && 'IntersectionObserver' in window) {
+    root.classList.add('has-motion');
+
+    const scrambleCharacters = 'ABCDEFGHKMNPRSTX0123456789/—·';
+
+    // 元のDOM構造（emやsmall）を維持しながら、テキストノードだけを1文字ずつ分割します。
+    const prepareTypewriter = (element: HTMLElement | null) => {
+      if (!element || element.dataset.prepared === 'true') return;
+
+      element.dataset.prepared = 'true';
+      element.classList.add('is-typing');
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      let currentNode = walker.nextNode();
+
+      while (currentNode) {
+        textNodes.push(currentNode as Text);
+        currentNode = walker.nextNode();
+      }
+
+      textNodes.forEach((textNode) => {
+        const fragment = document.createDocumentFragment();
+
+        Array.from(textNode.data).forEach((character) => {
+          const span = document.createElement('span');
+          span.className = 'type-char';
+          span.textContent = character;
+          fragment.appendChild(span);
+        });
+
+        textNode.replaceWith(fragment);
+      });
+    };
+
+    const typeElement = (element: HTMLElement | null, speed: number) => new Promise<void>((resolve) => {
+      if (!element || element.dataset.typed === 'true') {
+        resolve();
+        return;
+      }
+
+      element.dataset.typed = 'true';
+      const characters = Array.from(element.querySelectorAll<HTMLElement>('.type-char'));
+      const caret = document.createElement('span');
+      caret.className = 'type-caret';
+      caret.textContent = '▍';
+      caret.setAttribute('aria-hidden', 'true');
+
+      if (characters.length === 0) {
+        element.classList.remove('is-typing');
+        resolve();
+        return;
+      }
+
+      let index = 0;
+      const timer = window.setInterval(() => {
+        const character = characters[index];
+        character.classList.add('is-on');
+        character.after(caret);
+        index += 1;
+
+        if (index >= characters.length) {
+          window.clearInterval(timer);
+          caret.remove();
+          element.classList.remove('is-typing');
+          resolve();
+        }
+      }, speed);
+    });
+
+    const scramble = (element: HTMLElement) => {
+      if (element.dataset.scrambled === 'true') return;
+      element.dataset.scrambled = 'true';
+      const originalText = element.textContent ?? '';
+      const steps = 18;
+      let frame = 0;
+
+      const timer = window.setInterval(() => {
+        frame += 1;
+        const solvedLength = Math.floor(originalText.length * (frame / steps));
+        element.textContent = Array.from(originalText).map((character, index) => {
+          if (index < solvedLength || character === ' ') return character;
+          return scrambleCharacters[Math.floor(Math.random() * scrambleCharacters.length)];
+        }).join('');
+
+        if (frame >= steps) {
+          window.clearInterval(timer);
+          element.textContent = originalText;
+        }
+      }, 34);
+    };
+
+    const heroLines = Array.from(document.querySelectorAll<HTMLElement>('.home-hero h1 > span'));
+    heroLines.forEach(prepareTypewriter);
+    document.querySelectorAll<HTMLElement>('.hero-sub p').forEach((element) => element.classList.add('after-copy'));
+
+    targets.forEach((target) => {
+      if (target.classList.contains('product-row')) {
+        prepareTypewriter(target.querySelector<HTMLElement>('.name'));
+        target.querySelector<HTMLElement>('.description')?.classList.add('after-copy');
+      } else if (target.tagName === 'ARTICLE') {
+        prepareTypewriter(target.querySelector<HTMLElement>('h3'));
+        target.querySelector<HTMLElement>('p')?.classList.add('after-copy');
+      } else if (target.tagName === 'H2') {
+        prepareTypewriter(target as HTMLElement);
+      }
+    });
+
+    // ファーストビューは日本語、英語の順に打鍵し、完了後に説明文を表示します。
+    const playHero = async () => {
+      document.querySelectorAll<HTMLElement>('.home-hero [data-scramble]').forEach(scramble);
+      await typeElement(heroLines[0] ?? null, 38);
+      await typeElement(heroLines[1] ?? null, 20);
+      document.querySelectorAll<HTMLElement>('.hero-sub .after-copy').forEach((element, index) => {
+        window.setTimeout(() => element.classList.add('is-shown'), index * 140);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+
+        const element = entry.target as HTMLElement;
+        if (element.hasAttribute('data-scramble')) {
+          scramble(element);
+          return;
+        }
+
+        element.classList.add('is-visible');
+
+        if (element.classList.contains('product-row')) {
+          void typeElement(element.querySelector<HTMLElement>('.name'), 18).then(() => {
+            element.querySelector<HTMLElement>('.description')?.classList.add('is-shown');
+          });
+        } else if (element.tagName === 'ARTICLE') {
+          void typeElement(element.querySelector<HTMLElement>('h3'), 18).then(() => {
+            element.querySelector<HTMLElement>('p')?.classList.add('is-shown');
+          });
+        } else if (element.tagName === 'H2') {
+          void typeElement(element, 22);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
+
+    targets.forEach((target) => observer.observe(target));
+    document.querySelectorAll('.section-head [data-scramble]').forEach((target) => observer.observe(target));
+
+    // DOMの文字分割が完了した次フレームから開始し、未分割テキストのちらつきを抑えます。
+    window.requestAnimationFrame(() => { void playHero(); });
+  } else {
+    targets.forEach((target) => target.classList.add('is-visible'));
+  }
+</script>
+
+<style>
+  .noveris-home {
+    --paper: #fff;
+    --ink: #14171a;
+    --blue: #0000ee;
+    --hairline: #dcdcdc;
+    --dim: #6f7478;
+    --faint: #f5f5f4;
+    --pad: clamp(20px, 4vw, 56px);
+    min-height: 100vh;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: "Arial Narrow", "Helvetica Neue", "Noto Sans JP", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .noveris-home :global(*) { box-sizing: border-box; }
+  .noveris-home :global(a) { color: inherit; text-decoration: none; }
+  .noveris-home :global(a:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
+  .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+  .home-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    background: rgba(255,255,255,.92);
+    border-bottom: 1px solid var(--hairline);
+    backdrop-filter: blur(8px);
+  }
+
+  .home-nav { display: flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 0 var(--pad); }
+  .wordmark { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .14em; }
+  .wordmark sup { color: var(--blue); font-size: 9px; vertical-align: top; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { position: relative; color: var(--dim); transition: color .15s; }
+  .nav-links a:not(.nav-cta)::after { position: absolute; right: 0; bottom: -4px; left: 0; height: 1px; background: var(--blue); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links .nav-cta { padding: 7px 16px; color: var(--ink); border: 1px solid var(--ink); transition: background .15s, color .15s; }
+  .nav-links .nav-cta:hover { color: var(--paper); background: var(--ink); }
+
+  .noveris-home section { border-bottom: 1px solid var(--hairline); scroll-margin-top: 56px; }
+  .home-hero { position: relative; padding: calc(56px + clamp(64px, 12vh, 140px)) var(--pad) clamp(48px, 9vh, 110px); overflow: hidden; }
+  .hero-meta { display: flex; justify-content: space-between; gap: 8px 24px; margin-bottom: clamp(32px, 6vh, 72px); color: var(--dim); }
+  .home-hero h1 { max-width: 16em; margin: 0; font-size: clamp(40px, 8.5vw, 104px); font-stretch: condensed; font-weight: 700; letter-spacing: -.035em; line-height: 1.04; }
+  .home-hero h1 span { display: block; }
+  .home-hero h1 em { color: var(--blue); font-style: normal; }
+  .hero-sub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; gap: 24px; margin-top: clamp(24px, 4vh, 44px); }
+  .hero-sub p { max-width: 38em; margin: 0; color: #3a3f44; }
+  .hero-sub .mono { max-width: none; color: var(--dim); text-align: right; }
+  .scan { position: absolute; top: 0; bottom: 0; left: 0; width: 1px; background: var(--blue); pointer-events: none; animation: scan 1.4s cubic-bezier(.6,0,.2,1) .2s both; }
+
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; padding: 18px var(--pad); border-bottom: 1px solid var(--hairline); }
+  .section-head h2 { margin: 0; font-weight: 500; }
+  .section-head .count { color: var(--dim); }
+  .product-list { display: grid; }
+  .product-row { position: relative; display: grid; grid-template-columns: 72px minmax(0, 1.65fr) minmax(0, 2fr) 130px 60px; align-items: center; gap: 16px; padding: 22px var(--pad); border-bottom: 1px solid var(--hairline); transition: background .15s; }
+  .product-row:last-child { border-bottom: 0; }
+  .product-row:hover { background: var(--faint); }
+  .product-row::before, .product-row::after { position: absolute; width: 14px; height: 14px; opacity: 0; content: ""; transition: opacity .15s; pointer-events: none; }
+  .product-row::before { top: 8px; left: 8px; border-top: 1.5px solid var(--blue); border-left: 1.5px solid var(--blue); }
+  .product-row::after { right: 8px; bottom: 8px; border-right: 1.5px solid var(--blue); border-bottom: 1.5px solid var(--blue); }
+  .product-row:hover::before, .product-row:hover::after { opacity: 1; }
+  .product-icon { display: grid; place-items: center; width: 48px; height: 48px; overflow: hidden; border: 1px solid var(--hairline); border-radius: 12px; background: var(--paper); }
+  .product-icon img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .name { font-size: clamp(18px, 2.4vw, 26px); font-weight: 700; letter-spacing: -.015em; }
+  .name small { margin-left: 10px; color: var(--dim); font-size: 13px; font-weight: 400; letter-spacing: 0; white-space: nowrap; }
+  .description { max-width: 38em; color: #3a3f44; font-size: 13.5px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+  .status i { width: 7px; height: 7px; flex: none; }
+  .status.live { color: var(--blue); }
+  .status.live i { background: var(--blue); animation: pulse 2.4s ease-in-out infinite; }
+  .status.dev { color: var(--dim); }
+  .status.dev i { border: 1px solid var(--dim); }
+  .arrow { color: var(--dim); text-align: right; transition: color .15s, transform .15s; }
+  .product-row:hover .arrow { color: var(--blue); transform: translateX(4px); }
+
+  .principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .principles article { padding: 36px var(--pad); border-right: 1px solid var(--hairline); }
+  .principles article:last-child { border-right: 0; }
+  .principles .mono { color: var(--dim); }
+  .principles h3 { margin: 14px 0 10px; font-size: 16px; letter-spacing: -.01em; }
+  .principles p { margin: 0; color: #3a3f44; font-size: 13.5px; }
+
+  .contact-band { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; padding: clamp(56px, 10vh, 120px) var(--pad); }
+  .contact-band h2 { max-width: 14em; margin: 0; font-size: clamp(28px, 5vw, 56px); letter-spacing: -.025em; line-height: 1.1; }
+  .contact-link { padding: 14px 28px; border: 1px solid var(--ink); transition: border-color .15s, background .15s, color .15s; }
+  .contact-link:hover { color: var(--paper); background: var(--blue); border-color: var(--blue); }
+  .home-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding: 32px var(--pad) 40px; color: var(--dim); }
+  .home-footer div { display: flex; flex-wrap: wrap; gap: 20px 48px; }
+  .home-footer a:hover { color: var(--ink); }
+
+  .has-motion .reveal { opacity: 0; transform: translateY(16px); transition: opacity .65s cubic-bezier(.2,.65,.2,1), transform .65s cubic-bezier(.2,.65,.2,1); }
+  .has-motion .reveal.is-visible { opacity: 1; transform: none; }
+  /* JavaScriptで生成する文字とキャレットにはAstroのスコープ属性が付かないため、ここだけglobalにします。 */
+  .has-motion .is-typing :global(.type-char) { opacity: 0; }
+  .has-motion .is-typing :global(.type-char.is-on) { opacity: 1; }
+  :global(.type-caret) { color: var(--blue); font-weight: 400; animation: caret-blink .7s steps(1) infinite; }
+  .has-motion .after-copy { opacity: 0; transform: translateY(6px); transition: opacity .45s cubic-bezier(.2,.65,.2,1), transform .45s cubic-bezier(.2,.65,.2,1); }
+  .has-motion .after-copy.is-shown { opacity: 1; transform: none; }
+
+  @keyframes scan { 0% { opacity: 0; transform: translateX(0); } 10%, 90% { opacity: .9; } 100% { opacity: 0; transform: translateX(100vw); } }
+  @keyframes pulse { 50% { opacity: .3; } }
+  @keyframes caret-blink { 50% { opacity: 0; } }
+
+  @media (max-width: 860px) {
+    .product-row { grid-template-columns: 56px minmax(0, 1fr) 110px; grid-template-rows: auto auto; row-gap: 6px; }
+    .name small { display: block; margin: 2px 0 0; font-size: 12px; }
+    .description { grid-column: 2 / 4; }
+    .arrow { display: none; }
+    .principles { grid-template-columns: 1fr; }
+    .principles article { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .principles article:last-child { border-bottom: 0; }
+  }
+
+  @media (max-width: 720px) {
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero-meta { flex-direction: column; }
+    .hero-sub { grid-template-columns: 1fr; }
+    .hero-sub .mono { text-align: left; }
+    .contact-band { align-items: flex-start; flex-direction: column; }
+  }
+
+  @media (max-width: 520px) {
+    .product-row { grid-template-columns: 46px minmax(0, 1fr); padding-block: 20px; }
+    .product-icon { width: 40px; height: 40px; border-radius: 10px; }
+    .status { grid-column: 2; }
+    .description { grid-column: 2; }
+    .home-footer { flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .noveris-home { scroll-behavior: auto; }
+    .scan { display: none; }
+    .status.live i { animation: none; }
+    :global(.type-caret) { display: none; }
+    .nav-links a, .nav-links a::after, .product-row, .arrow, .contact-link { transition: none; }
+  }
+</style>

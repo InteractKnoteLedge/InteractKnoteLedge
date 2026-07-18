@@ -1,8 +1,19 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HighlightExplorer from '../../components/HighlightExplorer.astro';
+
+const highlights = [
+  { label: 'テンプレ', title: '繰り返す予定を、再利用できる形に。', description: '授業・仕事・睡眠などの固定予定をテンプレートとして保存し、毎日の計画づくりを最初からやり直す手間を減らします。' },
+  { label: '目標', title: '目標を、実行可能な時間へ変換。', description: '達成したい内容と現在の状態を入力することで、抽象的な目標を具体的な学習時間・作業時間へ落とし込みます。' },
+  { label: '分析', title: '必要時間と配分を分析。', description: '目標までに必要な総時間を見積もり、期限や既存予定を踏まえて、無理の少ない時間配分を組み立てます。' },
+  { label: '自動挿入', title: '空いている時間へ、自動で配置。', description: '固定予定を避けながら、必要な学習や作業をカレンダーの空き時間へ自動挿入し、実行できる計画に整えます。' },
+  { label: '実行', title: '今日やることを、迷わず確認。', description: '時計型UIと進捗記録により、現在の予定と次の行動を把握し、完了した実績を目標の進捗へ反映します。' },
+  { label: '再見積り', title: '現実に合わせて、計画を更新。', description: 'チェックポイントで実績を振り返り、当初の見積もりとの差をもとに残り時間と今後の計画を調整します。' },
+];
 ---
 
 <BaseLayout
+  page="product"
   title="Plachieve｜Noveris"
   description="Plachieveは、AIが時間を分析し、予定管理から目標達成まで支援する次世代スケジュール管理アプリです。"
 >
@@ -16,9 +27,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         Plachieve
       </p>
 
-      <p class="eyebrow">Noveris App</p>
-
-      <h1>Plachieve</h1>
+      <div class="product-identity">
+        <p class="eyebrow studio-mono">NV-02 / PLANNING</p>
+      </div>
+      <div class="product-title-line">
+        <img src="/images/plachieve-check-icon.svg" alt="" />
+        <h1>Plachieve</h1>
+      </div>
 
       <h2>
         予定管理を、<br />
@@ -469,26 +484,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <section class="highlight-section">
-    <div>
-      <h2>Plachieveの革新ポイント</h2>
-
-      <p>
-        Plachieveは、単に予定を入れるだけのアプリではありません。
-        目標達成までに必要な時間を分析し、実行状況に応じて
-        計画を再見積もりすることで、現実的なスケジュール管理を支援します。
-      </p>
-    </div>
-
-    <div class="checkpoint-ui" aria-hidden="true">
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span class="active">4</span>
-      <span>5</span>
-      <span>6</span>
-    </div>
-  </section>
+  <HighlightExplorer id="plachieve-highlights" heading="Plachieveの革新ポイント" items={highlights} />
 
   <section class="contact-section">
     <h2>Plachieveについて相談する</h2>

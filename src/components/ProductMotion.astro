@@ -1,0 +1,177 @@
+<!-- ホームと同じ「見出しを打鍵し、説明を後から表示する」順序を詳細ページ全体へ適用します。 -->
+<script>
+  const productPage = document.querySelector('.page-product');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (productPage && !reduceMotion && 'IntersectionObserver' in window) {
+    const activeTimers = new WeakMap<HTMLElement, number>();
+
+    // brや強調要素を維持したまま、見出しのテキストノードだけを1文字単位へ分割します。
+    const prepareHeading = (heading: HTMLElement) => {
+      const currentTimer = activeTimers.get(heading);
+      if (currentTimer !== undefined) window.clearTimeout(currentTimer);
+
+      // 切り替えUIで再実行する場合は、現在表示されている文字列を新しい正として使います。
+      const label = heading.textContent?.trim() ?? '';
+      heading.setAttribute('aria-label', label);
+      heading.classList.add('product-typewriter');
+
+      const walker = document.createTreeWalker(heading, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      let currentNode = walker.nextNode();
+
+      while (currentNode) {
+        textNodes.push(currentNode as Text);
+        currentNode = walker.nextNode();
+      }
+
+      textNodes.forEach((textNode) => {
+        // すでに分割済みの文字は再分割しません。
+        if (textNode.parentElement?.classList.contains('product-type-char')) return;
+        const fragment = document.createDocumentFragment();
+
+        Array.from(textNode.data).forEach((character) => {
+          const span = document.createElement('span');
+          span.className = 'product-type-char';
+          span.textContent = character;
+          span.setAttribute('aria-hidden', 'true');
+          fragment.appendChild(span);
+        });
+
+        textNode.replaceWith(fragment);
+      });
+    };
+
+    const typeHeading = (heading: HTMLElement, speed = 24) => new Promise<void>((resolve) => {
+      prepareHeading(heading);
+      const characters = Array.from(heading.querySelectorAll<HTMLElement>('.product-type-char'));
+      characters.forEach((character) => character.classList.remove('is-on'));
+
+      const caret = document.createElement('span');
+      caret.className = 'product-type-caret';
+      caret.textContent = '▍';
+      caret.setAttribute('aria-hidden', 'true');
+      let index = 0;
+
+      const typeNextCharacter = () => {
+        const character = characters[index];
+        if (!character) {
+          caret.remove();
+          heading.classList.remove('product-typewriter');
+          activeTimers.delete(heading);
+          resolve();
+          return;
+        }
+
+        character.classList.add('is-on');
+        character.after(caret);
+        index += 1;
+        activeTimers.set(heading, window.setTimeout(typeNextCharacter, speed));
+      };
+
+      typeNextCharacter();
+    });
+
+    const hideCopy = (copy: HTMLElement | null) => {
+      if (!copy) return;
+      copy.classList.add('product-after-copy');
+      copy.classList.remove('is-shown');
+    };
+
+    const showCopy = (copy: HTMLElement | null) => {
+      if (!copy) return;
+      window.requestAnimationFrame(() => copy.classList.add('is-shown'));
+    };
+
+    interface MotionTarget {
+      container: HTMLElement;
+      heading: HTMLElement;
+      copy: HTMLElement | null;
+      speed: number;
+    }
+
+    const motionTargets: MotionTarget[] = [];
+    const registerTarget = (
+      container: HTMLElement | null,
+      headingSelector: string,
+      copySelector: string,
+      speed = 24,
+    ) => {
+      if (!container) return;
+      const heading = container.querySelector<HTMLElement>(headingSelector);
+      if (!heading) return;
+      const copy = container.querySelector<HTMLElement>(copySelector);
+      prepareHeading(heading);
+      hideCopy(copy);
+      motionTargets.push({ container, heading, copy, speed });
+    };
+
+    const productHero = document.querySelector<HTMLElement>('.page-product .product-hero');
+    const wipHero = document.querySelector<HTMLElement>('.page-product .sa-wip-section');
+    const hero = productHero ?? wipHero;
+
+    if (hero) {
+      const heroTitle = hero.querySelector<HTMLElement>('h1');
+      const heroSubtitle = hero.querySelector<HTMLElement>('h2');
+      const heroCopy = hero.querySelector<HTMLElement>(
+        productHero ? ':scope > div:first-child > p:last-child' : '.sa-wip-desc'
+      );
+
+      if (heroTitle) prepareHeading(heroTitle);
+      if (heroSubtitle) prepareHeading(heroSubtitle);
+      hideCopy(heroCopy);
+
+      // Heroはページ表示直後に、アプリ名→メッセージ→説明の順で再生します。
+      window.requestAnimationFrame(async () => {
+        if (heroTitle) await typeHeading(heroTitle, 52);
+        if (heroSubtitle) await typeHeading(heroSubtitle, 28);
+        showCopy(heroCopy);
+      });
+    }
+
+    document.querySelectorAll<HTMLElement>('.page-product .section-heading').forEach((container) => {
+      registerTarget(container, 'h2', ':scope > p:not(.eyebrow)', 22);
+    });
+
+    document.querySelectorAll<HTMLElement>('.page-product .feature-card').forEach((container) => {
+      registerTarget(container, 'h3', 'p', 20);
+    });
+
+    document.querySelectorAll<HTMLElement>('.page-product .flow-grid article').forEach((container) => {
+      registerTarget(container, 'h3', 'p', 20);
+    });
+
+    document.querySelectorAll<HTMLElement>('.page-product .highlight-explorer').forEach((container) => {
+      registerTarget(container, '[data-highlight-title]', '[data-highlight-description]', 24);
+    });
+
+    document.querySelectorAll<HTMLElement>('.page-product .contact-section').forEach((container) => {
+      registerTarget(container, 'h2', ':scope > p', 24);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        const target = motionTargets.find((candidate) => candidate.container === entry.target);
+        if (!target) return;
+
+        void typeHeading(target.heading, target.speed).then(() => showCopy(target.copy));
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -5% 0px' });
+
+    motionTargets.forEach((target) => observer.observe(target.container));
+
+    // 革新ポイントの選択変更後も、新しい見出しと説明を同じ順序で表示します。
+    document.addEventListener('highlight-change', (event) => {
+      const explorer = (event as CustomEvent<{ explorer: HTMLElement }>).detail?.explorer;
+      if (!explorer) return;
+      const heading = explorer.querySelector<HTMLElement>('[data-highlight-title]');
+      const copy = explorer.querySelector<HTMLElement>('[data-highlight-description]');
+      if (!heading) return;
+
+      hideCopy(copy);
+      void typeHeading(heading, 24).then(() => showCopy(copy));
+    });
+  }
+</script>
