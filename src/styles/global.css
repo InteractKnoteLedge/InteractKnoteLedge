@@ -2754,6 +2754,31 @@ mark {
   line-height: 1.9;
 }
 
+/* Apple公式の縦横比を保ちつつ、押しやすいサイズとフォーカス表示を確保します。 */
+.page-product .app-store-badge-link {
+  display: block;
+  width: fit-content;
+  margin-top: 24px;
+  border-radius: 8px;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.page-product .app-store-badge-link:hover {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.page-product .app-store-badge-link:focus-visible {
+  outline: 3px solid var(--studio-blue);
+  outline-offset: 4px;
+}
+
+.page-product .app-store-badge-link img {
+  display: block;
+  width: auto;
+  height: 48px;
+}
+
 /* JavaScriptで生成した文字にはAstroのスコープ属性がないため、共通CSSで直接制御します。 */
 .page-product .product-typewriter .product-type-char {
   opacity: 0;
@@ -3198,8 +3223,13 @@ mark {
   .page-product .feature-card,
   .page-product .highlight-option,
   .page-product .primary-button,
-  .page-product .secondary-button {
+  .page-product .secondary-button,
+  .page-product .app-store-badge-link {
     transition: none;
+  }
+
+  .page-product .app-store-badge-link:hover {
+    transform: none;
   }
 
   .page-product .product-type-caret {
